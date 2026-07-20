@@ -1,0 +1,14 @@
+---
+import Base from "../layouts/Base.astro";
+import Sections from "../components/Sections.astro";
+import { content } from "../i18n/content";
+const t = content.es;
+---
+
+<Base
+  lang="es"
+  title={`${t.hero.name} — ${t.footer.tagline}`}
+  description={t.hero.lead}
+>
+  <Sections lang="es" />
+</Base>
