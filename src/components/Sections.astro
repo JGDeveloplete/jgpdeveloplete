@@ -133,7 +133,7 @@ const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.det
           <span class="tl-year">{a.year}</span>
           <div class="tl-body">
             <h3>{a.title}</h3>
-            <p>{a.detail}</p>
+            {a.detail && <p>{a.detail}</p>}
           </div>
         </div>
       ))}

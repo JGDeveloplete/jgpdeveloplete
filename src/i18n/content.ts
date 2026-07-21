@@ -128,6 +128,7 @@ const shared = {
 const bestsEs: Best[] = [
   { event: "100 m", mark: "10.72", note: "2026 · 10.64w en 2022" },
   { event: "200 m", mark: "21.80", note: "2022 · 21.58w en 2026" },
+  { event: "200 m (i)", mark: "22.57", note: "pista cubierta · 2022" },
   { event: "60 m", mark: "7.12", note: "pista cubierta · 2021" },
   { event: "400 m", mark: "51.23", note: "2021 · 51.45 en cubierta" },
   { event: "4 × 100 m", mark: "40.80", note: "relevo · Durango, 2026" },
@@ -136,6 +137,7 @@ const bestsEs: Best[] = [
 const bestsEn: Best[] = [
   { event: "100 m", mark: "10.72", note: "2026 · 10.64w in 2022" },
   { event: "200 m", mark: "21.80", note: "2022 · 21.58w in 2026" },
+  { event: "200 m (i)", mark: "22.57", note: "indoor · 2022" },
   { event: "60 m", mark: "7.12", note: "indoor · 2021" },
   { event: "400 m", mark: "51.23", note: "2021 · 51.45 indoor" },
   { event: "4 × 100 m", mark: "40.80", note: "relay · Durango, 2026" },
@@ -332,29 +334,34 @@ export const content: Record<Lang, Content> = {
       ],
       achievements: [
         {
-          year: "2025–26",
+          year: "2026",
+          title: "Campeón autonómico universitario — 100 m",
+          detail: "Subcampeón autonómico universitario en 4 × 100 m mixto · Victoria en el meeting «II Memorial Antonio Moreno de Frutos».",
+        },
+        {
+          year: "2025",
           title: "Campeón autonómico absoluto — 100 m",
-          detail: "Campeón y subcampeón autonómico absoluto en 100 m · Finalista autonómico absoluto en 200 m (aire libre y pista cubierta) · subcampeón autonómico universitario en 4 × 100 m y bronce universitario en 200 m.",
+          detail: "Campeón y Subcampeón autonómico absoluto en 100 m · Finalista autonómico absoluto en 200 m (aire libre y pista cubierta) · Subcampeón autonómico universitario en 4 × 100 m y Bronce universitario en 200 m.",
         },
         {
           year: "2022",
           title: "Campeón autonómico universitario — 100 m y 4 × 100 m",
-          detail: "Subcampeón autonómico absoluto en 100 m y universitario en 200 m · finalista del Campeonato de España universitario en 100 y 200 m.",
+          detail: "Subcampeón autonómico absoluto en 100 m y universitario en 200 m · Finalista del Campeonato de España universitario en 100 y 200 m.",
         },
         {
           year: "2021",
-          title: "Subcampeón de España Sub23 — 4 × 100 m",
-          detail: "Semifinalista del Campeonato de España Sub23 en 100 y 200 m · semifinalista Indoor Sub23 en 60 m · campeón autonómico universitario en 4 × 100 m y bronce universitario en 100 m.",
+          title: "Semifinalista del Campeonato de España Sub23 — 100 y 200 m",
+          detail: "Semifinalista Indoor Sub23 en 60 m · Campeón autonómico universitario en 4 × 100 m y Bronce universitario en 100 m.",
         },
         {
           year: "2020",
-          title: "Semifinalista del Campeonato de España Sub23 — 100 m",
-          detail: "Subcampeón autonómico Sub23 en 100 m y bronce autonómico en 200 m.",
+          title: "Subcampeón de España Sub23 — 4 × 100 m",
+          detail: "Semifinalista del Campeonato de España Sub23 en 100 m · Subcampeón autonómico Sub23 en 100 m y Bronce en 200 m.",
         },
         {
           year: "2019",
-          title: "Bronce autonómico absoluto Indoor — 200 m",
-          detail: "Consolidación en categoría absoluta en pista cubierta.",
+          title: "Bronce autonómico Sub23 — 200 m (pista cubierta)",
+          detail: "",
         },
         {
           year: "2017",
@@ -591,29 +598,34 @@ export const content: Record<Lang, Content> = {
       ],
       achievements: [
         {
-          year: "2025–26",
+          year: "2026",
+          title: "Regional university champion — 100 m",
+          detail: "Regional university runner-up in the 4 × 100 m mixed relay · Win at the «II Memorial Antonio Moreno de Frutos» meeting.",
+        },
+        {
+          year: "2025",
           title: "Regional senior champion — 100 m",
-          detail: "Regional senior champion and runner-up in the 100 m · Finalist in the regional senior 200 m (outdoor and indoor) · regional university runner-up in the 4 × 100 m and university bronze in the 200 m.",
+          detail: "Regional senior Champion and Runner-up in the 100 m · Finalist in the regional senior 200 m (outdoor and indoor) · Runner-up in the regional university 4 × 100 m and Bronze in the university 200 m.",
         },
         {
           year: "2022",
           title: "Regional university champion — 100 m and 4 × 100 m",
-          detail: "Regional senior runner-up in the 100 m and university runner-up in the 200 m · finalist at the Spanish University Championship in the 100 m and 200 m.",
+          detail: "Regional senior Runner-up in the 100 m and university runner-up in the 200 m · Finalist at the Spanish University Championship in the 100 m and 200 m.",
         },
         {
           year: "2021",
-          title: "Spanish U23 runner-up — 4 × 100 m",
-          detail: "Semi-finalist at the Spanish U23 Championship in the 100 m and 200 m · indoor U23 semi-finalist in the 60 m · regional university champion in the 4 × 100 m and university bronze in the 100 m.",
+          title: "Spanish U23 semi-finalist — 100 m and 200 m",
+          detail: "Indoor U23 Semi-finalist in the 60 m · Regional university champion in the 4 × 100 m and Bronze in the university 100 m.",
         },
         {
           year: "2020",
-          title: "Spanish U23 Championship semi-finalist — 100 m",
-          detail: "Regional U23 runner-up in the 100 m and regional bronze in the 200 m.",
+          title: "Spanish U23 runner-up — 4 × 100 m",
+          detail: "Spanish U23 Championship Semi-finalist in the 100 m · Regional U23 Runner-up in the 100 m and Bronze in the 200 m.",
         },
         {
           year: "2019",
-          title: "Regional senior indoor bronze — 200 m",
-          detail: "Establishing myself in the senior category indoors.",
+          title: "Regional U23 bronze — 200 m (indoor)",
+          detail: "",
         },
         {
           year: "2017",
