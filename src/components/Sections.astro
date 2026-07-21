@@ -96,6 +96,18 @@ const t = content[lang];
       <h2 class="section-title">{t.sport.title}</h2>
       <p class="section-sub">{t.sport.sub}</p>
     </div>
+
+    <h3 class="bests-title">{t.sport.bestsTitle}</h3>
+    <div class="bests">
+      {t.sport.bests.map((b) => (
+        <div class="best">
+          <span class="best-event">{b.event}</span>
+          <span class="best-mark">{b.mark}</span>
+          <span class="best-note">{b.note}</span>
+        </div>
+      ))}
+    </div>
+
     <div class="timeline">
       {t.sport.achievements.map((a) => (
         <div class="tl-item">

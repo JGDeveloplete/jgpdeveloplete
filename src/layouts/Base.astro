@@ -32,6 +32,16 @@ const { lang, title, description } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Aplica el tema guardado antes de pintar, para evitar parpadeo -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("jg-theme");
+          if (t && t !== "pista") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div class="scroll-progress" aria-hidden="true"><span id="scroll-bar"></span></div>
@@ -48,6 +58,24 @@ const { lang, title, description } = Astro.props;
 
     <script>
       const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // ---- Selector de tema de color ----
+      const themeButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-theme-set]"));
+      const currentTheme = () => document.documentElement.getAttribute("data-theme") || "pista";
+      const paintThemeButtons = () => {
+        const now = currentTheme();
+        themeButtons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === now)));
+      };
+      themeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const theme = btn.dataset.themeSet!;
+          if (theme === "pista") document.documentElement.removeAttribute("data-theme");
+          else document.documentElement.setAttribute("data-theme", theme);
+          try { localStorage.setItem("jg-theme", theme); } catch (e) {}
+          paintThemeButtons();
+        });
+      });
+      paintThemeButtons();
 
       // ---- Barra de progreso, cabecera compacta y botón "subir" ----
       const header = document.querySelector(".site-header");

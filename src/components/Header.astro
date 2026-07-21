@@ -30,6 +30,14 @@ const enHref = "/en/";
           <a href={enHref} class={lang === "en" ? "active" : ""}>EN</a>
         </span>
       </li>
+      <li>
+        <span class="theme-switch" role="group" aria-label={lang === "es" ? "Color de la web" : "Site colour"}>
+          <button class="theme-dot pista" data-theme-set="pista" aria-pressed="false" title="Pista"><span class="sr-only">Pista</span></button>
+          <button class="theme-dot velocidad" data-theme-set="velocidad" aria-pressed="false" title="Velocidad"><span class="sr-only">Velocidad</span></button>
+          <button class="theme-dot atardecer" data-theme-set="atardecer" aria-pressed="false" title="Atardecer"><span class="sr-only">Atardecer</span></button>
+          <button class="theme-dot claro" data-theme-set="claro" aria-pressed="false" title={lang === "es" ? "Claro" : "Light"}><span class="sr-only">Claro</span></button>
+        </span>
+      </li>
     </ul>
   </div>
 </header>
