@@ -54,6 +54,9 @@ export interface Photo {
   src: string;
   alt: string;
   caption: string;
+  /** "wide" = apaisada (3:2) · "tall" = vertical (2:3). Determina en cuál de
+   *  los dos carruseles aparece, para que llene el marco sin recortes. */
+  format: "wide" | "tall";
 }
 
 export interface ExperienceItem {
@@ -94,6 +97,7 @@ export interface Content {
     bestsTitle: string;
     bests: Best[];
     galleryTitle: string;
+    galleryTitleTall: string;
     gallery: Photo[];
     achievements: Achievement[];
   };
@@ -238,6 +242,7 @@ export const content: Record<Lang, Content> = {
       bestsTitle: "Marcas personales",
       bests: bestsEs,
       galleryTitle: "En la pista",
+      galleryTitleTall: "De cerca",
       // Añade aquí las fotos tras pasarlas por `npm run fotos`.
       // `src` sin extensión; el alt describe la imagen (accesibilidad y SEO).
       gallery: [
@@ -245,41 +250,49 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/la-nucia-salida-de-tacos",
           alt: "José Giner saliendo de los tacos de salida en la pista de La Nucía",
           caption: "Salida de tacos · La Nucía",
+          format: "wide",
         },
         {
           src: "/atletismo/salida-explosiva",
           alt: "José Giner impulsándose desde los tacos de salida bajo un cielo azul",
           caption: "Explosión en la salida",
+          format: "tall",
         },
         {
           src: "/atletismo/memorial-la-rioja-cara-a-cara",
           alt: "José Giner corriendo los 100 metros junto a otros dos velocistas",
           caption: "Cara a cara · Memorial de La Rioja",
+          format: "wide",
         },
         {
           src: "/atletismo/meeting-coria-en-tacos",
           alt: "José Giner concentrado en los tacos, junto a sus rivales, antes de la salida",
           caption: "En tacos · Meeting de Coria",
+          format: "tall",
         },
         {
           src: "/atletismo/universitario-ua-aceleracion",
           alt: "José Giner acelerando con la equipación de la Universidad de Alicante en pista azul",
           caption: "Con la UA · Campeonato universitario",
+          format: "wide",
         },
         {
           src: "/atletismo/meeting-coria-recta",
           alt: "José Giner corriendo por la curva de la pista con el dorsal 11",
           caption: "En carrera · Meeting de Coria",
+          format: "tall",
         },
         {
           src: "/atletismo/memorial-la-rioja-trofeo-100",
           alt: "José Giner sosteniendo el trofeo de los 100 metros del Memorial de La Rioja",
           caption: "Trofeo de 100 m · Memorial de La Rioja",
+          format: "wide",
         },
         {
           src: "/atletismo/colocandose-en-tacos",
           alt: "José Giner colocándose en los tacos de salida en la pista",
           caption: "Colocándose en tacos",
+          format: "wide",
         },
       ],
       achievements: [
@@ -453,46 +466,55 @@ export const content: Record<Lang, Content> = {
       bestsTitle: "Personal bests",
       bests: bestsEn,
       galleryTitle: "On the track",
+      galleryTitleTall: "Close up",
       gallery: [
         {
           src: "/atletismo/la-nucia-salida-de-tacos",
           alt: "José Giner exploding out of the starting blocks at the La Nucía track",
           caption: "Block start · La Nucía",
+          format: "wide",
         },
         {
           src: "/atletismo/salida-explosiva",
           alt: "José Giner driving out of the starting blocks under a blue sky",
           caption: "Explosive start",
+          format: "tall",
         },
         {
           src: "/atletismo/memorial-la-rioja-cara-a-cara",
           alt: "José Giner racing the 100 metres alongside two other sprinters",
           caption: "Head to head · La Rioja Memorial",
+          format: "wide",
         },
         {
           src: "/atletismo/meeting-coria-en-tacos",
           alt: "José Giner focused in the blocks alongside his rivals before the start",
           caption: "In the blocks · Coria Meeting",
+          format: "tall",
         },
         {
           src: "/atletismo/universitario-ua-aceleracion",
           alt: "José Giner accelerating in University of Alicante kit on a blue track",
           caption: "Racing for UA · University championship",
+          format: "wide",
         },
         {
           src: "/atletismo/meeting-coria-recta",
           alt: "José Giner running the bend wearing bib number 11",
           caption: "Racing · Coria Meeting",
+          format: "tall",
         },
         {
           src: "/atletismo/memorial-la-rioja-trofeo-100",
           alt: "José Giner holding the 100 metres trophy at the La Rioja Memorial",
           caption: "100 m trophy · La Rioja Memorial",
+          format: "wide",
         },
         {
           src: "/atletismo/colocandose-en-tacos",
           alt: "José Giner settling into the starting blocks on the track",
           caption: "Settling into the blocks",
+          format: "wide",
         },
       ],
       achievements: [

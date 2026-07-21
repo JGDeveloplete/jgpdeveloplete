@@ -89,7 +89,19 @@ const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.det
       ))}
     </div>
 
-    <Gallery photos={t.sport.gallery} title={t.sport.galleryTitle} lang={lang} />
+    <Gallery
+      photos={t.sport.gallery.filter((p) => p.format === "wide")}
+      title={t.sport.galleryTitle}
+      lang={lang}
+      ratio="3 / 2"
+    />
+    <Gallery
+      photos={t.sport.gallery.filter((p) => p.format === "tall")}
+      title={t.sport.galleryTitleTall}
+      lang={lang}
+      ratio="2 / 3"
+      maxWidth="440px"
+    />
 
     <div class="timeline">
       {t.sport.achievements.map((a) => (

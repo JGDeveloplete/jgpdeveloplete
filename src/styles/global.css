@@ -127,7 +127,10 @@ img { max-width: 100%; display: block; }
 .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.5rem; align-items: center; }
 .hero-portrait { position: relative; }
 .hero-portrait img {
-  width: 100%; border-radius: 18px; display: block;
+  /* height:auto es imprescindible: sin él, el atributo height="1000" del HTML
+     se aplica como alto real y la foto sale estirada. */
+  width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 18px; display: block;
   border: 1px solid var(--line);
   box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
 }
@@ -246,8 +249,14 @@ img { max-width: 100%; display: block; }
 
 /* --------- Galería de fotos --------- */
 .gallery { margin-bottom: 2.8rem; }
-.gallery-viewport { position: relative; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); }
-.gallery-track { display: flex; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+.gallery-viewport {
+  position: relative; overflow: hidden; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface);
+  /* Cada carrusel adopta la proporción de sus fotos, así llenan el marco
+     exacto: sin recortes ni bandas. */
+  aspect-ratio: var(--ratio, 3 / 2);
+}
+.gallery-track { display: flex; height: 100%; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
 .slide { flex: 0 0 100%; margin: 0; position: relative; overflow: hidden; }
 /* Fondo desenfocado con la propia foto: así las verticales se ven ENTERAS,
    sin recortar al sujeto, y el hueco lateral no queda vacío. */
@@ -260,9 +269,10 @@ img { max-width: 100%; display: block; }
   contain: paint;
 }
 .slide img {
-  position: relative; width: 100%; height: clamp(300px, 50vw, 580px);
+  position: relative; width: 100%; height: 100%;
   object-fit: contain; display: block;
 }
+.gallery + .gallery { margin-top: 2rem; }
 .slide figcaption {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1.4rem 1rem;
   font-family: var(--font-mono); font-size: .85rem; color: #fff;

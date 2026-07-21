@@ -69,7 +69,15 @@ Ya está montado el carrusel, con **1 foto** (La Nucía). Para añadir el resto:
 2. Ejecuta **`npm run fotos`** → los optimiza a `public/atletismo/`
    (la de prueba pasó de 8,54 MB a 0,15 MB, un 98% menos)
 3. Añade cada una en `src/i18n/content.ts` → `sport.gallery`, **en los dos
-   idiomas**, con `src` (sin extensión), `alt` y `caption`
+   idiomas**, con `src` (sin extensión), `alt`, `caption` y **`format`**
+
+**Importante — `format`**: hay **dos carruseles**, uno apaisado (3:2) y otro
+vertical (2:3), para que cada foto llene su marco sin recortes ni bandas.
+- `format: "wide"` → foto horizontal · va a «En la pista»
+- `format: "tall"` → foto vertical · va a «De cerca»
+
+Si una foto no es exactamente 3:2 o 2:3, se verá entera sobre un fondo
+desenfocado de ella misma (no se recorta nunca).
 
 Con 2 o más fotos aparecen automáticamente las flechas y los puntos.
 
