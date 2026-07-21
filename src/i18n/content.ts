@@ -418,7 +418,7 @@ export const content: Record<Lang, Content> = {
       name: "Jose Giner Pérez",
       roles: ["Software Engineer", "100 m / 200 m Sprinter", "Software Developer"],
       lead:
-        "I race the 100 and 200 metres and write code with the same recipe: consistency, discipline and resilience, on and off the track.",
+        "A 100 and 200 m sprinter who writes code with the same mindset the track demands: consistency, discipline and the resolve to keep improving.",
       ctaProjects: "View projects",
       ctaContact: "Get in touch",
     },
@@ -600,7 +600,7 @@ export const content: Record<Lang, Content> = {
         {
           year: "2026",
           title: "Regional university champion — 100 m",
-          detail: "Regional university runner-up in the 4 × 100 m mixed relay · Win at the «II Memorial Antonio Moreno de Frutos» meeting.",
+          detail: "Regional university runner-up in the 4 × 100 m mixed relay · Winner of the «II Memorial Antonio Moreno de Frutos» meeting.",
         },
         {
           year: "2025",
