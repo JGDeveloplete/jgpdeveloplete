@@ -350,8 +350,8 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2021",
-          title: "Semifinalista del Campeonato de España Sub23 — 100 y 200 m",
-          detail: "Semifinalista Indoor Sub23 en 60 m · Campeón autonómico universitario en 4 × 100 m y Bronce universitario en 100 m.",
+          title: "Subcampeón de España Sub23 — 4 × 100 m",
+          detail: "Semifinalista del Campeonato de España Sub23 en 100 y 200 m · Semifinalista Indoor Sub23 en 60 m · Campeón autonómico universitario en 4 × 100 m y Bronce universitario en 100 m.",
         },
         {
           year: "2020",
@@ -614,8 +614,8 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2021",
-          title: "Spanish U23 semi-finalist — 100 m and 200 m",
-          detail: "Indoor U23 Semi-finalist in the 60 m · Regional university champion in the 4 × 100 m and Bronze in the university 100 m.",
+          title: "Spanish U23 runner-up — 4 × 100 m",
+          detail: "Spanish U23 Championship Semi-finalist in the 100 m and 200 m · Indoor U23 Semi-finalist in the 60 m · Regional university champion in the 4 × 100 m and Bronze in the university 100 m.",
         },
         {
           year: "2020",
