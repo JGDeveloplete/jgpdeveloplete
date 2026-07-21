@@ -67,8 +67,7 @@ export interface Content {
 }
 
 const shared = {
-  // Email del CV deportivo. Cámbialo si prefieres jgpathletics@gmail.com.
-  email: "jose.giner18@gmail.com",
+  email: "jgpathletics@gmail.com",
   socials: [
     { label: "GitHub", url: "https://github.com/JGDeveloplete" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/jose-giner-p%C3%A9rez-6107b41a1/" },
