@@ -74,25 +74,27 @@ const shared = {
     { label: "LinkedIn", url: "https://www.linkedin.com/in/jose-giner-p%C3%A9rez-6107b41a1/" },
     { label: "Instagram", url: "https://www.instagram.com/jgsprinter/" },
     { label: "YouTube", url: "https://www.youtube.com/@jgsprinter" },
-    // CONFIRMAR: enlace supuesto por el mismo usuario que Instagram/YouTube.
     { label: "TikTok", url: "https://www.tiktok.com/@jgsprinter" },
     { label: "World Athletics", url: "https://worldathletics.org/athletes/spain/jose-giner-14879964" },
   ],
 };
 
-// Marcas personales (del CV deportivo). i = pista cubierta, w = viento a favor.
+// Marcas personales. Contrastadas con el perfil oficial de World Athletics.
+// w = viento a favor (marca no homologable).
 const bestsEs: Best[] = [
-  { event: "100 m", mark: "10.78", note: "(+0.6) · 2022 · 10.64w" },
-  { event: "200 m", mark: "21.80", note: "(0.0) · 2022 · 22.57 indoor" },
-  { event: "60 m", mark: "7.12", note: "indoor · 2021" },
-  { event: "400 m", mark: "51.23", note: "2021 · 51.45 indoor" },
+  { event: "100 m", mark: "10.72", note: "2026 · 10.64w en 2022" },
+  { event: "200 m", mark: "21.80", note: "2022 · 21.58w en 2026" },
+  { event: "60 m", mark: "7.12", note: "pista cubierta · 2021" },
+  { event: "400 m", mark: "51.23", note: "2021 · 51.45 en cubierta" },
+  { event: "4 × 100 m", mark: "40.80", note: "relevo · Durango, 2026" },
 ];
 
 const bestsEn: Best[] = [
-  { event: "100 m", mark: "10.78", note: "(+0.6) · 2022 · 10.64w" },
-  { event: "200 m", mark: "21.80", note: "(0.0) · 2022 · 22.57 indoor" },
+  { event: "100 m", mark: "10.72", note: "2026 · 10.64w in 2022" },
+  { event: "200 m", mark: "21.80", note: "2022 · 21.58w in 2026" },
   { event: "60 m", mark: "7.12", note: "indoor · 2021" },
   { event: "400 m", mark: "51.23", note: "2021 · 51.45 indoor" },
+  { event: "4 × 100 m", mark: "40.80", note: "relay · Durango, 2026" },
 ];
 
 export const content: Record<Lang, Content> = {
@@ -164,14 +166,14 @@ export const content: Record<Lang, Content> = {
     sport: {
       eyebrow: "Atletismo",
       title: "Trayectoria deportiva",
-      sub: "Velocista especializado en 100 y 200 metros. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018.",
+      sub: "Velocista especializado en 100 y 200 metros, en competición activa. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018. En 2026 he rebajado mi marca personal de 100 m hasta 10.72.",
       bestsTitle: "Marcas personales",
       bests: bestsEs,
       achievements: [
         {
           year: "2025–26",
           title: "Campeón y subcampeón autonómico absoluto — 100 m",
-          detail: "Bronce autonómico universitario en 200 m · 4º autonómico absoluto en 200 m · 4º absoluto Indoor 200 m · Subcampeón autonómico universitario 4 × 100 m.",
+          detail: "Bronce autonómico universitario en 200 m · 4º autonómico absoluto en 200 m · 4º absoluto Indoor 200 m · Subcampeón autonómico universitario 4 × 100 m · Mejor marca personal en 100 m (10.72) y 40.80 en el relevo 4 × 100 m en Durango.",
         },
         {
           year: "2022",
@@ -287,14 +289,14 @@ export const content: Record<Lang, Content> = {
     sport: {
       eyebrow: "Athletics",
       title: "Athletic background",
-      sub: "Sprinter specialising in the 100 and 200 metres. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018.",
+      sub: "Sprinter specialising in the 100 and 200 metres, still competing. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018. In 2026 I lowered my 100 m personal best to 10.72.",
       bestsTitle: "Personal bests",
       bests: bestsEn,
       achievements: [
         {
           year: "2025–26",
           title: "Regional champion & runner-up (senior) — 100 m",
-          detail: "Regional university bronze in 200 m · 4th regional senior 200 m · 4th senior indoor 200 m · Regional university runner-up 4 × 100 m.",
+          detail: "Regional university bronze in 200 m · 4th regional senior 200 m · 4th senior indoor 200 m · Regional university runner-up 4 × 100 m · New 100 m personal best (10.72) and 40.80 in the 4 × 100 m relay in Durango.",
         },
         {
           year: "2022",

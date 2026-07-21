@@ -176,7 +176,7 @@ img { max-width: 100%; display: block; }
 
 /* --------- Marcas personales --------- */
 .bests-title { font-size: 1.05rem; margin: 0 0 1rem; color: var(--muted); font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
-.bests { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.bests { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
 .best {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 1.3rem 1.2rem; display: grid; gap: .2rem; text-align: center;

@@ -12,12 +12,15 @@ rellenar los dos idiomas). Busca los `[COMPLETAR]`.
 - Email: jose.giner18@gmail.com
 - Redes: GitHub, LinkedIn, Instagram, YouTube, TikTok y World Athletics
 
+Marcas contrastadas con el perfil oficial de World Athletics (incluye la MP de
+100 m de 2026 y el relevo 4 × 100). TikTok confirmado.
+
 ## ⚠️ Por confirmar
-- [ ] **TikTok**: puse `tiktok.com/@jgsprinter` por coherencia con Instagram/YouTube.
-      Confírmalo o corrígelo en `content.ts` → `shared.socials`
 - [ ] **Email**: usé el del CV (`jose.giner18@gmail.com`). Si prefieres
       `jgpathletics@gmail.com`, cámbialo en `shared.email`
 - [ ] ¿Publicar el **teléfono** (634 23 61 24)? Ahora NO aparece, por privacidad
+- [ ] **Logros extra**: dijiste que hay más de los que salen en el CV. Pásamelos
+      y los añado a `sport.achievements`
 
 ## ❌ Falta (la parte de ingeniero)
 - [ ] **Formación**: grado, universidad y año (`about.facts` → Formación)
