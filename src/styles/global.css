@@ -159,6 +159,40 @@ img { max-width: 100%; display: block; }
 .footer-inner .brand { font-size: 1rem; }
 
 /* ============================================================
+   INTERACCIONES (JS)
+   ============================================================ */
+
+/* --- Barra de progreso de lectura --- */
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100; pointer-events: none; }
+.scroll-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .1s linear; }
+
+/* --- Cabecera compacta al hacer scroll --- */
+.site-header { transition: box-shadow .25s ease, background .25s ease; }
+.site-header.scrolled { box-shadow: 0 8px 30px rgba(0, 0, 0, .45); background: rgba(11, 15, 20, .9); }
+.site-header.scrolled .header-inner { padding-top: .55rem; padding-bottom: .55rem; }
+
+/* --- Enlace de navegación activo (scrollspy) --- */
+.nav-menu a.current { color: var(--accent); }
+.nav-menu a.current::after {
+  content: ""; display: block; height: 2px; border-radius: 2px; margin-top: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* --- Aparición al hacer scroll --- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* --- Botón volver arriba --- */
+.to-top {
+  position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 80; width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--surface); color: var(--accent); cursor: pointer;
+  display: grid; place-items: center; opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity .25s, transform .25s, visibility .25s, background .2s, color .2s;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
@@ -197,4 +231,5 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn:hover, .project-card:hover { transform: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
