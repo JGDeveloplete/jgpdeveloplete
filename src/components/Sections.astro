@@ -4,20 +4,43 @@ import Gallery from "./Gallery.astro";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = content[lang];
+
+/**
+ * Red de seguridad: nada que siga marcado como pendiente (texto entre
+ * corchetes, tipo [COMPLETAR: ...]) debe llegar nunca a la pantalla.
+ * Así la web siempre se ve acabada aunque queden datos por rellenar.
+ */
+const pendiente = (s: string) => s.trim().startsWith("[");
+const limpiar = (s: string) => s.replace(/\s*\[(COMPLETAR|CONFIRMAR)[^\]]*\]/g, "").trim();
+
+const parrafos = t.about.paragraphs.filter((p) => !pendiente(p)).map(limpiar);
+const bloques = t.projects.featured.blocks.filter((b) => !pendiente(b.text)).map((b) => ({ ...b, text: limpiar(b.text) }));
+const decisiones = t.projects.featured.highlights.filter((h) => !pendiente(h)).map(limpiar);
+const grupos = t.stack.groups.map((g) => ({ ...g, items: g.items.filter((i) => !pendiente(i)) }));
+const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.detail), place: limpiar(e.place) }));
 ---
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-  <div class="container">
-    <span class="hero-eyebrow">{t.hero.eyebrow}</span>
-    <h1 class="hero-title"><span class="grad">{t.hero.name}</span></h1>
-    <p class="hero-roles" data-roles={JSON.stringify(t.hero.roles)}>
-      <span class="sep">&gt;</span> <span class="typed">{t.hero.roles[0]}</span><span class="caret">_</span>
-    </p>
-    <p class="hero-lead">{t.hero.lead}</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#projects">{t.hero.ctaProjects}</a>
-      <a class="btn btn-ghost" href="#contact">{t.hero.ctaContact}</a>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">{t.hero.eyebrow}</span>
+      <h1 class="hero-title"><span class="grad">{t.hero.name}</span></h1>
+      <p class="hero-roles" data-roles={JSON.stringify(t.hero.roles)}>
+        <span class="sep">&gt;</span> <span class="typed">{t.hero.roles[0]}</span><span class="caret">_</span>
+      </p>
+      <p class="hero-lead">{t.hero.lead}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">{t.hero.ctaProjects}</a>
+        <a class="btn btn-ghost" href="#contact">{t.hero.ctaContact}</a>
+      </div>
+    </div>
+
+    <div class="hero-portrait">
+      <picture>
+        <source srcset="/retrato.webp" type="image/webp" />
+        <img src="/retrato.jpg" alt={t.hero.portraitAlt} width="800" height="1000" fetchpriority="high" />
+      </picture>
     </div>
   </div>
 </section>
@@ -31,7 +54,7 @@ const t = content[lang];
     </div>
     <div class="about-grid">
       <div class="about-text">
-        {t.about.paragraphs.map((p) => <p>{p}</p>)}
+        {parrafos.map((p) => <p>{p}</p>)}
       </div>
       <dl class="about-facts">
         {t.about.facts.map((f) => (
@@ -120,7 +143,7 @@ const t = content[lang];
         <p class="featured-tagline">{t.projects.featured.tagline}</p>
 
         <div class="featured-blocks">
-          {t.projects.featured.blocks.map((b) => (
+          {bloques.map((b) => (
             <div class="featured-block">
               <h4>{b.label}</h4>
               <p>{b.text}</p>
@@ -132,7 +155,7 @@ const t = content[lang];
       <aside class="featured-side">
         <h4>{lang === "es" ? "Decisiones técnicas" : "Technical decisions"}</h4>
         <ul class="featured-highlights">
-          {t.projects.featured.highlights.map((h) => <li>{h}</li>)}
+          {decisiones.map((h) => <li>{h}</li>)}
         </ul>
         <ul class="tags">{t.projects.featured.tags.map((tag) => <li>{tag}</li>)}</ul>
         {(t.projects.featured.link || t.projects.featured.repo) && (
@@ -174,7 +197,7 @@ const t = content[lang];
       <h2 class="section-title">{t.stack.title}</h2>
     </div>
     <div class="stack-grid">
-      {t.stack.groups.map((g) => (
+      {grupos.map((g) => (
         <div class="stack-group">
           <h3>{g.name}</h3>
           <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
@@ -192,13 +215,13 @@ const t = content[lang];
       <h2 class="section-title">{t.experience.title}</h2>
     </div>
     <div class="timeline">
-      {t.experience.items.map((e) => (
+      {trayectoria.map((e) => (
         <div class="tl-item">
           <span class="tl-year">{e.period}</span>
           <div class="tl-body">
             <h3>{e.role}</h3>
-            <p class="tl-place">{e.place}</p>
-            <p>{e.detail}</p>
+            {e.place && <p class="tl-place">{e.place}</p>}
+            {e.detail && <p>{e.detail}</p>}
           </div>
         </div>
       ))}

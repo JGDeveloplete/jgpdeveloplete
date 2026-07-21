@@ -15,7 +15,7 @@ const nextLabel = lang === "es" ? "Foto siguiente" : "Next photo";
     <div class="gallery-viewport">
       <div class="gallery-track">
         {photos.map((p, i) => (
-          <figure class="slide">
+          <figure class="slide" style={`--foto: url('${p.src}.webp')`}>
             <picture>
               <source srcset={`${p.src}.webp`} type="image/webp" />
               <img
@@ -25,7 +25,6 @@ const nextLabel = lang === "es" ? "Foto siguiente" : "Next photo";
                 decoding="async"
                 width="1600"
                 height="1067"
-                style={p.position ? `object-position: ${p.position}` : undefined}
               />
             </picture>
             <figcaption>{p.caption}</figcaption>

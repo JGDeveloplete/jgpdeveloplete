@@ -54,9 +54,6 @@ export interface Photo {
   src: string;
   alt: string;
   caption: string;
-  /** Encuadre del recorte (CSS object-position). Útil en fotos verticales
-   *  para que no se corte al sujeto. Por defecto, centrado. */
-  position?: string;
 }
 
 export interface ExperienceItem {
@@ -75,6 +72,7 @@ export interface Content {
     lead: string;
     ctaProjects: string;
     ctaContact: string;
+    portraitAlt: string;
   };
   about: { title: string; eyebrow: string; paragraphs: string[]; facts: { label: string; value: string }[] };
   approach: { title: string; eyebrow: string; sub: string; items: ApproachItem[] };
@@ -152,6 +150,7 @@ export const content: Record<Lang, Content> = {
         "Compito en 100 y 200 metros y escribo código con la misma receta: constancia, disciplina y resiliencia dentro y fuera de la pista.",
       ctaProjects: "Ver proyectos",
       ctaContact: "Hablemos",
+      portraitAlt: "Retrato de José Giner Pérez con la equipación del Atletismo Cordobés",
     },
     about: {
       eyebrow: "Sobre mí",
@@ -251,7 +250,6 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/salida-explosiva",
           alt: "José Giner impulsándose desde los tacos de salida bajo un cielo azul",
           caption: "Explosión en la salida",
-          position: "center 40%",
         },
         {
           src: "/atletismo/memorial-la-rioja-cara-a-cara",
@@ -262,7 +260,6 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/meeting-coria-en-tacos",
           alt: "José Giner concentrado en los tacos, junto a sus rivales, antes de la salida",
           caption: "En tacos · Meeting de Coria",
-          position: "center 35%",
         },
         {
           src: "/atletismo/universitario-ua-aceleracion",
@@ -273,13 +270,11 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/meeting-coria-recta",
           alt: "José Giner corriendo por la curva de la pista con el dorsal 11",
           caption: "En carrera · Meeting de Coria",
-          position: "center 30%",
         },
         {
           src: "/atletismo/memorial-la-rioja-trofeo-100",
           alt: "José Giner sosteniendo el trofeo de los 100 metros del Memorial de La Rioja",
           caption: "Trofeo de 100 m · Memorial de La Rioja",
-          position: "center 35%",
         },
         {
           src: "/atletismo/colocandose-en-tacos",
@@ -371,6 +366,7 @@ export const content: Record<Lang, Content> = {
         "I race the 100 and 200 metres and write code with the same recipe: consistency, discipline and resilience, on and off the track.",
       ctaProjects: "View projects",
       ctaContact: "Get in touch",
+      portraitAlt: "Portrait of José Giner Pérez in his Atletismo Cordobés kit",
     },
     about: {
       eyebrow: "About",
@@ -467,7 +463,6 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/salida-explosiva",
           alt: "José Giner driving out of the starting blocks under a blue sky",
           caption: "Explosive start",
-          position: "center 40%",
         },
         {
           src: "/atletismo/memorial-la-rioja-cara-a-cara",
@@ -478,7 +473,6 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/meeting-coria-en-tacos",
           alt: "José Giner focused in the blocks alongside his rivals before the start",
           caption: "In the blocks · Coria Meeting",
-          position: "center 35%",
         },
         {
           src: "/atletismo/universitario-ua-aceleracion",
@@ -489,13 +483,11 @@ export const content: Record<Lang, Content> = {
           src: "/atletismo/meeting-coria-recta",
           alt: "José Giner running the bend wearing bib number 11",
           caption: "Racing · Coria Meeting",
-          position: "center 30%",
         },
         {
           src: "/atletismo/memorial-la-rioja-trofeo-100",
           alt: "José Giner holding the 100 metres trophy at the La Rioja Memorial",
           caption: "100 m trophy · La Rioja Memorial",
-          position: "center 35%",
         },
         {
           src: "/atletismo/colocandose-en-tacos",
