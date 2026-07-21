@@ -37,10 +37,12 @@ const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.det
     </div>
 
     <div class="hero-portrait">
-      <picture>
-        <source srcset="/retrato.webp" type="image/webp" />
-        <img src="/retrato.jpg" alt={t.hero.portraitAlt} width="800" height="1000" fetchpriority="high" />
-      </picture>
+      <Gallery
+        photos={t.sport.gallery.filter((p) => p.format === "tall")}
+        lang={lang}
+        ratio="3 / 4"
+        autoplay={5000}
+      />
     </div>
   </div>
 </section>
@@ -94,13 +96,6 @@ const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.det
       title={t.sport.galleryTitle}
       lang={lang}
       ratio="3 / 2"
-    />
-    <Gallery
-      photos={t.sport.gallery.filter((p) => p.format === "tall")}
-      title={t.sport.galleryTitleTall}
-      lang={lang}
-      ratio="2 / 3"
-      maxWidth="440px"
     />
 
     <div class="timeline">

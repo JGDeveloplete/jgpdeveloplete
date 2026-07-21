@@ -75,7 +75,6 @@ export interface Content {
     lead: string;
     ctaProjects: string;
     ctaContact: string;
-    portraitAlt: string;
   };
   about: { title: string; eyebrow: string; paragraphs: string[]; facts: { label: string; value: string }[] };
   approach: { title: string; eyebrow: string; sub: string; items: ApproachItem[] };
@@ -97,7 +96,6 @@ export interface Content {
     bestsTitle: string;
     bests: Best[];
     galleryTitle: string;
-    galleryTitleTall: string;
     gallery: Photo[];
     achievements: Achievement[];
   };
@@ -148,13 +146,12 @@ export const content: Record<Lang, Content> = {
     nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", sport: "Atletismo", experience: "Formación", contact: "Contacto" },
     hero: {
       eyebrow: "Ingeniero Informático · Velocista",
-      name: "José Giner Pérez",
+      name: "Jose Giner Pérez",
       roles: ["Ingeniero Informático", "Velocista 100 m / 200 m", "Desarrollador de software"],
       lead:
         "Compito en 100 y 200 metros y escribo código con la misma receta: constancia, disciplina y resiliencia dentro y fuera de la pista.",
       ctaProjects: "Ver proyectos",
       ctaContact: "Hablemos",
-      portraitAlt: "Retrato de José Giner Pérez con la equipación del Atletismo Cordobés",
     },
     about: {
       eyebrow: "Sobre mí",
@@ -242,55 +239,93 @@ export const content: Record<Lang, Content> = {
       bestsTitle: "Marcas personales",
       bests: bestsEs,
       galleryTitle: "En la pista",
-      galleryTitleTall: "De cerca",
       // Añade aquí las fotos tras pasarlas por `npm run fotos`.
       // `src` sin extensión; el alt describe la imagen (accesibilidad y SEO).
       gallery: [
+        // --- Verticales: carrusel de presentación (hero) ---
         {
-          src: "/atletismo/la-nucia-salida-de-tacos",
-          alt: "José Giner saliendo de los tacos de salida en la pista de La Nucía",
-          caption: "Salida de tacos · La Nucía",
-          format: "wide",
-        },
-        {
-          src: "/atletismo/salida-explosiva",
-          alt: "José Giner impulsándose desde los tacos de salida bajo un cielo azul",
-          caption: "Explosión en la salida",
-          format: "tall",
-        },
-        {
-          src: "/atletismo/memorial-la-rioja-cara-a-cara",
-          alt: "José Giner corriendo los 100 metros junto a otros dos velocistas",
-          caption: "Cara a cara · Memorial de La Rioja",
-          format: "wide",
-        },
-        {
-          src: "/atletismo/meeting-coria-en-tacos",
-          alt: "José Giner concentrado en los tacos, junto a sus rivales, antes de la salida",
-          caption: "En tacos · Meeting de Coria",
-          format: "tall",
-        },
-        {
-          src: "/atletismo/universitario-ua-aceleracion",
-          alt: "José Giner acelerando con la equipación de la Universidad de Alicante en pista azul",
-          caption: "Con la UA · Campeonato universitario",
-          format: "wide",
-        },
-        {
-          src: "/atletismo/meeting-coria-recta",
-          alt: "José Giner corriendo por la curva de la pista con el dorsal 11",
-          caption: "En carrera · Meeting de Coria",
+          src: "/atletismo/coria-front-face",
+          alt: "Jose Giner de pie en la pista con la equipación de competición",
+          caption: "Meeting de Coria",
           format: "tall",
         },
         {
           src: "/atletismo/memorial-la-rioja-trofeo-100",
-          alt: "José Giner sosteniendo el trofeo de los 100 metros del Memorial de La Rioja",
+          alt: "Jose Giner sosteniendo el trofeo de los 100 metros del Memorial de La Rioja",
           caption: "Trofeo de 100 m · Memorial de La Rioja",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/salida-explosiva",
+          alt: "Jose Giner impulsándose desde los tacos de salida bajo un cielo azul",
+          caption: "Explosión en la salida",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/meeting-coria-en-tacos",
+          alt: "Jose Giner concentrado en los tacos, junto a sus rivales, antes de la salida",
+          caption: "En tacos · Meeting de Coria",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/meeting-coria-recta",
+          alt: "Jose Giner corriendo por la pista con el dorsal 11",
+          caption: "En carrera · Meeting de Coria",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/cordoba-salida-200",
+          alt: "Jose Giner colocándose en los tacos para una carrera de 200 metros",
+          caption: "Salida de 200 m · Córdoba",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/universitario-autonomico-100-2022",
+          alt: "Jose Giner en la pista durante el campeonato autonómico universitario",
+          caption: "Autonómico universitario · 100 m",
+          format: "tall",
+        },
+
+        // --- Apaisadas: carrusel de la sección de atletismo ---
+        {
+          src: "/atletismo/la-nucia-salida-de-tacos",
+          alt: "Jose Giner saliendo de los tacos de salida en la pista de La Nucía",
+          caption: "Salida de tacos · La Nucía",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/campeon-autonomico-universitario",
+          alt: "Jose Giner con la medalla del campeonato autonómico universitario",
+          caption: "Campeón autonómico universitario",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-autonomico-2026",
+          alt: "Jose Giner celebrando con los brazos flexionados tras competir con la Universidad de Alicante",
+          caption: "Autonómico universitario · 2026",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-ua-aceleracion",
+          alt: "Jose Giner acelerando bajo la lluvia con la equipación de la Universidad de Alicante",
+          caption: "Con la UA, bajo la lluvia",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-ua-murcia-200",
+          alt: "Jose Giner celebrando tras una carrera de 200 metros en Murcia",
+          caption: "200 m · Murcia",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-ua-murcia-salida",
+          alt: "Jose Giner saliendo de los tacos en el campeonato universitario de Murcia",
+          caption: "Salida · Murcia",
           format: "wide",
         },
         {
           src: "/atletismo/colocandose-en-tacos",
-          alt: "José Giner colocándose en los tacos de salida en la pista",
+          alt: "Jose Giner colocándose en los tacos de salida en la pista",
           caption: "Colocándose en tacos",
           format: "wide",
         },
@@ -298,23 +333,23 @@ export const content: Record<Lang, Content> = {
       achievements: [
         {
           year: "2025–26",
-          title: "Campeón y subcampeón autonómico absoluto — 100 m",
-          detail: "Bronce autonómico universitario en 200 m · 4º autonómico absoluto en 200 m · 4º absoluto Indoor 200 m · Subcampeón autonómico universitario 4 × 100 m · Mejor marca personal en 100 m (10.72) y 40.80 en el relevo 4 × 100 m en Durango.",
+          title: "Campeón autonómico absoluto — 100 m",
+          detail: "Campeón y subcampeón autonómico absoluto en 100 m · finalista autonómico absoluto en 200 m (aire libre y pista cubierta) · subcampeón autonómico universitario en 4 × 100 m y bronce universitario en 200 m · nueva mejor marca personal en 100 m (10.72) y 40.80 en el relevo 4 × 100 m.",
         },
         {
           year: "2022",
           title: "Campeón autonómico universitario — 100 m y 4 × 100 m",
-          detail: "Subcampeón autonómico absoluto en 100 m y universitario en 200 m · Finalista del Campeonato de España universitario: 6º en 100 m y 7º en 200 m.",
+          detail: "Subcampeón autonómico absoluto en 100 m y universitario en 200 m · finalista del Campeonato de España universitario en 100 y 200 m.",
         },
         {
           year: "2021",
           title: "Subcampeón de España Sub23 — 4 × 100 m",
-          detail: "Semifinalista del Cto. de España Sub23 en 100 m (18º) y 200 m (21º) · Semifinalista Indoor Sub23 en 60 m (13º) · Campeón autonómico universitario 4 × 100 m · Bronce autonómico universitario 100 m.",
+          detail: "Semifinalista del Campeonato de España Sub23 en 100 y 200 m · semifinalista Indoor Sub23 en 60 m · campeón autonómico universitario en 4 × 100 m y bronce universitario en 100 m.",
         },
         {
           year: "2020",
-          title: "Semifinalista del Cto. de España Sub23 — 100 m",
-          detail: "13º en la general · Subcampeón autonómico Sub23 en 100 m · Bronce autonómico Sub23 en 200 m.",
+          title: "Semifinalista del Campeonato de España Sub23 — 100 m",
+          detail: "Subcampeón autonómico Sub23 en 100 m y bronce autonómico en 200 m.",
         },
         {
           year: "2019",
@@ -373,13 +408,12 @@ export const content: Record<Lang, Content> = {
     nav: { about: "About", projects: "Projects", stack: "Stack", sport: "Athletics", experience: "Experience", contact: "Contact" },
     hero: {
       eyebrow: "Software Engineer · Sprinter",
-      name: "José Giner Pérez",
+      name: "Jose Giner Pérez",
       roles: ["Software Engineer", "100 m / 200 m Sprinter", "Software Developer"],
       lead:
         "I race the 100 and 200 metres and write code with the same recipe: consistency, discipline and resilience, on and off the track.",
       ctaProjects: "View projects",
       ctaContact: "Get in touch",
-      portraitAlt: "Portrait of José Giner Pérez in his Atletismo Cordobés kit",
     },
     about: {
       eyebrow: "About",
@@ -466,53 +500,91 @@ export const content: Record<Lang, Content> = {
       bestsTitle: "Personal bests",
       bests: bestsEn,
       galleryTitle: "On the track",
-      galleryTitleTall: "Close up",
       gallery: [
+        // --- Portrait: hero carousel ---
         {
-          src: "/atletismo/la-nucia-salida-de-tacos",
-          alt: "José Giner exploding out of the starting blocks at the La Nucía track",
-          caption: "Block start · La Nucía",
-          format: "wide",
-        },
-        {
-          src: "/atletismo/salida-explosiva",
-          alt: "José Giner driving out of the starting blocks under a blue sky",
-          caption: "Explosive start",
-          format: "tall",
-        },
-        {
-          src: "/atletismo/memorial-la-rioja-cara-a-cara",
-          alt: "José Giner racing the 100 metres alongside two other sprinters",
-          caption: "Head to head · La Rioja Memorial",
-          format: "wide",
-        },
-        {
-          src: "/atletismo/meeting-coria-en-tacos",
-          alt: "José Giner focused in the blocks alongside his rivals before the start",
-          caption: "In the blocks · Coria Meeting",
-          format: "tall",
-        },
-        {
-          src: "/atletismo/universitario-ua-aceleracion",
-          alt: "José Giner accelerating in University of Alicante kit on a blue track",
-          caption: "Racing for UA · University championship",
-          format: "wide",
-        },
-        {
-          src: "/atletismo/meeting-coria-recta",
-          alt: "José Giner running the bend wearing bib number 11",
-          caption: "Racing · Coria Meeting",
+          src: "/atletismo/coria-front-face",
+          alt: "Jose Giner standing on the track in his racing kit",
+          caption: "Coria Meeting",
           format: "tall",
         },
         {
           src: "/atletismo/memorial-la-rioja-trofeo-100",
-          alt: "José Giner holding the 100 metres trophy at the La Rioja Memorial",
+          alt: "Jose Giner holding the 100 metres trophy at the La Rioja Memorial",
           caption: "100 m trophy · La Rioja Memorial",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/salida-explosiva",
+          alt: "Jose Giner driving out of the starting blocks under a blue sky",
+          caption: "Explosive start",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/meeting-coria-en-tacos",
+          alt: "Jose Giner focused in the blocks alongside his rivals before the start",
+          caption: "In the blocks · Coria Meeting",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/meeting-coria-recta",
+          alt: "Jose Giner racing on the track wearing bib number 11",
+          caption: "Racing · Coria Meeting",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/cordoba-salida-200",
+          alt: "Jose Giner settling into the blocks for a 200 metres race",
+          caption: "200 m start · Córdoba",
+          format: "tall",
+        },
+        {
+          src: "/atletismo/universitario-autonomico-100-2022",
+          alt: "Jose Giner on the track during the regional university championships",
+          caption: "Regional university champs · 100 m",
+          format: "tall",
+        },
+
+        // --- Landscape: athletics section carousel ---
+        {
+          src: "/atletismo/la-nucia-salida-de-tacos",
+          alt: "Jose Giner exploding out of the starting blocks at the La Nucía track",
+          caption: "Block start · La Nucía",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/campeon-autonomico-universitario",
+          alt: "Jose Giner wearing his regional university championship medal",
+          caption: "Regional university champion",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-autonomico-2026",
+          alt: "Jose Giner celebrating after competing for the University of Alicante",
+          caption: "Regional university champs · 2026",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-ua-aceleracion",
+          alt: "Jose Giner accelerating in the rain in University of Alicante kit",
+          caption: "Racing for UA, in the rain",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-ua-murcia-200",
+          alt: "Jose Giner celebrating after a 200 metres race in Murcia",
+          caption: "200 m · Murcia",
+          format: "wide",
+        },
+        {
+          src: "/atletismo/universitario-ua-murcia-salida",
+          alt: "Jose Giner starting from the blocks at the Murcia university championships",
+          caption: "Start · Murcia",
           format: "wide",
         },
         {
           src: "/atletismo/colocandose-en-tacos",
-          alt: "José Giner settling into the starting blocks on the track",
+          alt: "Jose Giner settling into the starting blocks on the track",
           caption: "Settling into the blocks",
           format: "wide",
         },
@@ -520,23 +592,23 @@ export const content: Record<Lang, Content> = {
       achievements: [
         {
           year: "2025–26",
-          title: "Regional champion & runner-up (senior) — 100 m",
-          detail: "Regional university bronze in 200 m · 4th regional senior 200 m · 4th senior indoor 200 m · Regional university runner-up 4 × 100 m · New 100 m personal best (10.72) and 40.80 in the 4 × 100 m relay in Durango.",
+          title: "Regional senior champion — 100 m",
+          detail: "Regional senior champion and runner-up in the 100 m · regional senior finalist in the 200 m (outdoor and indoor) · regional university runner-up in the 4 × 100 m and university bronze in the 200 m · new 100 m personal best (10.72) and 40.80 in the 4 × 100 m relay.",
         },
         {
           year: "2022",
           title: "Regional university champion — 100 m and 4 × 100 m",
-          detail: "Regional senior runner-up 100 m and university runner-up 200 m · Finalist at the Spanish University Championship: 6th in 100 m, 7th in 200 m.",
+          detail: "Regional senior runner-up in the 100 m and university runner-up in the 200 m · finalist at the Spanish University Championship in the 100 m and 200 m.",
         },
         {
           year: "2021",
           title: "Spanish U23 runner-up — 4 × 100 m",
-          detail: "Semi-finalist at the Spanish U23 Championship in 100 m (18th) and 200 m (21st) · Indoor U23 semi-finalist 60 m (13th) · Regional university champion 4 × 100 m · Regional university bronze 100 m.",
+          detail: "Semi-finalist at the Spanish U23 Championship in the 100 m and 200 m · indoor U23 semi-finalist in the 60 m · regional university champion in the 4 × 100 m and university bronze in the 100 m.",
         },
         {
           year: "2020",
           title: "Spanish U23 Championship semi-finalist — 100 m",
-          detail: "13th overall · Regional U23 runner-up 100 m · Regional U23 bronze 200 m.",
+          detail: "Regional U23 runner-up in the 100 m and regional bronze in the 200 m.",
         },
         {
           year: "2019",

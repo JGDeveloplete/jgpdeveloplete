@@ -87,7 +87,13 @@ const { lang, title, description } = Astro.props;
         const docH = document.documentElement.scrollHeight - window.innerHeight;
         const pct = docH > 0 ? (scrollTop / docH) * 100 : 0;
         if (bar) bar.style.width = `${pct}%`;
-        if (header) header.classList.toggle("scrolled", scrollTop > 20);
+        // Histéresis: se activa por encima de 90 y no se desactiva hasta bajar
+        // de 30. Evita que la clase parpadee si se queda justo en el umbral.
+        if (header) {
+          const puesta = header.classList.contains("scrolled");
+          if (!puesta && scrollTop > 90) header.classList.add("scrolled");
+          else if (puesta && scrollTop < 30) header.classList.remove("scrolled");
+        }
         if (toTop) toTop.classList.toggle("show", scrollTop > 500);
         ticking = false;
       };

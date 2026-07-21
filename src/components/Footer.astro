@@ -10,6 +10,9 @@ const year = new Date().getFullYear();
   <div class="container footer-inner">
     <span class="brand">JG<span class="dot">.</span></span>
     <span>{t.footer.tagline}</span>
+    <a class="footer-legal" href={lang === "es" ? "/legal" : "/en/legal"}>
+      {lang === "es" ? "Aviso legal y privacidad" : "Legal notice & privacy"}
+    </a>
     <span>© {year} · {lang === "es" ? "Hecho con Astro" : "Built with Astro"}</span>
   </div>
 </footer>

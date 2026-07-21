@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import { legal } from "../i18n/legal";
+import { content } from "../i18n/content";
+const doc = legal.es;
+const t = content.es;
+---
+
+<Base lang="es" title={`${doc.title} — ${t.hero.name}`} description={`${doc.title} del portafolio de ${t.hero.name}.`}>
+  <section class="section">
+    <div class="container legal">
+      <a class="legal-back" href="/">{doc.back}</a>
+      <h1>{doc.title}</h1>
+      <p class="legal-updated">{doc.updated}</p>
+      {doc.sections.map((s) => (
+        <>
+          <h2>{s.h}</h2>
+          {s.p.map((p) => <p>{p}</p>)}
+        </>
+      ))}
+    </div>
+  </section>
+</Base>

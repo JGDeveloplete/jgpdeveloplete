@@ -3,22 +3,29 @@ import type { Photo, Lang } from "../i18n/content";
 
 interface Props {
   photos: Photo[];
-  title: string;
+  /** Si se omite, no se muestra encabezado (útil en el hero). */
+  title?: string;
   lang: Lang;
-  /** Proporción del escenario, p. ej. "3 / 2" (apaisado) o "2 / 3" (vertical). */
+  /** Proporción del escenario, p. ej. "3 / 2" (apaisado) o "3 / 4" (vertical). */
   ratio: string;
   /** Ancho máximo. Útil para que el carrusel vertical no domine la página. */
   maxWidth?: string;
+  /** Milisegundos entre fotos. Omitir para no pasar solo. */
+  autoplay?: number;
 }
-const { photos, title, lang, ratio, maxWidth } = Astro.props;
+const { photos, title, lang, ratio, maxWidth, autoplay } = Astro.props;
 
 const prevLabel = lang === "es" ? "Foto anterior" : "Previous photo";
 const nextLabel = lang === "es" ? "Foto siguiente" : "Next photo";
 ---
 
 {photos.length > 0 && (
-  <div class="gallery" style={`--ratio: ${ratio}; ${maxWidth ? `max-width: ${maxWidth}; margin-inline: auto;` : ""}`}>
-    <h3 class="bests-title">{title}</h3>
+  <div
+    class="gallery"
+    data-autoplay={autoplay ?? undefined}
+    style={`--ratio: ${ratio}; ${maxWidth ? `max-width: ${maxWidth}; margin-inline: auto;` : ""}`}
+  >
+    {title && <h3 class="bests-title">{title}</h3>}
 
     <div class="gallery-viewport">
       <div class="gallery-track">
@@ -111,6 +118,21 @@ const nextLabel = lang === "es" ? "Foto siguiente" : "Next photo";
       const dx = e.changedTouches[0].clientX - startX;
       if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
     }, { passive: true });
+
+    // Autoavance opcional: se detiene al pasar el ratón y respeta a quien
+    // haya pedido reducir el movimiento.
+    const cadencia = Number(root.dataset.autoplay || 0);
+    const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (cadencia > 0 && !sinMovimiento) {
+      let reloj = window.setInterval(() => go(index + 1), cadencia);
+      const parar = () => window.clearInterval(reloj);
+      const seguir = () => { parar(); reloj = window.setInterval(() => go(index + 1), cadencia); };
+      root.addEventListener("mouseenter", parar);
+      root.addEventListener("mouseleave", seguir);
+      root.addEventListener("touchstart", parar, { passive: true });
+      // Al usar flechas o puntos, reiniciamos la cuenta para no cortar al usuario.
+      root.querySelectorAll("button").forEach((b) => b.addEventListener("click", seguir));
+    }
 
     render();
   });
