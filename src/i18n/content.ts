@@ -128,9 +128,9 @@ const shared = {
 const bestsEs: Best[] = [
   { event: "100 m", mark: "10.72", note: "2026 · 10.64w en 2022" },
   { event: "200 m", mark: "21.80", note: "2022 · 21.58w en 2026" },
-  { event: "200 m (i)", mark: "22.57", note: "pista cubierta · 2022" },
-  { event: "60 m", mark: "7.12", note: "pista cubierta · 2021" },
-  { event: "400 m", mark: "51.23", note: "2021 · 51.45 en cubierta" },
+  { event: "200 m (i)", mark: "22.57", note: "indoor · 2022" },
+  { event: "60 m", mark: "7.12", note: "indoor · 2021" },
+  { event: "400 m", mark: "51.23", note: "2021 · 51.45 indoor" },
   { event: "4 × 100 m", mark: "40.80", note: "relevo · Durango, 2026" },
 ];
 
@@ -340,8 +340,8 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2025",
-          title: "Campeón autonómico absoluto — 100 m",
-          detail: "Campeón y Subcampeón autonómico absoluto en 100 m · Finalista autonómico absoluto en 200 m (aire libre y pista cubierta) · Subcampeón autonómico universitario en 4 × 100 m y Bronce universitario en 200 m.",
+          title: "Campeón autonómico universitario — 100 m",
+          detail: "Campeón autonómico universitario y Subcampeón autonómico absoluto en 100 m · Finalista autonómico absoluto en 200 m (aire libre e indoor) · Subcampeón autonómico universitario en 4 × 100 m y Bronce universitario en 200 m.",
         },
         {
           year: "2022",
@@ -360,7 +360,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2019",
-          title: "Bronce autonómico Sub23 y absoluto — 200 m (pista cubierta)",
+          title: "Bronce autonómico Sub23 y absoluto — 200 m (indoor)",
           detail: "",
         },
         {
@@ -604,8 +604,8 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2025",
-          title: "Regional senior champion — 100 m",
-          detail: "Regional senior Champion and Runner-up in the 100 m · Finalist in the regional senior 200 m (outdoor and indoor) · Runner-up in the regional university 4 × 100 m and Bronze in the university 200 m.",
+          title: "Regional university champion — 100 m",
+          detail: "Regional university Champion and regional senior Runner-up in the 100 m · Finalist in the regional senior 200 m (outdoor and indoor) · Runner-up in the regional university 4 × 100 m and Bronze in the university 200 m.",
         },
         {
           year: "2022",

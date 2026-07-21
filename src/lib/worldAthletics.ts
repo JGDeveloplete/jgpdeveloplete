@@ -20,12 +20,15 @@ const ATHLETE_ID = 14879964;
 // Límite reglamentario de viento a favor: por encima, la marca no homologa.
 const LIMITE_VIENTO = 2.0;
 
-// Orden y etiqueta corta de las pruebas que mostramos.
+// Orden y etiqueta corta de las pruebas que mostramos. Ojo: "200 Metres Short
+// Track" (el 200 indoor) es una prueba DISTINTA del "200 Metres" al aire libre,
+// así que tiene su propia casilla (si no, la más rápida se comería a la otra).
 const PRUEBAS: { match: RegExp; label: string; orden: number }[] = [
   { match: /^60 Metres$/i, label: "60 m", orden: 1 },
   { match: /^100 Metres$/i, label: "100 m", orden: 2 },
-  { match: /^200 Metres($| )/i, label: "200 m", orden: 3 },
-  { match: /^400 Metres($| )/i, label: "400 m", orden: 4 },
+  { match: /^200 Metres$/i, label: "200 m", orden: 3 },
+  { match: /^200 Metres Short Track$/i, label: "200 m (i)", orden: 4 },
+  { match: /^400 Metres($| Short Track$)/i, label: "400 m", orden: 5 },
 ];
 
 export interface MarcaTemporada {
@@ -43,9 +46,15 @@ interface RawResult {
   wind: string | null;
 }
 
+/** Indoor de forma fiable: la API marca mal `indoor`, así que miramos también
+ *  el "(i)" del recinto y las pruebas "Short Track". */
+function esIndoor(r: RawResult): boolean {
+  return r.indoor || /\(i\)/.test(r.venue ?? "") || /short track/i.test(r.discipline);
+}
+
 /** ¿La marca es homologable (legal)? Indoor sí; aire libre solo si viento ≤ +2.0. */
 function esLegal(r: RawResult): boolean {
-  if (r.indoor || r.wind == null) return true;
+  if (esIndoor(r) || r.wind == null) return true;
   const v = parseFloat(r.wind);
   return Number.isNaN(v) ? true : v <= LIMITE_VIENTO;
 }
@@ -64,7 +73,7 @@ function aSegundos(mark: string): number {
  */
 export async function marcasTemporada(lang: "es" | "en" = "es"): Promise<{ season: string; marcas: MarcaTemporada[] } | null> {
   const query = `query($id:Int){getSingleCompetitor(id:$id){seasonsBests{activeSeasons results{indoor discipline mark venue date wind}}}}`;
-  const txtIndoor = lang === "es" ? "pista cubierta" : "indoor";
+  const txtIndoor = "indoor";
   const txtViento = lang === "es" ? "viento" : "wind";
 
   try {
@@ -103,7 +112,7 @@ export async function marcasTemporada(lang: "es" | "en" = "es"): Promise<{ seaso
       .map(({ r, label }) => {
         const partes: string[] = [];
         if (r.date) partes.push(r.date);
-        if (r.indoor) partes.push(txtIndoor);
+        if (esIndoor(r)) partes.push(txtIndoor);
         else if (r.wind) partes.push(`${txtViento} ${r.wind}`);
         return { event: label, mark: r.mark, note: partes.join(" · ") };
       });
