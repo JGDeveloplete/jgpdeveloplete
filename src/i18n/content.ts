@@ -166,7 +166,7 @@ export const content: Record<Lang, Content> = {
       facts: [
         { label: "Ubicación", value: "Sant Joan d'Alacant, Alicante" },
         { label: "Deporte", value: "Velocidad 100 m / 200 m · C.A. Cordobés" },
-        { label: "Formación", value: "Ingeniería Informática (en curso) · Ingeniería Multimedia · GS en DAM" },
+        { label: "Formación", value: "Ingeniería Informática (en curso) · Ingeniería Multimedia · GS en DAM · GM en SMR" },
         { label: "Idiomas", value: "Español (nativo) · Inglés B1 certificado" },
       ],
     },
@@ -433,7 +433,7 @@ export const content: Record<Lang, Content> = {
       facts: [
         { label: "Location", value: "Sant Joan d'Alacant, Alicante (Spain)" },
         { label: "Sport", value: "Sprints 100 m / 200 m · C.A. Cordobés" },
-        { label: "Education", value: "Computer Engineering (ongoing) · Multimedia Engineering · Higher Diploma in DAM" },
+        { label: "Education", value: "Computer Engineering (ongoing) · Multimedia Engineering · Higher Diploma in DAM · Intermediate Diploma in SMR" },
         { label: "Languages", value: "Spanish (native) · English B1 (certified)" },
       ],
     },

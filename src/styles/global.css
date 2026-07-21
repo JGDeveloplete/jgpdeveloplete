@@ -39,12 +39,13 @@
   --accent: #c084fc; --accent-2: #f472b6; --accent-ink: #21093b;
 }
 
-/* ---- TEMA "Claro": modo día en crema cálido (menos luminoso) ---- */
+/* ---- TEMA "Claro": modo día FRÍO (gris azulado + azul), para que sea muy
+       distinto del Burdeos aunque los dos sean claros ---- */
 [data-theme="claro"] {
-  --bg: #f3ecdf; --bg-soft: #ece3d3; --surface: #fbf5ea; --surface-2: #f1e8d8;
-  --line: #ddd0bb; --text: #2a2620; --muted: #6f6456;
-  --accent: #a8481f; --accent-2: #9c722a; --accent-ink: #fbf5ea;
-  --shadow: 0 16px 40px rgba(40, 30, 18, 0.12);
+  --bg: #eaeef3; --bg-soft: #dfe5ec; --surface: #ffffff; --surface-2: #eef2f7;
+  --line: #cfd8e2; --text: #14202c; --muted: #566472;
+  --accent: #1f66d6; --accent-2: #0f9aa8; --accent-ink: #ffffff;
+  --shadow: 0 16px 40px rgba(20, 32, 44, 0.12);
 }
 
 /* ---- TEMA "Burdeos": burdeos + crema, elegante y cálido ---- */
@@ -132,7 +133,7 @@ img { max-width: 100%; display: block; }
 .theme-dot.pista { background: linear-gradient(135deg, #ff7a45, #ffc247); }
 .theme-dot.velocidad { background: linear-gradient(135deg, #4ade80, #38bdf8); }
 .theme-dot.atardecer { background: linear-gradient(135deg, #c084fc, #f472b6); }
-.theme-dot.claro { background: linear-gradient(135deg, #f3ecdf, #c2562c); }
+.theme-dot.claro { background: linear-gradient(135deg, #eaeef3, #1f66d6); }
 .theme-dot.burdeos { background: linear-gradient(135deg, #f2e7d6, #8a2b3b); }
 
 .nav-toggle { display: none; }
