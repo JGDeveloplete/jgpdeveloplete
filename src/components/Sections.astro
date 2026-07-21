@@ -1,9 +1,14 @@
 ---
 import { content, type Lang } from "../i18n/content";
 import Gallery from "./Gallery.astro";
+import { marcasTemporada } from "../lib/worldAthletics";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = content[lang];
+
+// Marcas de la temporada, en vivo desde World Athletics (en tiempo de build).
+// Si la API no responde, `temporada` es null y no se muestra el bloque.
+const temporada = await marcasTemporada(lang);
 
 /**
  * Red de seguridad: nada que siga marcado como pendiente (texto entre
@@ -79,6 +84,30 @@ const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.det
       <h2 class="section-title">{t.sport.title}</h2>
       <p class="section-sub">{t.sport.sub}</p>
     </div>
+
+    {temporada && (
+      <div class="season">
+        <h3 class="bests-title season-head">
+          {lang === "es" ? `Temporada ${temporada.season}` : `${temporada.season} season`}
+          <span class="live" title={lang === "es" ? "Datos oficiales de World Athletics" : "Official World Athletics data"}>
+            <span class="live-dot"></span>{lang === "es" ? "en directo" : "live"}
+          </span>
+        </h3>
+        <div class="bests">
+          {temporada.marcas.map((b) => (
+            <div class="best">
+              <span class="best-event">{b.event}</span>
+              <span class="best-mark">{b.mark}</span>
+              <span class="best-note">{b.note}</span>
+            </div>
+          ))}
+        </div>
+        <p class="season-src">
+          {lang === "es" ? "Mejores marcas legales de la temporada, sincronizadas desde " : "Season's best legal marks, synced from "}
+          <a href="https://worldathletics.org/athletes/spain/jose-giner-14879964" target="_blank" rel="noopener">World Athletics</a>.
+        </p>
+      </div>
+    )}
 
     <h3 class="bests-title">{t.sport.bestsTitle}</h3>
     <div class="bests">

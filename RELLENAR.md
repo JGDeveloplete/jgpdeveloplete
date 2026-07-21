@@ -88,6 +88,18 @@ Con 2 o más fotos aparecen automáticamente las flechas y los puntos.
 - [ ] `site` con tu URL real en `astro.config.mjs`
 - [ ] Elegir dónde publicar (ver README)
 
+## Marcas de la temporada (en vivo)
+La sección de Atletismo muestra un bloque **"Temporada 2026"** con las mejores
+marcas **legales** (viento ≤ +2.0) sacadas de World Athletics. Se piden **al
+compilar** (`npm run build`), así que:
+- Se actualizan **cada vez que se publica** la web (ver «Publicar» para
+  automatizar con un rebuild programado).
+- Si la API falla, el bloque simplemente no aparece y las marcas fijas de
+  `content.ts` siguen ahí. La web nunca se rompe por esto.
+- La API de World Athletics **no es oficial**: si el endpoint o la clave dejan
+  de funcionar, se actualizan en `src/lib/worldAthletics.ts` (hay un barrido
+  de sus chunks JS que los localiza; pídemelo y lo hago).
+
 ## Temas de color
 La web tiene 4 temas (puntos de la cabecera): **Pista** (naranja, por defecto),
 **Velocidad** (verde/cian), **Atardecer** (violeta/rosa) y **Claro** (modo día).
