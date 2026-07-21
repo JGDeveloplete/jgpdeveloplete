@@ -1,5 +1,6 @@
 ---
 import { content, type Lang } from "../i18n/content";
+import Gallery from "./Gallery.astro";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = content[lang];
@@ -64,6 +65,8 @@ const t = content[lang];
         </div>
       ))}
     </div>
+
+    <Gallery photos={t.sport.gallery} title={t.sport.galleryTitle} lang={lang} />
 
     <div class="timeline">
       {t.sport.achievements.map((a) => (

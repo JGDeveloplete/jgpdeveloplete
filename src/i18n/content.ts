@@ -46,6 +46,16 @@ export interface Achievement {
   detail: string;
 }
 
+/**
+ * Foto de la galería. `src` va SIN extensión: la web sirve .webp y usa .jpg
+ * de respaldo. Genera ambas con `npm run fotos`.
+ */
+export interface Photo {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface ExperienceItem {
   period: string;
   role: string;
@@ -82,6 +92,8 @@ export interface Content {
     sub: string;
     bestsTitle: string;
     bests: Best[];
+    galleryTitle: string;
+    gallery: Photo[];
     achievements: Achievement[];
   };
   experience: { title: string; eyebrow: string; items: ExperienceItem[] };
@@ -223,6 +235,16 @@ export const content: Record<Lang, Content> = {
       sub: "Velocista especializado en 100 y 200 metros, en competición activa. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018. En 2026 he rebajado mi marca personal de 100 m hasta 10.72.",
       bestsTitle: "Marcas personales",
       bests: bestsEs,
+      galleryTitle: "En la pista",
+      // Añade aquí las fotos tras pasarlas por `npm run fotos`.
+      // `src` sin extensión; el alt describe la imagen (accesibilidad y SEO).
+      gallery: [
+        {
+          src: "/atletismo/la-nucia-salida-de-tacos",
+          alt: "José Giner saliendo de los tacos de salida en la pista de La Nucía",
+          caption: "Salida de tacos · La Nucía",
+        },
+      ],
       achievements: [
         {
           year: "2025–26",
@@ -392,6 +414,14 @@ export const content: Record<Lang, Content> = {
       sub: "Sprinter specialising in the 100 and 200 metres, still competing. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018. In 2026 I lowered my 100 m personal best to 10.72.",
       bestsTitle: "Personal bests",
       bests: bestsEn,
+      galleryTitle: "On the track",
+      gallery: [
+        {
+          src: "/atletismo/la-nucia-salida-de-tacos",
+          alt: "José Giner exploding out of the starting blocks at the La Nucía track",
+          caption: "Block start · La Nucía",
+        },
+      ],
       achievements: [
         {
           year: "2025–26",

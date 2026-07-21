@@ -62,8 +62,21 @@ La sección está preparada: mete objetos en `projects.items` (título,
 descripción, tags, link, repo) y aparecerán en una rejilla bajo Kaireté,
 sustituyendo al aviso de "estoy construyendo mi catálogo".
 
+## 📸 Galería de atletismo (carrusel)
+Ya está montado el carrusel, con **1 foto** (La Nucía). Para añadir el resto:
+
+1. Deja los originales (tal cual, sin tocar) en la carpeta **`fotos-originales/`**
+2. Ejecuta **`npm run fotos`** → los optimiza a `public/atletismo/`
+   (la de prueba pasó de 8,54 MB a 0,15 MB, un 98% menos)
+3. Añade cada una en `src/i18n/content.ts` → `sport.gallery`, **en los dos
+   idiomas**, con `src` (sin extensión), `alt` y `caption`
+
+Con 2 o más fotos aparecen automáticamente las flechas y los puntos.
+
+- [ ] Añadir las 9 fotos restantes (podio con la medalla, bíceps con el dorsal
+      85, salidas de tacos, Memorial de La Rioja, etc.)
+
 ## Extras
-- [ ] Foto tuya (retrato o en pista) → carpeta `public/`
 - [ ] `site` con tu URL real en `astro.config.mjs`
 - [ ] Elegir dónde publicar (ver README)
 

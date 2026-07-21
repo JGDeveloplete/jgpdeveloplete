@@ -13,3 +13,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 npm-debug.log*
+
+# Originales de fotos (pesados, no se suben)
+fotos-originales/
