@@ -334,7 +334,7 @@ export const content: Record<Lang, Content> = {
         {
           year: "2025–26",
           title: "Campeón autonómico absoluto — 100 m",
-          detail: "Campeón y subcampeón autonómico absoluto en 100 m · finalista autonómico absoluto en 200 m (aire libre y pista cubierta) · subcampeón autonómico universitario en 4 × 100 m y bronce universitario en 200 m · nueva mejor marca personal en 100 m (10.72) y 40.80 en el relevo 4 × 100 m.",
+          detail: "Campeón y subcampeón autonómico absoluto en 100 m · Finalista autonómico absoluto en 200 m (aire libre y pista cubierta) · subcampeón autonómico universitario en 4 × 100 m y bronce universitario en 200 m.",
         },
         {
           year: "2022",
@@ -593,7 +593,7 @@ export const content: Record<Lang, Content> = {
         {
           year: "2025–26",
           title: "Regional senior champion — 100 m",
-          detail: "Regional senior champion and runner-up in the 100 m · regional senior finalist in the 200 m (outdoor and indoor) · regional university runner-up in the 4 × 100 m and university bronze in the 200 m · new 100 m personal best (10.72) and 40.80 in the 4 × 100 m relay.",
+          detail: "Regional senior champion and runner-up in the 100 m · Finalist in the regional senior 200 m (outdoor and indoor) · regional university runner-up in the 4 × 100 m and university bronze in the 200 m.",
         },
         {
           year: "2022",
