@@ -128,7 +128,7 @@ const bestsEn: Best[] = [
 
 export const content: Record<Lang, Content> = {
   es: {
-    nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", sport: "Atletismo", experience: "Experiencia", contact: "Contacto" },
+    nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", sport: "Atletismo", experience: "Formación", contact: "Contacto" },
     hero: {
       eyebrow: "Ingeniero Informático · Velocista",
       name: "José Giner Pérez",
@@ -149,7 +149,7 @@ export const content: Record<Lang, Content> = {
       facts: [
         { label: "Ubicación", value: "Sant Joan d'Alacant, Alicante" },
         { label: "Deporte", value: "Velocidad 100 m / 200 m · C.A. Cordobés" },
-        { label: "Formación", value: "[COMPLETAR: Grado en Ingeniería Informática — universidad y año]" },
+        { label: "Formación", value: "Cursando Ingeniería Informática · Grado Superior en DAM" },
         { label: "Idiomas", value: "Español · Inglés · [COMPLETAR]" },
       ],
     },
@@ -187,7 +187,7 @@ export const content: Record<Lang, Content> = {
           },
           {
             label: "Mi papel",
-            text: "Proyecto propio, de principio a fin: diseño del modelo de datos, backend, interfaz y despliegue. [COMPLETAR: si alguien más participa, dilo aquí.]",
+            text: "Proyecto propio, de principio a fin: diseño del modelo de datos, backend, interfaz y despliegue. El código se mantiene privado mientras sigo desarrollándolo de cara a un lanzamiento.",
           },
           {
             label: "Qué me ha enseñado",
@@ -258,10 +258,26 @@ export const content: Record<Lang, Content> = {
     },
     experience: {
       eyebrow: "Recorrido",
-      title: "Experiencia",
+      title: "Formación y experiencia",
       items: [
-        { period: "[Año–Año]", role: "[COMPLETAR: puesto]", place: "[Empresa]", detail: "[COMPLETAR: qué hiciste y con qué impacto.]" },
-        { period: "[Año–Año]", role: "[COMPLETAR: puesto o formación]", place: "[Lugar]", detail: "[COMPLETAR]" },
+        {
+          period: "Actualidad",
+          role: "Grado en Ingeniería Informática",
+          place: "[COMPLETAR: universidad]",
+          detail: "En curso, compaginándolo con la competición. [COMPLETAR: curso en el que estás y, si la tienes, especialidad o mención.]",
+        },
+        {
+          period: "2018–2020",
+          role: "Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)",
+          place: "[COMPLETAR: centro]",
+          detail: "Desarrollo de software multiplataforma: programación, bases de datos, interfaces y despliegue de aplicaciones.",
+        },
+        {
+          period: "[COMPLETAR: años]",
+          role: "Grado Medio en Sistemas Microinformáticos y Redes",
+          place: "[COMPLETAR: centro]",
+          detail: "Base en sistemas, equipos y redes. [CONFIRMAR: nombre exacto del ciclo y los años.]",
+        },
       ],
     },
     contact: {
@@ -297,7 +313,7 @@ export const content: Record<Lang, Content> = {
       facts: [
         { label: "Location", value: "Sant Joan d'Alacant, Alicante (Spain)" },
         { label: "Sport", value: "Sprints 100 m / 200 m · C.A. Cordobés" },
-        { label: "Education", value: "[COMPLETAR: BSc in Computer Engineering — university and year]" },
+        { label: "Education", value: "Studying Computer Engineering · Higher Diploma in Multiplatform App Development" },
         { label: "Languages", value: "Spanish · English · [COMPLETAR]" },
       ],
     },
@@ -335,7 +351,7 @@ export const content: Record<Lang, Content> = {
           },
           {
             label: "My role",
-            text: "A personal project, end to end: data model design, backend, interface and deployment. [COMPLETAR: mention collaborators here if any.]",
+            text: "A personal project, end to end: data model design, backend, interface and deployment. The code stays private while I keep developing it towards a launch.",
           },
           {
             label: "What it taught me",
@@ -405,10 +421,26 @@ export const content: Record<Lang, Content> = {
     },
     experience: {
       eyebrow: "Path",
-      title: "Experience",
+      title: "Education & experience",
       items: [
-        { period: "[Year–Year]", role: "[COMPLETAR: role]", place: "[Company]", detail: "[COMPLETAR: what you did and its impact.]" },
-        { period: "[Year–Year]", role: "[COMPLETAR: role or studies]", place: "[Place]", detail: "[COMPLETAR]" },
+        {
+          period: "Present",
+          role: "BSc in Computer Engineering",
+          place: "[COMPLETAR: university]",
+          detail: "Ongoing, alongside competing. [COMPLETAR: current year and specialisation if any.]",
+        },
+        {
+          period: "2018–2020",
+          role: "Higher Diploma in Multiplatform Application Development (DAM)",
+          place: "[COMPLETAR: institution]",
+          detail: "Cross-platform software development: programming, databases, interfaces and application deployment.",
+        },
+        {
+          period: "[COMPLETAR: years]",
+          role: "Intermediate Diploma in Microcomputer Systems & Networks",
+          place: "[COMPLETAR: institution]",
+          detail: "Foundations in systems, hardware and networking. [CONFIRMAR: exact programme name and years.]",
+        },
       ],
     },
     contact: {

@@ -22,6 +22,14 @@ Marcas contrastadas con el perfil oficial de World Athletics (incluye la MP de
 - [ ] **Logros extra**: dijiste que hay más de los que salen en el CV. Pásamelos
       y los añado a `sport.achievements`
 
+## 🔴 CONTRASTAR (datos dictados por voz, con dudas)
+- [ ] **Grado Medio: los años no cuadran.** En la transcripción sonó «2008»,
+      pero naciste en enero de 1999 (tendrías 9 años) y el Grado Superior fue
+      2018–2020. Lo más probable es **2016–2018**. Confirma años y el nombre
+      exacto del ciclo (puse «Sistemas Microinformáticos y Redes»)
+- [ ] **Ingeniería Informática**: en qué curso estás y en qué universidad
+- [ ] **Centros** del Grado Medio y del Grado Superior
+
 ## ❌ Falta (la parte de ingeniero)
 Lo más importante, por orden de impacto:
 
@@ -30,15 +38,19 @@ Lo más importante, por orden de impacto:
       resolviste. Es lo que más demuestra criterio de ingeniero.
 - [ ] **Kaireté → decisiones técnicas** (`projects.featured.highlights`):
       añade 1–2 decisiones tuyas y **por qué** las tomaste
-- [ ] **Formación**: grado, universidad y año (`about.facts` → Formación)
 - [ ] **Tercer párrafo de "Sobre mí"**: qué te gusta construir y en qué quieres
       especializarte (`about.paragraphs`, último)
-- [ ] **Experiencia**: puestos/prácticas con periodos (`experience.items`)
+- [ ] **Experiencia laboral / prácticas** (FCT del ciclo, etc.), si quieres
+      añadirla a `experience.items`
 - [ ] **Stack**: ajustar a lo que dominas de verdad (`stack.groups`)
 - [ ] Idiomas y nivel (`about.facts`)
 - [ ] **Revisar "Cómo trabajo"** (`approach.items`): lo redacté yo como borrador.
       Hazlo tuyo o cámbialo entero
-- [ ] Enlaces de Kaireté (`featured.link` / `featured.repo`) si lo publicas
+
+## 🔒 Decisión tomada: Kaireté privado
+No se publica el código ni se enlaza el repositorio. Se mantiene privado hasta
+un posible lanzamiento, por su recorrido comercial. La web lo explica en el
+apartado «Mi papel», para que se entienda la ausencia de enlace al código.
 
 ### Añadir proyectos en el futuro
 La sección está preparada: mete objetos en `projects.items` (título,
