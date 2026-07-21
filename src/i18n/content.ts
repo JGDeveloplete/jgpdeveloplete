@@ -360,7 +360,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2019",
-          title: "Bronce autonómico Sub23 — 200 m (pista cubierta)",
+          title: "Bronce autonómico Sub23 y absoluto — 200 m (pista cubierta)",
           detail: "",
         },
         {
@@ -624,7 +624,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: "2019",
-          title: "Regional U23 bronze — 200 m (indoor)",
+          title: "Regional U23 and senior bronze — 200 m (indoor)",
           detail: "",
         },
         {
