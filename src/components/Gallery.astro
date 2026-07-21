@@ -25,6 +25,7 @@ const nextLabel = lang === "es" ? "Foto siguiente" : "Next photo";
                 decoding="async"
                 width="1600"
                 height="1067"
+                style={p.position ? `object-position: ${p.position}` : undefined}
               />
             </picture>
             <figcaption>{p.caption}</figcaption>
@@ -69,10 +70,23 @@ const nextLabel = lang === "es" ? "Foto siguiente" : "Next photo";
       }
       const dots = dotsWrap ? (Array.from(dotsWrap.children) as HTMLElement[]) : [];
 
+      // Las diapositivas están fuera del viewport (desplazadas en horizontal),
+      // así que el navegador no dispara la carga diferida hasta que ya se ven.
+      // Adelantamos la carga de la actual y sus vecinas para que no aparezca
+      // un hueco en blanco al pasar de foto.
+      const precargar = (i: number) => {
+        [i - 1, i, i + 1].forEach((n) => {
+          const slide = slides[(n + slides.length) % slides.length];
+          const img = slide?.querySelector("img");
+          if (img && img.loading === "lazy") img.loading = "eager";
+        });
+      };
+
       const render = () => {
         track.style.transform = `translateX(${-index * 100}%)`;
         dots.forEach((d, i) => d.classList.toggle("active", i === index));
         slides.forEach((s, i) => s.setAttribute("aria-hidden", String(i !== index)));
+        precargar(index);
       };
       const go = (i: number) => {
         index = (i + slides.length) % slides.length;

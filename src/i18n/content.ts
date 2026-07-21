@@ -54,6 +54,9 @@ export interface Photo {
   src: string;
   alt: string;
   caption: string;
+  /** Encuadre del recorte (CSS object-position). Útil en fotos verticales
+   *  para que no se corte al sujeto. Por defecto, centrado. */
+  position?: string;
 }
 
 export interface ExperienceItem {
@@ -244,6 +247,45 @@ export const content: Record<Lang, Content> = {
           alt: "José Giner saliendo de los tacos de salida en la pista de La Nucía",
           caption: "Salida de tacos · La Nucía",
         },
+        {
+          src: "/atletismo/salida-explosiva",
+          alt: "José Giner impulsándose desde los tacos de salida bajo un cielo azul",
+          caption: "Explosión en la salida",
+          position: "center 40%",
+        },
+        {
+          src: "/atletismo/memorial-la-rioja-cara-a-cara",
+          alt: "José Giner corriendo los 100 metros junto a otros dos velocistas",
+          caption: "Cara a cara · Memorial de La Rioja",
+        },
+        {
+          src: "/atletismo/meeting-coria-en-tacos",
+          alt: "José Giner concentrado en los tacos, junto a sus rivales, antes de la salida",
+          caption: "En tacos · Meeting de Coria",
+          position: "center 35%",
+        },
+        {
+          src: "/atletismo/universitario-ua-aceleracion",
+          alt: "José Giner acelerando con la equipación de la Universidad de Alicante en pista azul",
+          caption: "Con la UA · Campeonato universitario",
+        },
+        {
+          src: "/atletismo/meeting-coria-recta",
+          alt: "José Giner corriendo por la curva de la pista con el dorsal 11",
+          caption: "En carrera · Meeting de Coria",
+          position: "center 30%",
+        },
+        {
+          src: "/atletismo/memorial-la-rioja-trofeo-100",
+          alt: "José Giner sosteniendo el trofeo de los 100 metros del Memorial de La Rioja",
+          caption: "Trofeo de 100 m · Memorial de La Rioja",
+          position: "center 35%",
+        },
+        {
+          src: "/atletismo/colocandose-en-tacos",
+          alt: "José Giner colocándose en los tacos de salida en la pista",
+          caption: "Colocándose en tacos",
+        },
       ],
       achievements: [
         {
@@ -285,14 +327,14 @@ export const content: Record<Lang, Content> = {
         {
           period: "2023 — Actualidad",
           role: "Grado en Ingeniería Informática",
-          place: "[COMPLETAR: universidad]",
+          place: "Universidad de Alicante",
           detail: "En curso, compaginando la carrera con la competición al máximo nivel. [COMPLETAR: curso en el que estás y, si la tienes, especialidad o mención.]",
         },
         {
           period: "2020–2023",
-          role: "Grado en Ingeniería Multimedia",
-          place: "[COMPLETAR: universidad]",
-          detail: "Desarrollo multimedia, gráficos e interacción. [CONFIRMAR: ¿lo finalizaste o cambiaste a Ingeniería Informática? Hay que redactarlo con precisión.]",
+          role: "Ingeniería Multimedia (cursada)",
+          place: "Universidad de Alicante",
+          detail: "Tres años de formación en desarrollo multimedia, gráficos e interacción, antes de continuar en Ingeniería Informática.",
         },
         {
           period: "2018–2020",
@@ -421,6 +463,45 @@ export const content: Record<Lang, Content> = {
           alt: "José Giner exploding out of the starting blocks at the La Nucía track",
           caption: "Block start · La Nucía",
         },
+        {
+          src: "/atletismo/salida-explosiva",
+          alt: "José Giner driving out of the starting blocks under a blue sky",
+          caption: "Explosive start",
+          position: "center 40%",
+        },
+        {
+          src: "/atletismo/memorial-la-rioja-cara-a-cara",
+          alt: "José Giner racing the 100 metres alongside two other sprinters",
+          caption: "Head to head · La Rioja Memorial",
+        },
+        {
+          src: "/atletismo/meeting-coria-en-tacos",
+          alt: "José Giner focused in the blocks alongside his rivals before the start",
+          caption: "In the blocks · Coria Meeting",
+          position: "center 35%",
+        },
+        {
+          src: "/atletismo/universitario-ua-aceleracion",
+          alt: "José Giner accelerating in University of Alicante kit on a blue track",
+          caption: "Racing for UA · University championship",
+        },
+        {
+          src: "/atletismo/meeting-coria-recta",
+          alt: "José Giner running the bend wearing bib number 11",
+          caption: "Racing · Coria Meeting",
+          position: "center 30%",
+        },
+        {
+          src: "/atletismo/memorial-la-rioja-trofeo-100",
+          alt: "José Giner holding the 100 metres trophy at the La Rioja Memorial",
+          caption: "100 m trophy · La Rioja Memorial",
+          position: "center 35%",
+        },
+        {
+          src: "/atletismo/colocandose-en-tacos",
+          alt: "José Giner settling into the starting blocks on the track",
+          caption: "Settling into the blocks",
+        },
       ],
       achievements: [
         {
@@ -462,14 +543,14 @@ export const content: Record<Lang, Content> = {
         {
           period: "2023 — Present",
           role: "BSc in Computer Engineering",
-          place: "[COMPLETAR: university]",
+          place: "University of Alicante",
           detail: "Ongoing, combining the degree with competing at the highest level. [COMPLETAR: current year and specialisation if any.]",
         },
         {
           period: "2020–2023",
-          role: "BSc in Multimedia Engineering",
-          place: "[COMPLETAR: university]",
-          detail: "Multimedia development, graphics and interaction. [CONFIRMAR: completed or switched to Computer Engineering?]",
+          role: "Multimedia Engineering (coursework)",
+          place: "University of Alicante",
+          detail: "Three years studying multimedia development, graphics and interaction, before moving on to Computer Engineering.",
         },
         {
           period: "2018–2020",
