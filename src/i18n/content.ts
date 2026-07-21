@@ -149,8 +149,8 @@ export const content: Record<Lang, Content> = {
       facts: [
         { label: "Ubicación", value: "Sant Joan d'Alacant, Alicante" },
         { label: "Deporte", value: "Velocidad 100 m / 200 m · C.A. Cordobés" },
-        { label: "Formación", value: "Cursando Ingeniería Informática · Grado Superior en DAM" },
-        { label: "Idiomas", value: "Español · Inglés · [COMPLETAR]" },
+        { label: "Formación", value: "Ingeniería Informática (en curso) · Ingeniería Multimedia · GS en DAM" },
+        { label: "Idiomas", value: "Español (nativo) · Inglés B1 certificado" },
       ],
     },
     approach: {
@@ -261,10 +261,16 @@ export const content: Record<Lang, Content> = {
       title: "Formación y experiencia",
       items: [
         {
-          period: "Actualidad",
+          period: "2023 — Actualidad",
           role: "Grado en Ingeniería Informática",
           place: "[COMPLETAR: universidad]",
-          detail: "En curso, compaginándolo con la competición. [COMPLETAR: curso en el que estás y, si la tienes, especialidad o mención.]",
+          detail: "En curso, compaginando la carrera con la competición al máximo nivel. [COMPLETAR: curso en el que estás y, si la tienes, especialidad o mención.]",
+        },
+        {
+          period: "2020–2023",
+          role: "Grado en Ingeniería Multimedia",
+          place: "[COMPLETAR: universidad]",
+          detail: "Desarrollo multimedia, gráficos e interacción. [CONFIRMAR: ¿lo finalizaste o cambiaste a Ingeniería Informática? Hay que redactarlo con precisión.]",
         },
         {
           period: "2018–2020",
@@ -273,10 +279,10 @@ export const content: Record<Lang, Content> = {
           detail: "Desarrollo de software multiplataforma: programación, bases de datos, interfaces y despliegue de aplicaciones.",
         },
         {
-          period: "[COMPLETAR: años]",
+          period: "2016–2018",
           role: "Grado Medio en Sistemas Microinformáticos y Redes",
           place: "[COMPLETAR: centro]",
-          detail: "Base en sistemas, equipos y redes. [CONFIRMAR: nombre exacto del ciclo y los años.]",
+          detail: "Base en sistemas, equipos y redes.",
         },
       ],
     },
@@ -313,8 +319,8 @@ export const content: Record<Lang, Content> = {
       facts: [
         { label: "Location", value: "Sant Joan d'Alacant, Alicante (Spain)" },
         { label: "Sport", value: "Sprints 100 m / 200 m · C.A. Cordobés" },
-        { label: "Education", value: "Studying Computer Engineering · Higher Diploma in Multiplatform App Development" },
-        { label: "Languages", value: "Spanish · English · [COMPLETAR]" },
+        { label: "Education", value: "Computer Engineering (ongoing) · Multimedia Engineering · Higher Diploma in DAM" },
+        { label: "Languages", value: "Spanish (native) · English B1 (certified)" },
       ],
     },
     approach: {
@@ -424,10 +430,16 @@ export const content: Record<Lang, Content> = {
       title: "Education & experience",
       items: [
         {
-          period: "Present",
+          period: "2023 — Present",
           role: "BSc in Computer Engineering",
           place: "[COMPLETAR: university]",
-          detail: "Ongoing, alongside competing. [COMPLETAR: current year and specialisation if any.]",
+          detail: "Ongoing, combining the degree with competing at the highest level. [COMPLETAR: current year and specialisation if any.]",
+        },
+        {
+          period: "2020–2023",
+          role: "BSc in Multimedia Engineering",
+          place: "[COMPLETAR: university]",
+          detail: "Multimedia development, graphics and interaction. [CONFIRMAR: completed or switched to Computer Engineering?]",
         },
         {
           period: "2018–2020",
@@ -436,10 +448,10 @@ export const content: Record<Lang, Content> = {
           detail: "Cross-platform software development: programming, databases, interfaces and application deployment.",
         },
         {
-          period: "[COMPLETAR: years]",
+          period: "2016–2018",
           role: "Intermediate Diploma in Microcomputer Systems & Networks",
           place: "[COMPLETAR: institution]",
-          detail: "Foundations in systems, hardware and networking. [CONFIRMAR: exact programme name and years.]",
+          detail: "Foundations in systems, hardware and networking.",
         },
       ],
     },

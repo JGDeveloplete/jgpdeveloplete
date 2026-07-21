@@ -22,13 +22,18 @@ Marcas contrastadas con el perfil oficial de World Athletics (incluye la MP de
 - [ ] **Logros extra**: dijiste que hay más de los que salen en el CV. Pásamelos
       y los añado a `sport.achievements`
 
-## 🔴 CONTRASTAR (datos dictados por voz, con dudas)
-- [ ] **Grado Medio: los años no cuadran.** En la transcripción sonó «2008»,
-      pero naciste en enero de 1999 (tendrías 9 años) y el Grado Superior fue
-      2018–2020. Lo más probable es **2016–2018**. Confirma años y el nombre
-      exacto del ciclo (puse «Sistemas Microinformáticos y Redes»)
-- [ ] **Ingeniería Informática**: en qué curso estás y en qué universidad
-- [ ] **Centros** del Grado Medio y del Grado Superior
+## ✅ Formación (confirmada y coherente)
+2016–2018 Grado Medio · 2018–2020 GS en DAM · 2020–2023 Ing. Multimedia ·
+2023–actualidad Ing. Informática · Inglés B1 certificado.
+
+## 🔴 Una duda importante
+- [ ] **Ingeniería Multimedia (2020–2023): ¿la terminaste o cambiaste a
+      Informática?** Es importante afinarlo: en un portafolio no se puede dar a
+      entender que tienes un título que no terminaste. Según la respuesta lo
+      redacto como «Grado completado» o como «cursado 2020–2023, cambio a
+      Ingeniería Informática»
+- [ ] **Universidades y centros** de los cuatro estudios (¿la Universidad de
+      Alicante, por cercanía y porque ofrece Ing. Multimedia?)
 
 ## ❌ Falta (la parte de ingeniero)
 Lo más importante, por orden de impacto:
