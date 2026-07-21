@@ -44,6 +44,41 @@ const t = content[lang];
   </div>
 </section>
 
+<!-- ===================== ATLETISMO ===================== -->
+<!-- Va justo tras "Sobre mí": es lo primero que JG quiere mostrar. -->
+<section class="section" id="sport">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t.sport.eyebrow}</p>
+      <h2 class="section-title">{t.sport.title}</h2>
+      <p class="section-sub">{t.sport.sub}</p>
+    </div>
+
+    <h3 class="bests-title">{t.sport.bestsTitle}</h3>
+    <div class="bests">
+      {t.sport.bests.map((b) => (
+        <div class="best">
+          <span class="best-event">{b.event}</span>
+          <span class="best-mark">{b.mark}</span>
+          <span class="best-note">{b.note}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="timeline">
+      {t.sport.achievements.map((a) => (
+        <div class="tl-item">
+          <span class="tl-year">{a.year}</span>
+          <div class="tl-body">
+            <h3>{a.title}</h3>
+            <p>{a.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CÓMO TRABAJO ===================== -->
 <section class="section" id="approach">
   <div class="container">
@@ -140,40 +175,6 @@ const t = content[lang];
         <div class="stack-group">
           <h3>{g.name}</h3>
           <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ===================== DEPORTE ===================== -->
-<section class="section" id="sport">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t.sport.eyebrow}</p>
-      <h2 class="section-title">{t.sport.title}</h2>
-      <p class="section-sub">{t.sport.sub}</p>
-    </div>
-
-    <h3 class="bests-title">{t.sport.bestsTitle}</h3>
-    <div class="bests">
-      {t.sport.bests.map((b) => (
-        <div class="best">
-          <span class="best-event">{b.event}</span>
-          <span class="best-mark">{b.mark}</span>
-          <span class="best-note">{b.note}</span>
-        </div>
-      ))}
-    </div>
-
-    <div class="timeline">
-      {t.sport.achievements.map((a) => (
-        <div class="tl-item">
-          <span class="tl-year">{a.year}</span>
-          <div class="tl-body">
-            <h3>{a.title}</h3>
-            <p>{a.detail}</p>
-          </div>
         </div>
       ))}
     </div>
