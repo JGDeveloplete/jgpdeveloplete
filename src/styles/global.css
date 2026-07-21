@@ -233,7 +233,7 @@ img { max-width: 100%; display: block; }
 .project-links { display: flex; gap: 1rem; font-size: .85rem; font-weight: 600; }
 
 /* --------- Stack --------- */
-.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
 .stack-group h3 { font-size: 1.05rem; margin: 0 0 .8rem; color: var(--text); }
 .stack-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
 .stack-group li { font-family: var(--font-mono); font-size: .9rem; color: var(--muted); }

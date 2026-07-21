@@ -228,10 +228,11 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Herramientas",
       title: "Stack tecnológico",
       groups: [
-        { name: "Lenguajes", items: ["TypeScript", "JavaScript", "Python", "[COMPLETAR]"] },
-        { name: "Frontend", items: ["React", "Next.js", "Astro", "HTML/CSS"] },
-        { name: "Backend", items: ["Node.js", "Prisma", "PostgreSQL", "[COMPLETAR]"] },
-        { name: "Herramientas", items: ["Git", "Docker", "Linux", "[COMPLETAR]"] },
+        { name: "Lenguajes", items: ["Java", "C#", "SQL", "JavaScript", "TypeScript"] },
+        { name: "Frontend", items: ["React", "Vue", "Next.js", "HTML/CSS"] },
+        { name: "Backend y datos", items: ["Node.js", "PostgreSQL", "Prisma"] },
+        { name: "Herramientas", items: ["Docker", "Git", "Linux"] },
+        { name: "Aprendiendo", items: ["Python", "C++"] },
       ],
     },
     sport: {
@@ -494,10 +495,11 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Tooling",
       title: "Tech stack",
       groups: [
-        { name: "Languages", items: ["TypeScript", "JavaScript", "Python", "[COMPLETAR]"] },
-        { name: "Frontend", items: ["React", "Next.js", "Astro", "HTML/CSS"] },
-        { name: "Backend", items: ["Node.js", "Prisma", "PostgreSQL", "[COMPLETAR]"] },
-        { name: "Tooling", items: ["Git", "Docker", "Linux", "[COMPLETAR]"] },
+        { name: "Languages", items: ["Java", "C#", "SQL", "JavaScript", "TypeScript"] },
+        { name: "Frontend", items: ["React", "Vue", "Next.js", "HTML/CSS"] },
+        { name: "Backend & data", items: ["Node.js", "PostgreSQL", "Prisma"] },
+        { name: "Tools", items: ["Docker", "Git", "Linux"] },
+        { name: "Learning", items: ["Python", "C++"] },
       ],
     },
     sport: {
