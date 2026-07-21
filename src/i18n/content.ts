@@ -14,6 +14,26 @@ export interface Project {
   repo?: string;
 }
 
+/** Proyecto destacado: se muestra en grande, con más contexto. */
+export interface FeaturedProject {
+  status: string;
+  title: string;
+  tagline: string;
+  /** Bloques de contexto: el problema, tu papel, qué has aprendido… */
+  blocks: { label: string; text: string }[];
+  /** Decisiones técnicas o retos concretos. Es lo que demuestra criterio. */
+  highlights: string[];
+  tags: string[];
+  link?: string;
+  repo?: string;
+}
+
+/** Cómo trabajas: demuestra forma de pensar cuando aún hay pocos proyectos. */
+export interface ApproachItem {
+  title: string;
+  text: string;
+}
+
 export interface Best {
   event: string;
   mark: string;
@@ -44,7 +64,17 @@ export interface Content {
     ctaContact: string;
   };
   about: { title: string; eyebrow: string; paragraphs: string[]; facts: { label: string; value: string }[] };
-  projects: { title: string; eyebrow: string; sub: string; items: Project[] };
+  approach: { title: string; eyebrow: string; sub: string; items: ApproachItem[] };
+  projects: {
+    title: string;
+    eyebrow: string;
+    sub: string;
+    featured: FeaturedProject;
+    /** Proyectos adicionales. Vacío por ahora: añadir aquí los futuros. */
+    items: Project[];
+    /** Nota que se muestra cuando aún no hay más proyectos. */
+    moreSoon: string;
+  };
   stack: { title: string; eyebrow: string; groups: { name: string; items: string[] }[] };
   sport: {
     title: string;
@@ -123,34 +153,59 @@ export const content: Record<Lang, Content> = {
         { label: "Idiomas", value: "Español · Inglés · [COMPLETAR]" },
       ],
     },
+    approach: {
+      eyebrow: "Método",
+      title: "Cómo trabajo",
+      sub: "Entrenar te enseña que el resultado es consecuencia del proceso. Programo con la misma idea.",
+      items: [
+        {
+          title: "Primero entender, luego escribir",
+          text: "Antes de teclear intento tener claro qué problema resuelvo y para quién. Un requisito mal entendido cuesta más que cualquier bug.",
+        },
+        {
+          title: "Medir y corregir",
+          text: "En la pista se cronometra todo: se mide, se compara y se ajusta. Con el código igual: pruebo, observo el resultado real y corrijo, en vez de asumir que funciona.",
+        },
+        {
+          title: "Constancia sobre inspiración",
+          text: "Los proyectos, como las temporadas, se ganan en el trabajo repetido: avances pequeños, documentados y sostenidos en el tiempo.",
+        },
+      ],
+    },
     projects: {
       eyebrow: "Portfolio",
       title: "Proyectos",
-      sub: "Una selección de cosas que he construido. [COMPLETAR: añade tus otros proyectos.]",
-      items: [
-        {
-          title: "Kaireté",
-          description:
-            "Aplicación de agenda para atletas y entrenadores: planificación de entrenamientos, sesiones y seguimiento. Nace de mi propia experiencia compitiendo.",
-          tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
-          link: "",
-          repo: "",
-        },
-        {
-          title: "[COMPLETAR: Proyecto 2]",
-          description: "[COMPLETAR: qué resuelve, tu papel y el resultado.]",
-          tags: ["[Tecnología]", "[Tecnología]"],
-          link: "",
-          repo: "",
-        },
-        {
-          title: "[COMPLETAR: Proyecto 3]",
-          description: "[COMPLETAR: qué resuelve, tu papel y el resultado.]",
-          tags: ["[Tecnología]", "[Tecnología]"],
-          link: "",
-          repo: "",
-        },
-      ],
+      sub: "Prefiero enseñar pocos proyectos y bien explicados que una lista larga sin fondo.",
+      featured: {
+        status: "En desarrollo",
+        title: "Kaireté",
+        tagline: "Agenda y planificación para compaginar entrenamientos, estudios y competiciones.",
+        blocks: [
+          {
+            label: "El problema",
+            text: "Compaginar entrenamientos, competiciones y estudios es un caos de calendarios sueltos. Como atleta lo vivo en primera persona: no encontraba una herramienta que juntara la planificación deportiva con el día a día.",
+          },
+          {
+            label: "Mi papel",
+            text: "Proyecto propio, de principio a fin: diseño del modelo de datos, backend, interfaz y despliegue. [COMPLETAR: si alguien más participa, dilo aquí.]",
+          },
+          {
+            label: "Qué me ha enseñado",
+            text: "[COMPLETAR: lo más valioso de este apartado. Cuenta un problema concreto que te encontraste y cómo lo resolviste — eso es lo que de verdad demuestra que eres ingeniero.]",
+          },
+        ],
+        highlights: [
+          "Modelo de datos relacional con Prisma sobre PostgreSQL.",
+          "Entorno reproducible con Docker para que el despliegue no dependa de mi máquina.",
+          "[COMPLETAR: añade 1–2 decisiones técnicas que tomaste y por qué.]",
+        ],
+        tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
+        link: "",
+        repo: "",
+      },
+      items: [],
+      moreSoon:
+        "Estoy construyendo mi catálogo de proyectos. Los siguientes irán apareciendo aquí.",
     },
     stack: {
       eyebrow: "Herramientas",
@@ -246,34 +301,58 @@ export const content: Record<Lang, Content> = {
         { label: "Languages", value: "Spanish · English · [COMPLETAR]" },
       ],
     },
+    approach: {
+      eyebrow: "Method",
+      title: "How I work",
+      sub: "Training teaches you that results are a consequence of process. I write code the same way.",
+      items: [
+        {
+          title: "Understand first, type second",
+          text: "Before writing code I make sure I know what problem I'm solving and for whom. A misunderstood requirement costs more than any bug.",
+        },
+        {
+          title: "Measure and correct",
+          text: "On the track everything is timed: you measure, compare and adjust. Same with code — I test, look at what actually happens and fix it, instead of assuming it works.",
+        },
+        {
+          title: "Consistency over inspiration",
+          text: "Projects, like seasons, are won through repeated work: small, documented progress sustained over time.",
+        },
+      ],
+    },
     projects: {
       eyebrow: "Portfolio",
       title: "Projects",
-      sub: "A selection of things I've built. [COMPLETAR: add your other projects.]",
-      items: [
-        {
-          title: "Kaireté",
-          description:
-            "Scheduling app for athletes and coaches: training planning, sessions and tracking. Born out of my own experience as a competing athlete.",
-          tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
-          link: "",
-          repo: "",
-        },
-        {
-          title: "[COMPLETAR: Project 2]",
-          description: "[COMPLETAR: what it solves, your role and the outcome.]",
-          tags: ["[Tech]", "[Tech]"],
-          link: "",
-          repo: "",
-        },
-        {
-          title: "[COMPLETAR: Project 3]",
-          description: "[COMPLETAR: what it solves, your role and the outcome.]",
-          tags: ["[Tech]", "[Tech]"],
-          link: "",
-          repo: "",
-        },
-      ],
+      sub: "I'd rather show a few projects explained properly than a long list with no substance.",
+      featured: {
+        status: "In progress",
+        title: "Kaireté",
+        tagline: "Scheduling and planning to juggle training, studies and competitions.",
+        blocks: [
+          {
+            label: "The problem",
+            text: "Juggling training, competitions and university is a mess of disconnected calendars. As an athlete I live it first-hand: I couldn't find a tool that combined athletic planning with everyday life.",
+          },
+          {
+            label: "My role",
+            text: "A personal project, end to end: data model design, backend, interface and deployment. [COMPLETAR: mention collaborators here if any.]",
+          },
+          {
+            label: "What it taught me",
+            text: "[COMPLETAR: the most valuable part. Describe a concrete problem you hit and how you solved it — that's what really shows you're an engineer.]",
+          },
+        ],
+        highlights: [
+          "Relational data model with Prisma on PostgreSQL.",
+          "Reproducible environment with Docker so deployment doesn't depend on my machine.",
+          "[COMPLETAR: add 1–2 technical decisions you made and why.]",
+        ],
+        tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
+        link: "",
+        repo: "",
+      },
+      items: [],
+      moreSoon: "I'm building up my project catalogue. The next ones will show up here.",
     },
     stack: {
       eyebrow: "Tooling",

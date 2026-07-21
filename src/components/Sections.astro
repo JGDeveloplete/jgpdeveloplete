@@ -44,6 +44,26 @@ const t = content[lang];
   </div>
 </section>
 
+<!-- ===================== CÓMO TRABAJO ===================== -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t.approach.eyebrow}</p>
+      <h2 class="section-title">{t.approach.title}</h2>
+      <p class="section-sub">{t.approach.sub}</p>
+    </div>
+    <div class="approach-grid">
+      {t.approach.items.map((a, i) => (
+        <div class="approach-item">
+          <span class="approach-num">{String(i + 1).padStart(2, "0")}</span>
+          <h3>{a.title}</h3>
+          <p>{a.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 <!-- ===================== PROYECTOS ===================== -->
 <section class="section" id="projects">
   <div class="container">
@@ -52,21 +72,59 @@ const t = content[lang];
       <h2 class="section-title">{t.projects.title}</h2>
       <p class="section-sub">{t.projects.sub}</p>
     </div>
-    <div class="projects-grid">
-      {t.projects.items.map((p) => (
-        <article class="project-card">
-          <h3>{p.title}</h3>
-          <p>{p.description}</p>
-          <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
-          {(p.link || p.repo) && (
-            <div class="project-links">
-              {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver" : "Live"}</a>}
-              {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
+
+    <article class="featured">
+      <div class="featured-main">
+        <div class="featured-top">
+          <h3>{t.projects.featured.title}</h3>
+          <span class="featured-status">{t.projects.featured.status}</span>
+        </div>
+        <p class="featured-tagline">{t.projects.featured.tagline}</p>
+
+        <div class="featured-blocks">
+          {t.projects.featured.blocks.map((b) => (
+            <div class="featured-block">
+              <h4>{b.label}</h4>
+              <p>{b.text}</p>
             </div>
-          )}
-        </article>
-      ))}
-    </div>
+          ))}
+        </div>
+      </div>
+
+      <aside class="featured-side">
+        <h4>{lang === "es" ? "Decisiones técnicas" : "Technical decisions"}</h4>
+        <ul class="featured-highlights">
+          {t.projects.featured.highlights.map((h) => <li>{h}</li>)}
+        </ul>
+        <ul class="tags">{t.projects.featured.tags.map((tag) => <li>{tag}</li>)}</ul>
+        {(t.projects.featured.link || t.projects.featured.repo) && (
+          <div class="project-links">
+            {t.projects.featured.link && <a href={t.projects.featured.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver" : "Live"}</a>}
+            {t.projects.featured.repo && <a href={t.projects.featured.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
+          </div>
+        )}
+      </aside>
+    </article>
+
+    {t.projects.items.length > 0 ? (
+      <div class="projects-grid more-projects">
+        {t.projects.items.map((p) => (
+          <article class="project-card">
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
+            {(p.link || p.repo) && (
+              <div class="project-links">
+                {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver" : "Live"}</a>}
+                {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="more-soon">{t.projects.moreSoon}</p>
+    )}
   </div>
 </section>
 

@@ -101,7 +101,7 @@ const { lang, title, description } = Astro.props;
 
       // ---- Aparición al hacer scroll ----
       if ("IntersectionObserver" in window && !prefersReducedMotion()) {
-        const selectors = [".section-head", ".about-text", ".fact", ".project-card", ".stack-group", ".tl-item", ".contact-email", ".socials"];
+        const selectors = [".section-head", ".about-text", ".fact", ".approach-item", ".featured", ".project-card", ".stack-group", ".tl-item", ".contact-email", ".socials"];
         const targets = document.querySelectorAll<HTMLElement>(selectors.join(","));
         targets.forEach((el, i) => {
           el.classList.add("reveal");

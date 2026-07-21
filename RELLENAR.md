@@ -23,14 +23,27 @@ Marcas contrastadas con el perfil oficial de World Athletics (incluye la MP de
       y los añado a `sport.achievements`
 
 ## ❌ Falta (la parte de ingeniero)
+Lo más importante, por orden de impacto:
+
+- [ ] **Kaireté → "Qué me ha enseñado"** (`projects.featured.blocks`, el 3º):
+      cuenta **un problema técnico concreto** que te encontraste y cómo lo
+      resolviste. Es lo que más demuestra criterio de ingeniero.
+- [ ] **Kaireté → decisiones técnicas** (`projects.featured.highlights`):
+      añade 1–2 decisiones tuyas y **por qué** las tomaste
 - [ ] **Formación**: grado, universidad y año (`about.facts` → Formación)
 - [ ] **Tercer párrafo de "Sobre mí"**: qué te gusta construir y en qué quieres
       especializarte (`about.paragraphs`, último)
-- [ ] **Proyectos 2 y 3**: título, qué resuelven y tecnologías (`projects.items`)
-- [ ] **Enlaces de Kaireté**: demo (`link`) y repositorio (`repo`)
 - [ ] **Experiencia**: puestos/prácticas con periodos (`experience.items`)
 - [ ] **Stack**: ajustar a lo que dominas de verdad (`stack.groups`)
 - [ ] Idiomas y nivel (`about.facts`)
+- [ ] **Revisar "Cómo trabajo"** (`approach.items`): lo redacté yo como borrador.
+      Hazlo tuyo o cámbialo entero
+- [ ] Enlaces de Kaireté (`featured.link` / `featured.repo`) si lo publicas
+
+### Añadir proyectos en el futuro
+La sección está preparada: mete objetos en `projects.items` (título,
+descripción, tags, link, repo) y aparecerán en una rejilla bajo Kaireté,
+sustituyendo al aviso de "estoy construyendo mi catálogo".
 
 ## Extras
 - [ ] Foto tuya (retrato o en pista) → carpeta `public/`
