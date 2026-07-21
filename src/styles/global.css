@@ -39,12 +39,20 @@
   --accent: #c084fc; --accent-2: #f472b6; --accent-ink: #21093b;
 }
 
-/* ---- TEMA "Claro": modo día ---- */
+/* ---- TEMA "Claro": modo día en crema cálido (menos luminoso) ---- */
 [data-theme="claro"] {
-  --bg: #fbfaf8; --bg-soft: #f3f1ed; --surface: #ffffff; --surface-2: #f5f3ef;
-  --line: #e2ded7; --text: #1d1a17; --muted: #6b625a;
-  --accent: #e2551f; --accent-2: #d99414; --accent-ink: #ffffff;
-  --shadow: 0 16px 40px rgba(30, 22, 16, 0.10);
+  --bg: #f3ecdf; --bg-soft: #ece3d3; --surface: #fbf5ea; --surface-2: #f1e8d8;
+  --line: #ddd0bb; --text: #2a2620; --muted: #6f6456;
+  --accent: #a8481f; --accent-2: #9c722a; --accent-ink: #fbf5ea;
+  --shadow: 0 16px 40px rgba(40, 30, 18, 0.12);
+}
+
+/* ---- TEMA "Burdeos": burdeos + crema, elegante y cálido ---- */
+[data-theme="burdeos"] {
+  --bg: #f2e7d6; --bg-soft: #ebdcc7; --surface: #faf1e2; --surface-2: #f0e3cf;
+  --line: #dcc7ac; --text: #3a2026; --muted: #7c5850;
+  --accent: #8a2b3b; --accent-2: #bf8b40; --accent-ink: #faf1e2;
+  --shadow: 0 16px 40px rgba(58, 32, 38, 0.14);
 }
 
 * { box-sizing: border-box; }
@@ -124,7 +132,8 @@ img { max-width: 100%; display: block; }
 .theme-dot.pista { background: linear-gradient(135deg, #ff7a45, #ffc247); }
 .theme-dot.velocidad { background: linear-gradient(135deg, #4ade80, #38bdf8); }
 .theme-dot.atardecer { background: linear-gradient(135deg, #c084fc, #f472b6); }
-.theme-dot.claro { background: linear-gradient(135deg, #fbfaf8, #e2551f); }
+.theme-dot.claro { background: linear-gradient(135deg, #f3ecdf, #c2562c); }
+.theme-dot.burdeos { background: linear-gradient(135deg, #f2e7d6, #8a2b3b); }
 
 .nav-toggle { display: none; }
 
