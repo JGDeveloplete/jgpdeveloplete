@@ -168,7 +168,7 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Sobre mí",
       title: "Dos disciplinas, la misma mentalidad",
       paragraphs: [
-        "Practico el atletismo en las pruebas de velocidad, especializado en los 100 y 200 metros lisos. Desde 2020 compito en Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
+        "Desde 2020 compito en Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
         "Competir a ese nivel enseña algo que acaba calando: los resultados no dependen del talento ni aparecen de un día para otro, sino de repetir bien durante años.",
         "Esa manera de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. Actualmente trabajo como desarrollador PL/SQL a jornada completa, compaginándolo con el Grado en Ingeniería Informática y la competición al máximo nivel.",
         "De ahí el nombre: Developlete surge de la unión de developer y athlete. No son dos trayectorias que compitan entre sí, sino una misma.",
@@ -238,7 +238,7 @@ export const content: Record<Lang, Content> = {
     sport: {
       eyebrow: "Atletismo",
       title: "Trayectoria deportiva",
-      sub: "Velocista especializado en 100 y 200 metros, en competición activa. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018.",
+      sub: "Velocista en activo. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018.",
       bestsTitle: "Marcas personales",
       bests: bestsEs,
       galleryTitle: "En la pista",
@@ -449,7 +449,7 @@ export const content: Record<Lang, Content> = {
       eyebrow: "About",
       title: "Two disciplines, one mindset",
       paragraphs: [
-        "I compete in the sprints, specialising in the 100 and 200 metres. Since 2020 I have raced in Spain's First Division and División de Honor, the top tier of national team athletics.",
+        "Since 2020 I have raced in Spain's First Division and División de Honor, the top tier of national team athletics.",
         "Competing at that level teaches you something that stays with you: results do not come from talent, nor overnight, but from repeating things well, year after year.",
         "That way of training — measure, repeat, correct, begin again — is exactly how I approach code. I currently work full-time as a PL/SQL developer, alongside my Computer Engineering degree and competing at the highest level.",
         "Hence the name: Developlete comes from joining developer and athlete. They are not two competing paths, but one and the same.",
@@ -516,7 +516,7 @@ export const content: Record<Lang, Content> = {
     sport: {
       eyebrow: "Athletics",
       title: "Athletic background",
-      sub: "Sprinter specialising in the 100 and 200 metres, still competing. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018.",
+      sub: "An active sprinter. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018.",
       bestsTitle: "Personal bests",
       bests: bestsEn,
       galleryTitle: "On the track",
