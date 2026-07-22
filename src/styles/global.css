@@ -179,7 +179,7 @@ img { max-width: 100%; display: block; }
 .fact dd { margin: .3rem 0 0; font-weight: 500; }
 
 /* --------- Cómo trabajo --------- */
-.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.approach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; }
 .approach-item { border-top: 2px solid var(--line); padding-top: 1.3rem; }
 .approach-num { font-family: var(--font-mono); font-size: .85rem; color: var(--accent); letter-spacing: .1em; }
 .approach-item h3 { margin: .5rem 0 .6rem; font-size: 1.2rem; }

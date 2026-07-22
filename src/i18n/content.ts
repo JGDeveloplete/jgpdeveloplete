@@ -183,19 +183,23 @@ export const content: Record<Lang, Content> = {
     approach: {
       eyebrow: "Método",
       title: "Cómo trabajo",
-      sub: "Tres principios que aplico por igual en la pista y delante del teclado.",
+      sub: "Lo que me ha dado el deporte de alto nivel y que aplico igual delante del teclado.",
       items: [
         {
-          title: "Primero entender, después escribir",
-          text: "Antes de escribir una sola línea procuro tener claro qué problema resuelvo y para quién. Un requisito mal entendido sale más caro que cualquier error de código.",
+          title: "Disciplina",
+          text: "Compaginar la competición al máximo nivel con una jornada completa y una ingeniería no se sostiene con motivación puntual, sino con método y horarios. Es lo que llevo al trabajo cada día.",
         },
         {
-          title: "Los datos mandan",
-          text: "En la pista el cronómetro no admite interpretaciones, y con los datos ocurre lo mismo: prefiero contrastarlos en la fuente antes que dar nada por supuesto.",
+          title: "Adaptación",
+          text: "He pasado del mantenimiento de equipos al desarrollo web y de ahí a las bases de datos, con cuatro formaciones distintas por el camino. Cambiar de contexto y ponerme al día rápido forma parte de mi recorrido.",
         },
         {
-          title: "Constancia sobre inspiración",
-          text: "Los proyectos, igual que las temporadas, se ganan con trabajo sostenido: avances pequeños, documentados y mantenidos en el tiempo.",
+          title: "Mejora continua",
+          text: "En velocidad, rebajar una centésima cuesta temporadas enteras. Esa manera de medir el avance —pequeño, constante y comprobable— es la que aplico también al código.",
+        },
+        {
+          title: "Buen ambiente",
+          text: "Compito en relevos y trabajo en un equipo de cinco personas. Un buen ambiente no es un extra: es lo que hace que la gente pregunte a tiempo y que los problemas salgan pronto.",
         },
       ],
     },
@@ -464,19 +468,23 @@ export const content: Record<Lang, Content> = {
     approach: {
       eyebrow: "Method",
       title: "How I work",
-      sub: "Three principles I apply equally on the track and at the keyboard.",
+      sub: "What top-level sport has given me, and what I bring to the keyboard.",
       items: [
         {
-          title: "Understand first, write second",
-          text: "Before writing a single line I make sure I know what problem I am solving and for whom. A misunderstood requirement costs more than any bug.",
+          title: "Discipline",
+          text: "Balancing top-level competition with a full-time job and an engineering degree does not run on bursts of motivation, but on method and timetables. That is what I bring to work every day.",
         },
         {
-          title: "Let the data decide",
-          text: "On the track the stopwatch leaves no room for interpretation, and data works the same way: I would rather verify it at the source than assume anything.",
+          title: "Adaptability",
+          text: "I have moved from hardware maintenance to web development and on to databases, with four different qualifications along the way. Switching context and getting up to speed quickly is part of my track record.",
         },
         {
-          title: "Consistency over inspiration",
-          text: "Projects, like seasons, are won through sustained work: small steps, documented and kept up over time.",
+          title: "Continuous improvement",
+          text: "In sprinting, taking a hundredth off your time takes entire seasons. That way of measuring progress — small, steady and verifiable — is how I approach code as well.",
+        },
+        {
+          title: "A good atmosphere",
+          text: "I race in relays and work in a squad of five. A good atmosphere is not a perk: it is what makes people ask questions in time and problems surface early.",
         },
       ],
     },
