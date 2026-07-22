@@ -320,6 +320,7 @@ img { max-width: 100%; display: block; }
 
 /* --------- Deporte / Experiencia (timeline) --------- */
 .timeline { position: relative; display: grid; gap: 1.2rem; }
+.timeline-gap { margin-top: 2.5rem; }
 .tl-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.2rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.5rem; }
 .tl-year { font-family: var(--font-mono); color: var(--accent); font-weight: 600; font-size: .9rem; }
 .tl-body h3 { margin: 0 0 .3rem; font-size: 1.15rem; }

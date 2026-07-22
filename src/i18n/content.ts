@@ -99,7 +99,16 @@ export interface Content {
     gallery: Photo[];
     achievements: Achievement[];
   };
-  experience: { title: string; eyebrow: string; items: ExperienceItem[] };
+  experience: {
+    title: string;
+    eyebrow: string;
+    /** Experiencia laboral: va primero, es lo que más pesa. */
+    workTitle: string;
+    work: ExperienceItem[];
+    /** Formación académica. */
+    educationTitle: string;
+    items: ExperienceItem[];
+  };
   contact: {
     title: string;
     eyebrow: string;
@@ -145,7 +154,7 @@ const bestsEn: Best[] = [
 
 export const content: Record<Lang, Content> = {
   es: {
-    nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", sport: "Atletismo", experience: "Formación", contact: "Contacto" },
+    nav: { about: "Sobre mí", projects: "Proyectos", stack: "Stack", sport: "Atletismo", experience: "Experiencia", contact: "Contacto" },
     hero: {
       eyebrow: "Ingeniero Informático · Velocista",
       name: "Jose Giner Pérez",
@@ -161,7 +170,7 @@ export const content: Record<Lang, Content> = {
       paragraphs: [
         "Soy velocista especializado en 100 y 200 metros, con experiencia en competiciones autonómicas, nacionales e internacionales. Desde 2020 compito en clubes de Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
         "Formo parte del programa de tecnificación de la Selección Valenciana desde 2018 y he sido reconocido como deportista de élite entre 2021 y marzo de 2025.",
-        "Esa forma de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. [COMPLETAR: añade aquí tu lado ingeniero: qué te gusta construir y en qué quieres especializarte.]",
+        "Esa forma de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. Hoy trabajo como desarrollador PL/SQL a jornada completa, compaginándolo con la carrera de Ingeniería Informática y la competición al máximo nivel.",
       ],
       facts: [
         { label: "Ubicación", value: "Sant Joan d'Alacant, Alicante" },
@@ -228,7 +237,7 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Herramientas",
       title: "Stack tecnológico",
       groups: [
-        { name: "Lenguajes", items: ["Java", "C#", "SQL", "JavaScript", "TypeScript"] },
+        { name: "Lenguajes", items: ["Java", "C#", "SQL", "PL/SQL", "JavaScript", "TypeScript"] },
         { name: "Frontend", items: ["React", "Vue", "Next.js", "HTML/CSS"] },
         { name: "Backend y datos", items: ["Node.js", "PostgreSQL", "Prisma"] },
         { name: "Herramientas", items: ["Docker", "Git", "Linux"] },
@@ -373,7 +382,29 @@ export const content: Record<Lang, Content> = {
     },
     experience: {
       eyebrow: "Recorrido",
-      title: "Formación y experiencia",
+      title: "Experiencia y formación",
+      workTitle: "Experiencia profesional",
+      work: [
+        {
+          period: "feb. 2025 — Actualidad",
+          role: "Desarrollador PL/SQL",
+          place: "Grupo gtt · Gestión Tributaria Territorial",
+          detail: "Desarrollo en SQL y PL/SQL para sistemas de gestión tributaria. Jornada completa en modalidad híbrida, compaginada con la carrera y la competición.",
+        },
+        {
+          period: "oct. — nov. 2022",
+          role: "Desarrollador back-end",
+          place: "MindDen · Alicante",
+          detail: "Desarrollo de back-end con PHP.",
+        },
+        {
+          period: "abr. — jun. 2018",
+          role: "Técnico de reparación de equipos informáticos",
+          place: "TL Computer Systems (Wales) Ltd · Cardiff, Reino Unido",
+          detail: "Reparación y mantenimiento de equipos. Primera experiencia profesional, trabajando en inglés.",
+        },
+      ],
+      educationTitle: "Formación",
       items: [
         {
           period: "2023 — Actualidad",
@@ -429,7 +460,7 @@ export const content: Record<Lang, Content> = {
       paragraphs: [
         "I'm a sprinter specialising in the 100 and 200 metres, with experience in regional, national and international competition. Since 2020 I've competed for clubs in Spain's First Division and División de Honor, the top tier of Spanish team athletics.",
         "I've been part of the Valencian Regional Team's talent development programme since 2018 and was recognised as an elite athlete from 2021 to March 2025.",
-        "That way of training — measure, repeat, correct, start again — is exactly how I approach code. [COMPLETAR: add your engineering side: what you like building and where you want to specialise.]",
+        "That way of training — measure, repeat, correct, start again — is exactly how I approach code. I currently work full-time as a PL/SQL developer, alongside my Computer Engineering degree and competing at the highest level.",
       ],
       facts: [
         { label: "Location", value: "Sant Joan d'Alacant, Alicante (Spain)" },
@@ -495,7 +526,7 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Tooling",
       title: "Tech stack",
       groups: [
-        { name: "Languages", items: ["Java", "C#", "SQL", "JavaScript", "TypeScript"] },
+        { name: "Languages", items: ["Java", "C#", "SQL", "PL/SQL", "JavaScript", "TypeScript"] },
         { name: "Frontend", items: ["React", "Vue", "Next.js", "HTML/CSS"] },
         { name: "Backend & data", items: ["Node.js", "PostgreSQL", "Prisma"] },
         { name: "Tools", items: ["Docker", "Git", "Linux"] },
@@ -638,7 +669,29 @@ export const content: Record<Lang, Content> = {
     },
     experience: {
       eyebrow: "Path",
-      title: "Education & experience",
+      title: "Experience & education",
+      workTitle: "Professional experience",
+      work: [
+        {
+          period: "Feb 2025 — Present",
+          role: "PL/SQL Developer",
+          place: "Grupo gtt · Gestión Tributaria Territorial",
+          detail: "SQL and PL/SQL development for tax management systems. Full-time, hybrid, alongside my degree and competing.",
+        },
+        {
+          period: "Oct — Nov 2022",
+          role: "Back-end Developer",
+          place: "MindDen · Alicante",
+          detail: "Back-end development in PHP.",
+        },
+        {
+          period: "Apr — Jun 2018",
+          role: "IT Repair Technician",
+          place: "TL Computer Systems (Wales) Ltd · Cardiff, UK",
+          detail: "Hardware repair and maintenance. My first job, working in English.",
+        },
+      ],
+      educationTitle: "Education",
       items: [
         {
           period: "2023 — Present",

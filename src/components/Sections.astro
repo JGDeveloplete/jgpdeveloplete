@@ -22,7 +22,13 @@ const parrafos = t.about.paragraphs.filter((p) => !pendiente(p)).map(limpiar);
 const bloques = t.projects.featured.blocks.filter((b) => !pendiente(b.text)).map((b) => ({ ...b, text: limpiar(b.text) }));
 const decisiones = t.projects.featured.highlights.filter((h) => !pendiente(h)).map(limpiar);
 const grupos = t.stack.groups.map((g) => ({ ...g, items: g.items.filter((i) => !pendiente(i)) }));
-const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.detail), place: limpiar(e.place) }));
+const limpiarItem = (e: { period: string; role: string; place: string; detail: string }) => ({
+  ...e,
+  detail: limpiar(e.detail),
+  place: limpiar(e.place),
+});
+const trabajo = t.experience.work.map(limpiarItem);
+const trayectoria = t.experience.items.map(limpiarItem);
 ---
 
 <!-- ===================== HERO ===================== -->
@@ -250,6 +256,21 @@ const trayectoria = t.experience.items.map((e) => ({ ...e, detail: limpiar(e.det
       <p class="eyebrow">{t.experience.eyebrow}</p>
       <h2 class="section-title">{t.experience.title}</h2>
     </div>
+    <h3 class="bests-title">{t.experience.workTitle}</h3>
+    <div class="timeline">
+      {trabajo.map((e) => (
+        <div class="tl-item">
+          <span class="tl-year">{e.period}</span>
+          <div class="tl-body">
+            <h3>{e.role}</h3>
+            {e.place && <p class="tl-place">{e.place}</p>}
+            {e.detail && <p>{e.detail}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="bests-title timeline-gap">{t.experience.educationTitle}</h3>
     <div class="timeline">
       {trayectoria.map((e) => (
         <div class="tl-item">
