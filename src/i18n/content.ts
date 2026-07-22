@@ -379,7 +379,7 @@ export const content: Record<Lang, Content> = {
           period: "feb. 2025 — Actualidad",
           role: "Desarrollador PL/SQL",
           place: "Grupo gtt · Gestión Tributaria Territorial",
-          detail: "Desarrollo sobre Oracle en SQL y PL/SQL —procedimientos, paquetes, vistas y triggers— para sistemas de gestión tributaria, trabajando con TOAD. Seguimiento por tickets en Jira y documentación en Confluence, dentro de un equipo de unas 20 personas organizado en células de cinco. Jornada completa en modalidad híbrida.",
+          detail: "Mi función principal es la explotación de datos: consultas SQL sobre Oracle para extraer y cruzar información de los sistemas de gestión tributaria, lo que exige conocer a fondo el modelo de datos. También desarrollo en PL/SQL (procedimientos, paquetes, vistas y triggers). Trabajo con TOAD, tickets en Jira y documentación en Confluence, en un equipo de unas 20 personas organizado en células de cinco. Jornada completa en modalidad híbrida.",
         },
         {
           period: "oct. — nov. 2022",
@@ -654,7 +654,7 @@ export const content: Record<Lang, Content> = {
           period: "Feb 2025 — Present",
           role: "PL/SQL Developer",
           place: "Grupo gtt · Gestión Tributaria Territorial",
-          detail: "Oracle development in SQL and PL/SQL — stored procedures, packages, views and triggers — for tax management systems, working with TOAD. Work tracked in Jira and documented in Confluence, within a team of around 20 split into squads of five. Full-time, hybrid.",
+          detail: "My main focus is data extraction and reporting: SQL queries on Oracle to pull and cross-reference data from tax management systems, which means knowing the data model inside out. I also develop in PL/SQL (stored procedures, packages, views and triggers). I work with TOAD, track tickets in Jira and document in Confluence, within a team of around 20 split into squads of five. Full-time, hybrid.",
         },
         {
           period: "Oct — Nov 2022",
