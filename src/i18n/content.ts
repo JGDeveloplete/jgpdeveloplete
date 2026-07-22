@@ -158,7 +158,7 @@ export const content: Record<Lang, Content> = {
     hero: {
       eyebrow: "Ingeniero Informático · Velocista",
       name: "Jose Giner Pérez",
-      roles: ["Ingeniero Informático", "Velocista 100 m / 200 m", "Desarrollador de software"],
+      roles: ["Ingeniero Informático", "Velocista 100 m / 200 m", "Desarrollador PL/SQL"],
       lead:
         "Compito en 100 y 200 metros y escribo código con la misma receta: constancia, disciplina y resiliencia dentro y fuera de la pista.",
       ctaProjects: "Ver proyectos",
@@ -168,8 +168,8 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Sobre mí",
       title: "Dos disciplinas, la misma mentalidad",
       paragraphs: [
-        "Soy velocista especializado en 100 y 200 metros, con experiencia en competiciones autonómicas, nacionales e internacionales. Desde 2020 compito en clubes de Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
-        "Formo parte del programa de tecnificación de la Selección Valenciana desde 2018 y he sido reconocido como deportista de élite entre 2021 y marzo de 2025.",
+        "Corro los 100 y los 200 metros. Desde 2020 lo hago en Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
+        "Entrenar a ese nivel te enseña algo que se queda: los resultados no llegan de golpe ni por talento, llegan por repetir bien durante años.",
         "Esa forma de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. Hoy trabajo como desarrollador PL/SQL a jornada completa, compaginándolo con la carrera de Ingeniería Informática y la competición al máximo nivel.",
         "De ahí el nombre: Developlete nace de unir developer y athlete. No son dos caminos que compitan, son el mismo.",
       ],
@@ -183,15 +183,15 @@ export const content: Record<Lang, Content> = {
     approach: {
       eyebrow: "Método",
       title: "Cómo trabajo",
-      sub: "Entrenar te enseña que el resultado es consecuencia del proceso. Programo con la misma idea.",
+      sub: "Tres cosas que aplico igual en la pista que delante del teclado.",
       items: [
         {
           title: "Primero entender, luego escribir",
           text: "Antes de teclear intento tener claro qué problema resuelvo y para quién. Un requisito mal entendido cuesta más que cualquier bug.",
         },
         {
-          title: "Medir y corregir",
-          text: "En la pista se cronometra todo: se mide, se compara y se ajusta. Con el código igual: pruebo, observo el resultado real y corrijo, en vez de asumir que funciona.",
+          title: "Los datos mandan",
+          text: "En la pista el cronómetro no opina. Con los datos igual: prefiero ir a comprobarlo a la fuente antes que dar nada por supuesto.",
         },
         {
           title: "Constancia sobre inspiración",
@@ -238,7 +238,7 @@ export const content: Record<Lang, Content> = {
     sport: {
       eyebrow: "Atletismo",
       title: "Trayectoria deportiva",
-      sub: "Velocista especializado en 100 y 200 metros, en competición activa. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018. En 2026 he rebajado mi marca personal de 100 m hasta 10.72.",
+      sub: "Velocista especializado en 100 y 200 metros, en competición activa. Deportista de élite (2021–2025) y miembro del programa de tecnificación de la Selección Valenciana desde 2018.",
       bestsTitle: "Marcas personales",
       bests: bestsEs,
       galleryTitle: "En la pista",
@@ -439,7 +439,7 @@ export const content: Record<Lang, Content> = {
     hero: {
       eyebrow: "Software Engineer · Sprinter",
       name: "Jose Giner Pérez",
-      roles: ["Software Engineer", "100 m / 200 m Sprinter", "Software Developer"],
+      roles: ["Software Engineer", "100 m / 200 m Sprinter", "PL/SQL Developer"],
       lead:
         "A 100 and 200 m sprinter who writes code with the same mindset the track demands: consistency, discipline and the resolve to keep improving.",
       ctaProjects: "View projects",
@@ -449,8 +449,8 @@ export const content: Record<Lang, Content> = {
       eyebrow: "About",
       title: "Two disciplines, one mindset",
       paragraphs: [
-        "I'm a sprinter specialising in the 100 and 200 metres, with experience in regional, national and international competition. Since 2020 I've competed for clubs in Spain's First Division and División de Honor, the top tier of Spanish team athletics.",
-        "I've been part of the Valencian Regional Team's talent development programme since 2018 and was recognised as an elite athlete from 2021 to March 2025.",
+        "I run the 100 and 200 metres. Since 2020 I've raced in Spain's First Division and División de Honor, the top tier of national team athletics.",
+        "Training at that level teaches you something that sticks: results don't arrive all at once, and they don't come from talent — they come from repeating things well, for years.",
         "That way of training — measure, repeat, correct, start again — is exactly how I approach code. I currently work full-time as a PL/SQL developer, alongside my Computer Engineering degree and competing at the highest level.",
         "Hence the name: Developlete comes from blending developer and athlete. They aren't two competing paths — they're the same one.",
       ],
@@ -464,15 +464,15 @@ export const content: Record<Lang, Content> = {
     approach: {
       eyebrow: "Method",
       title: "How I work",
-      sub: "Training teaches you that results are a consequence of process. I write code the same way.",
+      sub: "Three things I apply the same way on the track and at the keyboard.",
       items: [
         {
           title: "Understand first, type second",
           text: "Before writing code I make sure I know what problem I'm solving and for whom. A misunderstood requirement costs more than any bug.",
         },
         {
-          title: "Measure and correct",
-          text: "On the track everything is timed: you measure, compare and adjust. Same with code — I test, look at what actually happens and fix it, instead of assuming it works.",
+          title: "Let the data decide",
+          text: "On the track, the stopwatch doesn't have opinions. Same with data: I'd rather go and check it at the source than assume anything.",
         },
         {
           title: "Consistency over inspiration",
@@ -516,7 +516,7 @@ export const content: Record<Lang, Content> = {
     sport: {
       eyebrow: "Athletics",
       title: "Athletic background",
-      sub: "Sprinter specialising in the 100 and 200 metres, still competing. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018. In 2026 I lowered my 100 m personal best to 10.72.",
+      sub: "Sprinter specialising in the 100 and 200 metres, still competing. Elite athlete status (2021–2025) and member of the Valencian Regional Team's talent programme since 2018.",
       bestsTitle: "Personal bests",
       bests: bestsEn,
       galleryTitle: "On the track",
