@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import { content } from "../i18n/content";
+const t = content.es;
+---
+
+<Base
+  lang="es"
+  title={`Página no encontrada — ${t.hero.name}`}
+  description="La página que buscas no existe."
+>
+  <section class="section">
+    <div class="container notfound">
+      <p class="eyebrow">Error 404</p>
+      <h1>Esta página se ha salido de la calle</h1>
+      <p class="notfound-text">
+        El enlace que has seguido no lleva a ninguna parte. Puede que la página
+        se haya movido o que la dirección tenga alguna errata.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/">Volver al inicio</a>
+        <a class="btn btn-ghost" href="/#contact">Contacto</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound { max-width: 640px; padding: 3rem 0 5rem; }
+  .notfound h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin: 0 0 1rem; }
+  .notfound-text { color: var(--muted); margin: 0 0 2rem; }
+</style>

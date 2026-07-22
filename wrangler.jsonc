@@ -1,0 +1,16 @@
+{
+  // Configuración para desplegar en Cloudflare Workers (Static Assets).
+  // La web es estática: Astro genera todo en ./dist y Cloudflare lo sirve
+  // directamente, sin necesidad de servidor ni de adaptador.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jgpdeveloplete",
+  "compatibility_date": "2026-07-22",
+  "assets": {
+    "directory": "./dist",
+    // Astro genera rutas con barra final (/legal/). Con "auto-trailing-slash"
+    // Cloudflare resuelve /legal y /legal/ al mismo sitio.
+    "html_handling": "auto-trailing-slash",
+    // Cuando una URL no existe, se sirve la página 404 propia.
+    "not_found_handling": "404-page"
+  }
+}
