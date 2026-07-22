@@ -171,6 +171,7 @@ export const content: Record<Lang, Content> = {
         "Soy velocista especializado en 100 y 200 metros, con experiencia en competiciones autonómicas, nacionales e internacionales. Desde 2020 compito en clubes de Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
         "Formo parte del programa de tecnificación de la Selección Valenciana desde 2018 y he sido reconocido como deportista de élite entre 2021 y marzo de 2025.",
         "Esa forma de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. Hoy trabajo como desarrollador PL/SQL a jornada completa, compaginándolo con la carrera de Ingeniería Informática y la competición al máximo nivel.",
+        "De ahí el nombre: Developlete nace de unir developer y athlete. No son dos caminos que compitan, son el mismo.",
       ],
       facts: [
         { label: "Ubicación", value: "Sant Joan d'Alacant, Alicante" },
@@ -451,6 +452,7 @@ export const content: Record<Lang, Content> = {
         "I'm a sprinter specialising in the 100 and 200 metres, with experience in regional, national and international competition. Since 2020 I've competed for clubs in Spain's First Division and División de Honor, the top tier of Spanish team athletics.",
         "I've been part of the Valencian Regional Team's talent development programme since 2018 and was recognised as an elite athlete from 2021 to March 2025.",
         "That way of training — measure, repeat, correct, start again — is exactly how I approach code. I currently work full-time as a PL/SQL developer, alongside my Computer Engineering degree and competing at the highest level.",
+        "Hence the name: Developlete comes from blending developer and athlete. They aren't two competing paths — they're the same one.",
       ],
       facts: [
         { label: "Location", value: "Sant Joan d'Alacant, Alicante (Spain)" },
