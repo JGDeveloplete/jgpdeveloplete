@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import type { Lang } from "../i18n/content";
+import { content, type Lang } from "../i18n/content";
 
 interface Props {
   lang: Lang;
@@ -21,6 +21,39 @@ const enUrl = new URL(
 );
 // Imagen para redes sociales (WhatsApp, LinkedIn, X…) al compartir el enlace.
 const ogImage = new URL("/atletismo/la-nucia-salida-de-tacos.jpg", Astro.site);
+
+/**
+ * Datos estructurados (JSON-LD). Le explican a Google QUIÉN es Jose en un
+ * formato que entiende una máquina, no solo texto suelto.
+ *
+ * La clave está en `sameAs`: al enlazar todos sus perfiles, los buscadores
+ * entienden que la web, el GitHub, el LinkedIn y el perfil de World Athletics
+ * son la MISMA persona. Es lo que hace que, al buscar su nombre, aparezca su
+ * web y no solo sus redes.
+ *
+ * Solo se declara lo verificable: nada de titulaciones aún no obtenidas.
+ */
+const t = content[lang];
+const persona = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: t.hero.name,
+  url: Astro.site?.toString(),
+  image: ogImage.toString(),
+  jobTitle: lang === "es" ? "Desarrollador PL/SQL" : "PL/SQL Developer",
+  description: t.hero.lead,
+  email: `mailto:${t.contact.email}`,
+  worksFor: { "@type": "Organization", name: "Grupo gtt · Gestión Tributaria Territorial" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Sant Joan d'Alacant",
+    addressRegion: "Alicante",
+    addressCountry: "ES",
+  },
+  knowsLanguage: ["es", "en"],
+  knowsAbout: ["SQL", "PL/SQL", "Oracle", "Java", "C#", "JavaScript", lang === "es" ? "Atletismo" : "Athletics"],
+  sameAs: t.contact.socials.map((s) => s.url),
+};
 ---
 
 <!doctype html>
@@ -43,8 +76,11 @@ const ogImage = new URL("/atletismo/la-nucia-salida-de-tacos.jpg", Astro.site);
     <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Jose Giner Pérez" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(persona)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
