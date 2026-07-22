@@ -66,6 +66,29 @@ Dominio: **jgdeveloplete.com** (ya configurado en `astro.config.mjs`).
    `jgdeveloplete.com` y `www.jgdeveloplete.com`. El HTTPS es automático.
 4. **A partir de ahí**, cada `git push` a `main` publica sola la web.
 
+### Si el botón «Deploy» del panel no responde
+
+Le ha pasado a JG: se pulsa *Deploy* y no ocurre nada. Cosas a probar, en orden:
+
+1. **Recargar la página** y repetir el proceso (el asistente a veces se queda
+   colgado a medias).
+2. **Otro navegador o ventana de incógnito**, y desactivar bloqueadores: el
+   panel abre ventanas emergentes para autorizar GitHub.
+3. **Revisar los permisos de GitHub**: GitHub → *Settings* → *Applications* →
+   *Cloudflare Workers and Pages* → comprobar que tiene acceso al repositorio
+   `jgpdeveloplete`.
+4. **Si nada funciona**, usar el despliegue alternativo desde GitHub Actions:
+   `.github/workflows/desplegar.yml` (instrucciones dentro del fichero). No
+   depende del asistente del panel.
+
+También se puede desplegar a mano desde el propio ordenador:
+
+```bash
+npm run build
+npx wrangler login     # abre el navegador una sola vez
+npx wrangler deploy
+```
+
 ### Que las marcas se refresquen solas
 El bloque «Temporada» se genera al compilar. Para que se actualice sin tocar
 nada, hay un workflow en `.github/workflows/refrescar-marcas.yml` que republica

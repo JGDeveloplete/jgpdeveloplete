@@ -1,0 +1,42 @@
+# Despliegue alternativo, por si el asistente del panel de Cloudflare falla.
+#
+# Es MANUAL a propósito (workflow_dispatch): si además tienes el proyecto
+# conectado a Git desde el panel de Cloudflare, se desplegaría dos veces.
+# Usa este solo si aquel no te funciona.
+#
+# PARA ACTIVARLO (una vez):
+#   1. Cloudflare → icono de perfil → "API Tokens" → "Create Token"
+#      → plantilla "Edit Cloudflare Workers" → crear y copiar el token.
+#   2. El Account ID lo tienes en la portada de Workers & Pages, a la derecha.
+#   3. En GitHub → repo → Settings → Secrets and variables → Actions:
+#        CLOUDFLARE_API_TOKEN   = el token del paso 1
+#        CLOUDFLARE_ACCOUNT_ID  = el identificador del paso 2
+#   4. Pestaña Actions → "Desplegar web" → "Run workflow".
+
+name: Desplegar web
+
+on:
+  workflow_dispatch:
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar la web
+        run: npm run build
+
+      - name: Publicar en Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
