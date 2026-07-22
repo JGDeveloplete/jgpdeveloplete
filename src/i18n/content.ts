@@ -205,26 +205,16 @@ export const content: Record<Lang, Content> = {
       featured: {
         status: "En desarrollo",
         title: "Kaireté",
-        tagline: "Agenda y planificación para compaginar entrenamientos, estudios y competiciones.",
+        tagline: "Proyecto propio en desarrollo: una aplicación en formato agenda.",
+        // Deliberadamente escueto: JG prefiere no destapar el producto hasta
+        // que esté más maduro. Ampliar solo cuando él lo decida.
         blocks: [
           {
-            label: "El problema",
-            text: "Compaginar entrenamientos, competiciones y estudios es un caos de calendarios sueltos. Como atleta lo vivo en primera persona: no encontraba una herramienta que juntara la planificación deportiva con el día a día.",
-          },
-          {
-            label: "Mi papel",
-            text: "Proyecto propio, de principio a fin: diseño del modelo de datos, backend, interfaz y despliegue. El código se mantiene privado mientras sigo desarrollándolo de cara a un lanzamiento.",
-          },
-          {
-            label: "Qué me ha enseñado",
-            text: "[COMPLETAR: lo más valioso de este apartado. Cuenta un problema concreto que te encontraste y cómo lo resolviste — eso es lo que de verdad demuestra que eres ingeniero.]",
+            label: "Estado",
+            text: "En desarrollo activo. Iré contando más a medida que el proyecto avance.",
           },
         ],
-        highlights: [
-          "Modelo de datos relacional con Prisma sobre PostgreSQL.",
-          "Entorno reproducible con Docker para que el despliegue no dependa de mi máquina.",
-          "[COMPLETAR: añade 1–2 decisiones técnicas que tomaste y por qué.]",
-        ],
+        highlights: [],
         tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
         link: "",
         repo: "",
@@ -239,8 +229,8 @@ export const content: Record<Lang, Content> = {
       groups: [
         { name: "Lenguajes", items: ["Java", "C#", "SQL", "PL/SQL", "JavaScript", "TypeScript"] },
         { name: "Frontend", items: ["React", "Vue", "Next.js", "HTML/CSS"] },
-        { name: "Backend y datos", items: ["Node.js", "PostgreSQL", "Prisma"] },
-        { name: "Herramientas", items: ["Docker", "Git", "Linux"] },
+        { name: "Backend y datos", items: ["Oracle", "PostgreSQL", "Node.js", "Prisma"] },
+        { name: "Herramientas", items: ["Docker", "Git", "Linux", "TOAD", "Jira"] },
         { name: "Aprendiendo", items: ["Python", "C++"] },
       ],
     },
@@ -389,7 +379,7 @@ export const content: Record<Lang, Content> = {
           period: "feb. 2025 — Actualidad",
           role: "Desarrollador PL/SQL",
           place: "Grupo gtt · Gestión Tributaria Territorial",
-          detail: "Desarrollo en SQL y PL/SQL para sistemas de gestión tributaria. Jornada completa en modalidad híbrida, compaginada con la carrera y la competición.",
+          detail: "Desarrollo sobre Oracle en SQL y PL/SQL —procedimientos, paquetes, vistas y triggers— para sistemas de gestión tributaria, trabajando con TOAD. Seguimiento por tickets en Jira y documentación en Confluence, dentro de un equipo de unas 20 personas organizado en células de cinco. Jornada completa en modalidad híbrida.",
         },
         {
           period: "oct. — nov. 2022",
@@ -410,7 +400,7 @@ export const content: Record<Lang, Content> = {
           period: "2023 — Actualidad",
           role: "Grado en Ingeniería Informática",
           place: "Universidad de Alicante",
-          detail: "En curso, compaginando la carrera con la competición al máximo nivel. [COMPLETAR: curso en el que estás y, si la tienes, especialidad o mención.]",
+          detail: "Cursando 4º, compaginado con el trabajo a jornada completa y la competición al máximo nivel.",
         },
         {
           period: "2020–2023",
@@ -421,13 +411,13 @@ export const content: Record<Lang, Content> = {
         {
           period: "2018–2020",
           role: "Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)",
-          place: "[COMPLETAR: centro]",
+          place: "FEMPA · Alicante",
           detail: "Desarrollo de software multiplataforma: programación, bases de datos, interfaces y despliegue de aplicaciones.",
         },
         {
           period: "2016–2018",
           role: "Grado Medio en Sistemas Microinformáticos y Redes",
-          place: "[COMPLETAR: centro]",
+          place: "IES Mutxamel · Alicante",
           detail: "Base en sistemas, equipos y redes.",
         },
       ],
@@ -495,26 +485,14 @@ export const content: Record<Lang, Content> = {
       featured: {
         status: "In progress",
         title: "Kaireté",
-        tagline: "Scheduling and planning to juggle training, studies and competitions.",
+        tagline: "A personal project in development: a scheduling app.",
         blocks: [
           {
-            label: "The problem",
-            text: "Juggling training, competitions and university is a mess of disconnected calendars. As an athlete I live it first-hand: I couldn't find a tool that combined athletic planning with everyday life.",
-          },
-          {
-            label: "My role",
-            text: "A personal project, end to end: data model design, backend, interface and deployment. The code stays private while I keep developing it towards a launch.",
-          },
-          {
-            label: "What it taught me",
-            text: "[COMPLETAR: the most valuable part. Describe a concrete problem you hit and how you solved it — that's what really shows you're an engineer.]",
+            label: "Status",
+            text: "In active development. I'll share more as the project takes shape.",
           },
         ],
-        highlights: [
-          "Relational data model with Prisma on PostgreSQL.",
-          "Reproducible environment with Docker so deployment doesn't depend on my machine.",
-          "[COMPLETAR: add 1–2 technical decisions you made and why.]",
-        ],
+        highlights: [],
         tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
         link: "",
         repo: "",
@@ -528,8 +506,8 @@ export const content: Record<Lang, Content> = {
       groups: [
         { name: "Languages", items: ["Java", "C#", "SQL", "PL/SQL", "JavaScript", "TypeScript"] },
         { name: "Frontend", items: ["React", "Vue", "Next.js", "HTML/CSS"] },
-        { name: "Backend & data", items: ["Node.js", "PostgreSQL", "Prisma"] },
-        { name: "Tools", items: ["Docker", "Git", "Linux"] },
+        { name: "Backend & data", items: ["Oracle", "PostgreSQL", "Node.js", "Prisma"] },
+        { name: "Tools", items: ["Docker", "Git", "Linux", "TOAD", "Jira"] },
         { name: "Learning", items: ["Python", "C++"] },
       ],
     },
@@ -676,7 +654,7 @@ export const content: Record<Lang, Content> = {
           period: "Feb 2025 — Present",
           role: "PL/SQL Developer",
           place: "Grupo gtt · Gestión Tributaria Territorial",
-          detail: "SQL and PL/SQL development for tax management systems. Full-time, hybrid, alongside my degree and competing.",
+          detail: "Oracle development in SQL and PL/SQL — stored procedures, packages, views and triggers — for tax management systems, working with TOAD. Work tracked in Jira and documented in Confluence, within a team of around 20 split into squads of five. Full-time, hybrid.",
         },
         {
           period: "Oct — Nov 2022",
@@ -708,13 +686,13 @@ export const content: Record<Lang, Content> = {
         {
           period: "2018–2020",
           role: "Higher Diploma in Multiplatform Application Development (DAM)",
-          place: "[COMPLETAR: institution]",
+          place: "FEMPA · Alicante",
           detail: "Cross-platform software development: programming, databases, interfaces and application deployment.",
         },
         {
           period: "2016–2018",
           role: "Intermediate Diploma in Microcomputer Systems & Networks",
-          place: "[COMPLETAR: institution]",
+          place: "IES Mutxamel · Alicante",
           detail: "Foundations in systems, hardware and networking.",
         },
       ],

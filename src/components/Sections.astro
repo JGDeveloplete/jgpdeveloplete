@@ -195,10 +195,14 @@ const trayectoria = t.experience.items.map(limpiarItem);
       </div>
 
       <aside class="featured-side">
-        <h4>{lang === "es" ? "Decisiones técnicas" : "Technical decisions"}</h4>
-        <ul class="featured-highlights">
-          {decisiones.map((h) => <li>{h}</li>)}
-        </ul>
+        {decisiones.length > 0 && (
+          <>
+            <h4>{lang === "es" ? "Decisiones técnicas" : "Technical decisions"}</h4>
+            <ul class="featured-highlights">
+              {decisiones.map((h) => <li>{h}</li>)}
+            </ul>
+          </>
+        )}
         <ul class="tags">{t.projects.featured.tags.map((tag) => <li>{tag}</li>)}</ul>
         {(t.projects.featured.link || t.projects.featured.repo) && (
           <div class="project-links">
