@@ -160,7 +160,7 @@ export const content: Record<Lang, Content> = {
       name: "Jose Giner Pérez",
       roles: ["Ingeniero Informático", "Velocista 100 m / 200 m", "Desarrollador PL/SQL"],
       lead:
-        "Compito en 100 y 200 metros y escribo código con la misma receta: constancia, disciplina y resiliencia dentro y fuera de la pista.",
+        "Compito en las pruebas de 100 y 200 metros lisos, y afronto el desarrollo de software con la misma exigencia: constancia, disciplina y resiliencia dentro y fuera de la pista.",
       ctaProjects: "Ver proyectos",
       ctaContact: "Hablemos",
     },
@@ -168,10 +168,10 @@ export const content: Record<Lang, Content> = {
       eyebrow: "Sobre mí",
       title: "Dos disciplinas, la misma mentalidad",
       paragraphs: [
-        "Corro los 100 y los 200 metros. Desde 2020 lo hago en Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
-        "Entrenar a ese nivel te enseña algo que se queda: los resultados no llegan de golpe ni por talento, llegan por repetir bien durante años.",
-        "Esa forma de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. Hoy trabajo como desarrollador PL/SQL a jornada completa, compaginándolo con la carrera de Ingeniería Informática y la competición al máximo nivel.",
-        "De ahí el nombre: Developlete nace de unir developer y athlete. No son dos caminos que compitan, son el mismo.",
+        "Practico el atletismo en las pruebas de velocidad, especializado en los 100 y 200 metros lisos. Desde 2020 compito en Primera División y División de Honor, la máxima categoría del atletismo español por equipos.",
+        "Competir a ese nivel enseña algo que acaba calando: los resultados no dependen del talento ni aparecen de un día para otro, sino de repetir bien durante años.",
+        "Esa manera de entrenar —medir, repetir, corregir y volver a empezar— es la misma con la que me siento a programar. Actualmente trabajo como desarrollador PL/SQL a jornada completa, compaginándolo con el Grado en Ingeniería Informática y la competición al máximo nivel.",
+        "De ahí el nombre: Developlete surge de la unión de developer y athlete. No son dos trayectorias que compitan entre sí, sino una misma.",
       ],
       facts: [
         { label: "Ubicación", value: "Sant Joan d'Alacant, Alicante" },
@@ -183,36 +183,36 @@ export const content: Record<Lang, Content> = {
     approach: {
       eyebrow: "Método",
       title: "Cómo trabajo",
-      sub: "Tres cosas que aplico igual en la pista que delante del teclado.",
+      sub: "Tres principios que aplico por igual en la pista y delante del teclado.",
       items: [
         {
-          title: "Primero entender, luego escribir",
-          text: "Antes de teclear intento tener claro qué problema resuelvo y para quién. Un requisito mal entendido cuesta más que cualquier bug.",
+          title: "Primero entender, después escribir",
+          text: "Antes de escribir una sola línea procuro tener claro qué problema resuelvo y para quién. Un requisito mal entendido sale más caro que cualquier error de código.",
         },
         {
           title: "Los datos mandan",
-          text: "En la pista el cronómetro no opina. Con los datos igual: prefiero ir a comprobarlo a la fuente antes que dar nada por supuesto.",
+          text: "En la pista el cronómetro no admite interpretaciones, y con los datos ocurre lo mismo: prefiero contrastarlos en la fuente antes que dar nada por supuesto.",
         },
         {
           title: "Constancia sobre inspiración",
-          text: "Los proyectos, como las temporadas, se ganan en el trabajo repetido: avances pequeños, documentados y sostenidos en el tiempo.",
+          text: "Los proyectos, igual que las temporadas, se ganan con trabajo sostenido: avances pequeños, documentados y mantenidos en el tiempo.",
         },
       ],
     },
     projects: {
       eyebrow: "Portfolio",
       title: "Proyectos",
-      sub: "Prefiero enseñar pocos proyectos y bien explicados que una lista larga sin fondo.",
+      sub: "Prefiero mostrar pocos proyectos bien explicados antes que una lista extensa y superficial.",
       featured: {
         status: "En desarrollo",
         title: "Kaireté",
-        tagline: "Proyecto propio en desarrollo: una aplicación en formato agenda.",
+        tagline: "Proyecto personal en desarrollo: una aplicación en formato agenda.",
         // Deliberadamente escueto: JG prefiere no destapar el producto hasta
         // que esté más maduro. Ampliar solo cuando él lo decida.
         blocks: [
           {
             label: "Estado",
-            text: "En desarrollo activo. Iré contando más a medida que el proyecto avance.",
+            text: "En desarrollo activo. Compartiré más detalles conforme el proyecto vaya madurando.",
           },
         ],
         highlights: [],
@@ -222,7 +222,7 @@ export const content: Record<Lang, Content> = {
       },
       items: [],
       moreSoon:
-        "Estoy construyendo mi catálogo de proyectos. Los siguientes irán apareciendo aquí.",
+        "Mi catálogo de proyectos está en construcción; los próximos se irán incorporando aquí.",
     },
     stack: {
       eyebrow: "Herramientas",
@@ -386,13 +386,13 @@ export const content: Record<Lang, Content> = {
           period: "oct. — nov. 2022",
           role: "Desarrollador back-end",
           place: "MindDen · Alicante",
-          detail: "Desarrollo de back-end con PHP.",
+          detail: "Desarrollo de back-end en PHP.",
         },
         {
           period: "abr. — jun. 2018",
           role: "Técnico de reparación de equipos informáticos",
           place: "TL Computer Systems (Wales) Ltd · Cardiff, Reino Unido",
-          detail: "Reparación y mantenimiento de equipos. Primera experiencia profesional, trabajando en inglés.",
+          detail: "Reparación y mantenimiento de equipos informáticos. Mi primera experiencia profesional, desarrollada íntegramente en inglés.",
         },
       ],
       educationTitle: "Formación",
@@ -426,7 +426,7 @@ export const content: Record<Lang, Content> = {
     contact: {
       eyebrow: "Contacto",
       title: "Hablemos",
-      lead: "¿Un proyecto, una oportunidad o un patrocinio? Escríbeme.",
+      lead: "¿Un proyecto, una oportunidad profesional o un patrocinio? Escríbeme.",
       email: shared.email,
       ctaEmail: "Enviar un email",
       socials: shared.socials,
@@ -441,7 +441,7 @@ export const content: Record<Lang, Content> = {
       name: "Jose Giner Pérez",
       roles: ["Software Engineer", "100 m / 200 m Sprinter", "PL/SQL Developer"],
       lead:
-        "A 100 and 200 m sprinter who writes code with the same mindset the track demands: consistency, discipline and the resolve to keep improving.",
+        "A 100 and 200 metres sprinter who approaches software with the same demands the track makes: consistency, discipline and the resolve to keep improving.",
       ctaProjects: "View projects",
       ctaContact: "Get in touch",
     },
@@ -449,10 +449,10 @@ export const content: Record<Lang, Content> = {
       eyebrow: "About",
       title: "Two disciplines, one mindset",
       paragraphs: [
-        "I run the 100 and 200 metres. Since 2020 I've raced in Spain's First Division and División de Honor, the top tier of national team athletics.",
-        "Training at that level teaches you something that sticks: results don't arrive all at once, and they don't come from talent — they come from repeating things well, for years.",
-        "That way of training — measure, repeat, correct, start again — is exactly how I approach code. I currently work full-time as a PL/SQL developer, alongside my Computer Engineering degree and competing at the highest level.",
-        "Hence the name: Developlete comes from blending developer and athlete. They aren't two competing paths — they're the same one.",
+        "I compete in the sprints, specialising in the 100 and 200 metres. Since 2020 I have raced in Spain's First Division and División de Honor, the top tier of national team athletics.",
+        "Competing at that level teaches you something that stays with you: results do not come from talent, nor overnight, but from repeating things well, year after year.",
+        "That way of training — measure, repeat, correct, begin again — is exactly how I approach code. I currently work full-time as a PL/SQL developer, alongside my Computer Engineering degree and competing at the highest level.",
+        "Hence the name: Developlete comes from joining developer and athlete. They are not two competing paths, but one and the same.",
       ],
       facts: [
         { label: "Location", value: "Sant Joan d'Alacant, Alicante (Spain)" },
@@ -464,34 +464,34 @@ export const content: Record<Lang, Content> = {
     approach: {
       eyebrow: "Method",
       title: "How I work",
-      sub: "Three things I apply the same way on the track and at the keyboard.",
+      sub: "Three principles I apply equally on the track and at the keyboard.",
       items: [
         {
-          title: "Understand first, type second",
-          text: "Before writing code I make sure I know what problem I'm solving and for whom. A misunderstood requirement costs more than any bug.",
+          title: "Understand first, write second",
+          text: "Before writing a single line I make sure I know what problem I am solving and for whom. A misunderstood requirement costs more than any bug.",
         },
         {
           title: "Let the data decide",
-          text: "On the track, the stopwatch doesn't have opinions. Same with data: I'd rather go and check it at the source than assume anything.",
+          text: "On the track the stopwatch leaves no room for interpretation, and data works the same way: I would rather verify it at the source than assume anything.",
         },
         {
           title: "Consistency over inspiration",
-          text: "Projects, like seasons, are won through repeated work: small, documented progress sustained over time.",
+          text: "Projects, like seasons, are won through sustained work: small steps, documented and kept up over time.",
         },
       ],
     },
     projects: {
       eyebrow: "Portfolio",
       title: "Projects",
-      sub: "I'd rather show a few projects explained properly than a long list with no substance.",
+      sub: "I would rather show a few projects explained properly than a long, superficial list.",
       featured: {
         status: "In progress",
         title: "Kaireté",
-        tagline: "A personal project in development: a scheduling app.",
+        tagline: "A personal project in development: a scheduling application.",
         blocks: [
           {
             label: "Status",
-            text: "In active development. I'll share more as the project takes shape.",
+            text: "In active development. I will share more as the project matures.",
           },
         ],
         highlights: [],
@@ -500,7 +500,7 @@ export const content: Record<Lang, Content> = {
         repo: "",
       },
       items: [],
-      moreSoon: "I'm building up my project catalogue. The next ones will show up here.",
+      moreSoon: "My project catalogue is a work in progress; the next ones will be added here.",
     },
     stack: {
       eyebrow: "Tooling",
@@ -668,7 +668,7 @@ export const content: Record<Lang, Content> = {
           period: "Apr — Jun 2018",
           role: "IT Repair Technician",
           place: "TL Computer Systems (Wales) Ltd · Cardiff, UK",
-          detail: "Hardware repair and maintenance. My first job, working in English.",
+          detail: "Computer hardware repair and maintenance. My first professional role, carried out entirely in English.",
         },
       ],
       educationTitle: "Education",
@@ -702,7 +702,7 @@ export const content: Record<Lang, Content> = {
     contact: {
       eyebrow: "Contact",
       title: "Let's talk",
-      lead: "A project, an opportunity or a sponsorship? Drop me a line.",
+      lead: "A project, a professional opportunity or a sponsorship? Drop me a line.",
       email: shared.email,
       ctaEmail: "Send an email",
       socials: shared.socials,
