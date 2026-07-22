@@ -50,7 +50,38 @@ Busca los `[COMPLETAR]` y sustitúyelos. Lista completa en **RELLENAR.md**.
 Para añadir un idioma, se amplía `content.ts` y `astro.config.mjs` y se crea la
 página correspondiente.
 
-## Publicar (gratis)
+## Publicar en Cloudflare Pages (elegido)
+
+Dominio: **jgdeveloplete.com** (ya configurado en `astro.config.mjs`).
+
+1. **Registrar el dominio.** Lo más cómodo es hacerlo en el propio
+   [Cloudflare](https://dash.cloudflare.com) (Domain Registration): lo venden a
+   precio de coste, sin renovaciones infladas, y queda ya conectado.
+2. **Crear el proyecto.** Cloudflare Dashboard → *Workers & Pages* → *Create*
+   → *Pages* → *Connect to Git* → elegir el repo `jgpdeveloplete`.
+   - Framework preset: **Astro**
+   - Build command: `npm run build`
+   - Output directory: `dist`
+3. **Conectar el dominio.** En el proyecto → *Custom domains* → añadir
+   `jgdeveloplete.com` y `www.jgdeveloplete.com`. El HTTPS es automático.
+4. **A partir de ahí**, cada `git push` a `main` publica sola la web.
+
+### Que las marcas se refresquen solas
+El bloque «Temporada» se genera al compilar. Para que se actualice sin tocar
+nada, hay un workflow en `.github/workflows/refrescar-marcas.yml` que republica
+la web cada lunes. Solo hay que crear un *Deploy hook* en Cloudflare y guardar
+su URL como secreto `CLOUDFLARE_DEPLOY_HOOK` en GitHub (instrucciones dentro
+del propio fichero).
+
+### SEO (ya montado)
+- `sitemap-index.xml` y `robots.txt` generados automáticamente.
+- URL canónica y `hreflang` en cada página (para que `/` y `/en/` no compitan).
+- Imagen y descripción al compartir el enlace (WhatsApp, LinkedIn, X…).
+- **Pendiente tras publicar**: dar de alta la web en
+  [Google Search Console](https://search.google.com/search-console) y enviar el
+  sitemap. Es lo que hace que Google la encuentre en días en vez de semanas.
+
+## Otras opciones de hosting
 
 Antes de publicar, pon tu URL real en `astro.config.mjs` (campo `site`).
 

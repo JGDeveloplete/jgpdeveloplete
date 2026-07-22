@@ -1,0 +1,34 @@
+# Vuelve a publicar la web cada lunes para que el bloque "Temporada" se
+# refresque con las marcas más recientes de World Athletics (se piden en
+# tiempo de compilación, así que basta con volver a compilar).
+#
+# PARA ACTIVARLO (una sola vez):
+#   1. En Cloudflare Pages → tu proyecto → Settings → Builds & deployments
+#      → Deploy hooks → "Add deploy hook" (rama: main). Copia la URL.
+#   2. En GitHub → repo → Settings → Secrets and variables → Actions
+#      → New repository secret:
+#         Name:   CLOUDFLARE_DEPLOY_HOOK
+#         Secret: (pega la URL del paso 1)
+#
+# También se puede lanzar a mano desde la pestaña Actions ("Run workflow").
+
+name: Refrescar marcas
+
+on:
+  schedule:
+    # Lunes a las 6:00 UTC. En temporada puedes bajarlo a diario.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  republicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lanzar despliegue en Cloudflare Pages
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}" ]; then
+            echo "Falta el secreto CLOUDFLARE_DEPLOY_HOOK. Ver instrucciones arriba."
+            exit 1
+          fi
+          curl -sS -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
+          echo "Despliegue solicitado."

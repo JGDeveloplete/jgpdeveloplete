@@ -1,11 +1,12 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build
 export default defineConfig({
-  // Cambia esto por tu dominio o URL de GitHub Pages cuando publiques,
-  // p. ej. "https://jgdeveloplete.github.io" o "https://tudominio.com".
-  site: "https://example.com",
+  // Dominio definitivo. Lo usan el sitemap, las URLs canónicas y las
+  // etiquetas para redes sociales, así que tiene que ser el real.
+  site: "https://jgdeveloplete.com",
 
   i18n: {
     defaultLocale: "es",
@@ -15,4 +16,15 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+
+  integrations: [
+    // Genera sitemap-index.xml para que Google descubra todas las páginas,
+    // indicando qué versión corresponde a cada idioma.
+    sitemap({
+      i18n: {
+        defaultLocale: "es",
+        locales: { es: "es-ES", en: "en" },
+      },
+    }),
+  ],
 });

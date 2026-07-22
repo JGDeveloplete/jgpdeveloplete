@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jgdeveloplete.com/sitemap-index.xml
