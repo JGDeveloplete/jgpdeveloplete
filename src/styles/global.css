@@ -235,6 +235,20 @@ img { max-width: 100%; display: block; }
 .tags li { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: .2rem .5rem; }
 .project-links { display: flex; gap: 1rem; font-size: .85rem; font-weight: 600; }
 
+/* El enlace del proyecto DESTACADO (Kaireté) se ve como un botón de verdad,
+   para que llame a pulsarlo. Los proyectos pequeños siguen con enlace discreto. */
+.featured .project-links { gap: .8rem; margin-top: 1.4rem; font-size: .95rem; flex-wrap: wrap; }
+.featured .project-links a {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .75rem 1.4rem; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
+}
+.featured .project-links a:hover {
+  text-decoration: none; transform: translateY(-2px);
+  filter: brightness(1.05); box-shadow: 0 8px 22px rgba(0,0,0,.18);
+}
+
 /* --------- Stack --------- */
 .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
 .stack-group h3 { font-size: 1.05rem; margin: 0 0 .8rem; color: var(--text); }
