@@ -1,0 +1,46 @@
+# Despliegue del portfolio en GitHub Pages.
+#
+# Por qué GitHub Pages y no Cloudflare: los operadores españoles (Vodafone,
+# Movistar…) bloquean rangos de IP de Cloudflare por las órdenes antipiratería
+# de LaLiga, y eso tumbaba la web desde España. GitHub Pages usa otras IPs
+# (185.199.108-111.x) que no están bloqueadas, así que se ve desde España.
+#
+# Cada push a main reconstruye y publica solo.
+name: Desplegar a GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un despliegue a la vez; no cancelar el que esté en curso.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+      - name: Construir con Astro
+        uses: withastro/action@v3
+        with:
+          node-version: 22
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
