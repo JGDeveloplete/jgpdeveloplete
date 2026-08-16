@@ -1,0 +1,299 @@
+---
+/**
+ * DEMO de escaparate: una web de reservas de ejemplo.
+ *
+ * No es un cliente real ni imita a nadie: la profesional es ficticia («Ejemplo»
+ * de apellido, a propósito) y no se reserva nada de verdad. Sirve para enseñar
+ * en el portfolio qué tipo de web con citas monto para profesionales que
+ * atienden en consulta (psicólogos, pedagogas, fisios, abogados…).
+ *
+ * Es una MAQUETA estática: el calendario y las horas son de mentira y se
+ * generan en el navegador. Una web real usa el motor dinámico (Workers + base
+ * de datos), que no vive aquí. Por eso, y porque es una demo, lleva noindex:
+ * no tiene por qué salir en Google.
+ *
+ * Página autónoma: NO usa el layout del portfolio a propósito, para que se vea
+ * como una web de cliente de verdad, no como una sección del portfolio.
+ */
+const anioActual = 2026; // solo para el pie; el calendario usa la fecha del navegador
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo — Web de citas para profesionales · JGP Developlete</title>
+    <meta name="description" content="Ejemplo de web con reserva de citas online. Profesional ficticia; demostración sin reservas reales." />
+    <!-- Es una demo: fuera de los buscadores. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --fondo: #fdfaf6;
+        --tinta: #332f2a;
+        --principal: #7d8f6c;
+        --acento: #c9835b;
+        --suave: #f2eae0;
+        --linea: #e7ddd0;
+        --serif: "Fraunces", Georgia, serif;
+        --sans: "Inter", system-ui, sans-serif;
+        --radio: 16px;
+        --sombra: 0 14px 40px rgba(51, 47, 42, 0.10);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; font-family: var(--sans); color: var(--tinta);
+        background: var(--fondo); line-height: 1.6; -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; margin: 0; }
+      a { color: inherit; }
+      img { max-width: 100%; display: block; }
+      .env { width: min(100% - 2rem, 960px); margin-inline: auto; }
+
+      /* --- Cinta de demo: siempre visible, para que nadie confunda esto con una web real --- */
+      .demo-cinta {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--tinta); color: #fdfaf6;
+        font-size: .84rem; text-align: center; padding: .6rem 1rem;
+        display: flex; gap: .5rem 1.2rem; justify-content: center; align-items: center; flex-wrap: wrap;
+      }
+      .demo-cinta strong { color: var(--acento); }
+      .demo-cinta a { color: #fdfaf6; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+
+      /* --- Cabecera de la "clienta" ficticia --- */
+      .cab { padding: 2.4rem 0 1rem; }
+      .cab-fila { display: flex; align-items: center; gap: .8rem; }
+      .cab-ini {
+        width: 46px; height: 46px; border-radius: 50%; flex: none;
+        display: grid; place-items: center; background: var(--principal); color: #fff;
+        font-family: var(--serif); font-size: 1.4rem;
+      }
+      .cab-nombre { font-size: 1.15rem; font-weight: 600; }
+      .cab-rol { font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--acento); }
+
+      /* --- Hero --- */
+      .hero { padding: 1.5rem 0 2.5rem; }
+      .hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); max-width: 15ch; }
+      .hero p { font-size: clamp(1.05rem, 2.5vw, 1.2rem); max-width: 46ch; color: #5c554c; margin: 1rem 0 0; }
+
+      /* --- Reserva --- */
+      .reserva { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); box-shadow: var(--sombra); padding: clamp(1.2rem, 4vw, 2.2rem); margin-bottom: 3rem; }
+      .reserva h2 { font-size: 1.5rem; margin-bottom: .3rem; }
+      .reserva .ayuda { color: #7a726a; font-size: .95rem; margin: 0 0 1.6rem; }
+
+      .paso-titulo { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--acento); margin: 0 0 .8rem; font-weight: 600; }
+
+      .servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin-bottom: 2rem; }
+      .servicio { text-align: left; background: var(--fondo); border: 1.5px solid var(--linea); border-radius: 12px; padding: 1rem 1.1rem; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, transform .15s; }
+      .servicio:hover { border-color: var(--principal); transform: translateY(-2px); }
+      .servicio[aria-pressed="true"] { border-color: var(--principal); background: #fff; box-shadow: inset 0 0 0 1.5px var(--principal); }
+      .servicio-nombre { font-weight: 600; display: block; }
+      .servicio-meta { font-size: .88rem; color: #7a726a; }
+
+      .cal-cab { display: flex; align-items: center; justify-content: space-between; margin-bottom: .9rem; }
+      .cal-mes { font-family: var(--serif); font-size: 1.2rem; text-transform: capitalize; }
+      .cal-nav { display: flex; gap: .4rem; }
+      .cal-btn { width: 38px; height: 38px; border-radius: 10px; border: 1.5px solid var(--linea); background: #fff; cursor: pointer; font-size: 1.1rem; color: var(--tinta); display: grid; place-items: center; }
+      .cal-btn:disabled { opacity: .35; cursor: default; }
+      .cal-rejilla { display: grid; grid-template-columns: repeat(7, 1fr); gap: .35rem; }
+      .cal-dow { text-align: center; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: #a89e92; padding-bottom: .3rem; }
+      .cal-dia { aspect-ratio: 1; border: 0; background: transparent; border-radius: 10px; font: inherit; font-size: .95rem; color: var(--tinta); cursor: pointer; display: grid; place-items: center; position: relative; }
+      .cal-dia.vacio { cursor: default; }
+      .cal-dia.libre { background: var(--suave); font-weight: 600; }
+      .cal-dia.libre:hover { background: var(--principal); color: #fff; }
+      .cal-dia.nodisp { color: #ccc3b6; cursor: default; }
+      .cal-dia.sel { background: var(--principal); color: #fff; }
+
+      .horas { margin-top: 1.6rem; }
+      .horas-lista { display: flex; flex-wrap: wrap; gap: .5rem; }
+      .hora { padding: .6rem 1rem; border: 1.5px solid var(--linea); background: #fff; border-radius: 10px; font: inherit; cursor: pointer; transition: border-color .15s, background .15s; }
+      .hora:hover { border-color: var(--acento); background: var(--fondo); }
+      .placeholder { color: #a89e92; font-size: .95rem; }
+
+      /* --- Modal de "esto es una demo" --- */
+      .modal-fondo { position: fixed; inset: 0; background: rgba(51,47,42,.55); display: none; place-items: center; padding: 1.2rem; z-index: 30; }
+      .modal-fondo.abierto { display: grid; }
+      .modal { background: #fff; border-radius: var(--radio); padding: 2rem; max-width: 420px; text-align: center; box-shadow: var(--sombra); }
+      .modal h3 { font-size: 1.4rem; margin-bottom: .6rem; }
+      .modal p { color: #5c554c; margin: 0 0 1.4rem; }
+      .modal .resumen { background: var(--suave); border-radius: 12px; padding: .8rem 1rem; margin: 0 0 1.2rem; font-size: .95rem; }
+      .modal button { padding: .7rem 1.6rem; border: 0; border-radius: 10px; background: var(--principal); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+
+      /* --- Pie --- */
+      .pie { border-top: 1px solid var(--linea); padding: 2rem 0 3rem; font-size: .9rem; color: #7a726a; }
+      .pie a { color: var(--principal); font-weight: 600; }
+
+      @media (max-width: 560px) {
+        .servicios { grid-template-columns: 1fr; }
+        .cal-rejilla { gap: .2rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-cinta">
+      <span><strong>Demostración</strong> · Web de citas de ejemplo · Profesional ficticia, no se reserva nada real</span>
+      <a href="/">← Volver al portfolio</a>
+    </div>
+
+    <header class="cab env">
+      <div class="cab-fila">
+        <span class="cab-ini" aria-hidden="true">E</span>
+        <span>
+          <span class="cab-nombre">Marta Ejemplo</span><br />
+          <span class="cab-rol">Psicóloga · Ejemplo</span>
+        </span>
+      </div>
+    </header>
+
+    <section class="hero env">
+      <h1>Pide cita cuando mejor te venga</h1>
+      <p>Elige el día y la hora en el calendario y reserva en un minuto, sin llamadas ni esperas. Así funcionaría la web de reservas de tu consulta.</p>
+    </section>
+
+    <section class="reserva env" aria-label="Reserva de cita (demostración)">
+      <h2>Reservar una sesión</h2>
+      <p class="ayuda">Ejemplo interactivo. Elige servicio, día y hora para ver el flujo completo.</p>
+
+      <p class="paso-titulo">1 · Elige el servicio</p>
+      <div class="servicios" id="servicios">
+        <button class="servicio" data-nombre="Primera consulta" data-dur="50 min" data-precio="60 €" aria-pressed="true">
+          <span class="servicio-nombre">Primera consulta</span>
+          <span class="servicio-meta">50 min · 60 €</span>
+        </button>
+        <button class="servicio" data-nombre="Sesión de seguimiento" data-dur="45 min" data-precio="50 €" aria-pressed="false">
+          <span class="servicio-nombre">Sesión de seguimiento</span>
+          <span class="servicio-meta">45 min · 50 €</span>
+        </button>
+        <button class="servicio" data-nombre="Sesión online" data-dur="45 min" data-precio="50 €" aria-pressed="false">
+          <span class="servicio-nombre">Sesión online</span>
+          <span class="servicio-meta">45 min · 50 €</span>
+        </button>
+      </div>
+
+      <p class="paso-titulo">2 · Elige el día</p>
+      <div class="cal-cab">
+        <span class="cal-mes" id="cal-mes">—</span>
+        <div class="cal-nav">
+          <button class="cal-btn" id="cal-prev" aria-label="Mes anterior">‹</button>
+          <button class="cal-btn" id="cal-next" aria-label="Mes siguiente">›</button>
+        </div>
+      </div>
+      <div class="cal-rejilla" id="cal-dow"></div>
+      <div class="cal-rejilla" id="cal-dias"></div>
+
+      <div class="horas">
+        <p class="paso-titulo">3 · Elige la hora</p>
+        <div class="horas-lista" id="horas-lista">
+          <span class="placeholder">Elige primero un día del calendario.</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pie env">
+      Esto es una <strong>maqueta de demostración</strong>: «Marta Ejemplo» no existe y no se guarda ninguna reserva.
+      Es un ejemplo del tipo de web con citas que desarrollo. ¿Quieres una para tu consulta?
+      <a href="/#contact">Hablemos</a>.
+    </footer>
+
+    <div class="modal-fondo" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-tit">
+      <div class="modal">
+        <h3 id="modal-tit">¡Así de fácil!</h3>
+        <p>En una web real, aquí se confirmaría tu cita y recibirías un correo. Esto es una demostración: no se ha guardado nada.</p>
+        <div class="resumen" id="modal-resumen"></div>
+        <button id="modal-cerrar">Entendido</button>
+      </div>
+    </div>
+
+    <script>
+      // Todo de mentira y en el navegador: es una maqueta. Una web real calcula
+      // los huecos en el servidor contra una base de datos.
+      const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+      const DOW = ["L","M","X","J","V","S","D"];
+      const HORAS = ["10:00","10:45","11:30","12:15","17:00","17:45","18:30"];
+
+      let servicio = { nombre: "Primera consulta", dur: "50 min", precio: "60 €" };
+      let diaSel = null;
+      const hoy = new Date();
+      let verMes = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+
+      const $ = (id) => document.getElementById(id);
+
+      // Servicios
+      document.querySelectorAll(".servicio").forEach((b) => {
+        b.addEventListener("click", () => {
+          document.querySelectorAll(".servicio").forEach((o) => o.setAttribute("aria-pressed", "false"));
+          b.setAttribute("aria-pressed", "true");
+          servicio = { nombre: b.dataset.nombre, dur: b.dataset.dur, precio: b.dataset.precio };
+        });
+      });
+
+      // Cabecera de días de la semana
+      $("cal-dow").innerHTML = DOW.map((d) => `<div class="cal-dow">${d}</div>`).join("");
+
+      // Disponibilidad de mentira, estable por fecha: los días laborables cuyo
+      // número no es múltiplo de 3, y siempre a partir de mañana.
+      function libre(fecha) {
+        const dow = fecha.getDay(); // 0 = domingo
+        if (dow === 0 || dow === 6) return false;
+        const manana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 1);
+        if (fecha < manana) return false;
+        return fecha.getDate() % 3 !== 0;
+      }
+
+      function pintarMes() {
+        $("cal-mes").textContent = `${MESES[verMes.getMonth()]} ${verMes.getFullYear()}`;
+        const primero = new Date(verMes.getFullYear(), verMes.getMonth(), 1);
+        const offset = (primero.getDay() + 6) % 7; // lunes = 0
+        const diasMes = new Date(verMes.getFullYear(), verMes.getMonth() + 1, 0).getDate();
+        let html = "";
+        for (let i = 0; i < offset; i++) html += `<span class="cal-dia vacio"></span>`;
+        for (let d = 1; d <= diasMes; d++) {
+          const fecha = new Date(verMes.getFullYear(), verMes.getMonth(), d);
+          if (libre(fecha)) {
+            html += `<button class="cal-dia libre" data-dia="${d}">${d}</button>`;
+          } else {
+            html += `<span class="cal-dia nodisp">${d}</span>`;
+          }
+        }
+        $("cal-dias").innerHTML = html;
+        $("cal-dias").querySelectorAll(".libre").forEach((b) => {
+          b.addEventListener("click", () => elegirDia(parseInt(b.dataset.dia, 10), b));
+        });
+        // No dejar ir a meses pasados
+        const esteMes = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+        $("cal-prev").disabled = verMes <= esteMes;
+      }
+
+      function elegirDia(d, btn) {
+        diaSel = new Date(verMes.getFullYear(), verMes.getMonth(), d);
+        document.querySelectorAll(".cal-dia").forEach((x) => x.classList.remove("sel"));
+        btn.classList.add("sel");
+        $("horas-lista").innerHTML = HORAS.map((h) => `<button class="hora" data-hora="${h}">${h}</button>`).join("");
+        $("horas-lista").querySelectorAll(".hora").forEach((b) => {
+          b.addEventListener("click", () => confirmar(b.dataset.hora));
+        });
+      }
+
+      function confirmar(hora) {
+        const f = diaSel.toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
+        $("modal-resumen").textContent = `${servicio.nombre} (${servicio.dur} · ${servicio.precio}) · ${f} a las ${hora}`;
+        $("modal").classList.add("abierto");
+      }
+
+      $("cal-prev").addEventListener("click", () => { verMes = new Date(verMes.getFullYear(), verMes.getMonth() - 1, 1); pintarMes(); });
+      $("cal-next").addEventListener("click", () => { verMes = new Date(verMes.getFullYear(), verMes.getMonth() + 1, 1); pintarMes(); });
+      $("modal-cerrar").addEventListener("click", () => $("modal").classList.remove("abierto"));
+      $("modal").addEventListener("click", (e) => { if (e.target === $("modal")) $("modal").classList.remove("abierto"); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("modal").classList.remove("abierto"); });
+
+      pintarMes();
+    </script>
+  </body>
+</html>
