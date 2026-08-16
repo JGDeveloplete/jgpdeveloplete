@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // Dominio definitivo. Lo usan el sitemap, las URLs canónicas y las
   // etiquetas para redes sociales, así que tiene que ser el real.
-  site: "https://jgdeveloplete.com",
+  site: "https://jgpdeveloplete.com",
 
   i18n: {
     defaultLocale: "es",
