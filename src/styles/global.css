@@ -121,6 +121,9 @@ img { max-width: 100%; display: block; }
 .lang-switch a:hover { text-decoration: none; color: var(--text); }
 .lang-switch a.active:hover { color: var(--accent-ink); }
 
+/* Idioma + color en la misma fila (un solo <li> en la cabecera). */
+.switches { display: inline-flex; align-items: center; gap: 1rem; }
+
 /* --------- Selector de tema --------- */
 .theme-switch { display: inline-flex; gap: .4rem; align-items: center; }
 .theme-dot {
@@ -401,7 +404,9 @@ img { max-width: 100%; display: block; }
   .bests { grid-template-columns: 1fr 1fr; }
   .approach-grid { grid-template-columns: 1fr; gap: 1.2rem; }
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-portrait { max-width: 340px; order: -1; }
+  /* En móvil, primero el texto (nombre e info) y DESPUÉS la galería. Antes
+     llevaba order:-1 y la galería tapaba lo primero que se veía. */
+  .hero-portrait { max-width: 340px; margin-inline: auto; }
   .featured { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.6rem; }
   .featured-side { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.5rem; }
 
@@ -425,7 +430,12 @@ img { max-width: 100%; display: block; }
   .nav-menu.open { display: flex; }
   .nav-menu > li { border-top: 1px solid var(--line); }
   .nav-menu > li a { display: block; padding: .9rem 0; }
-  .nav-menu .lang-switch { margin-top: .9rem; align-self: flex-start; }
+  /* Idioma y color en una sola fila dentro del menú, y un poco más grandes
+     para acertar con el dedo. */
+  .nav-menu .switches { display: flex; align-items: center; gap: 1.1rem; padding: 1rem 0; flex-wrap: wrap; }
+  .nav-menu .lang-switch a { padding: .45rem 1rem; font-size: .9rem; }
+  .nav-menu .theme-switch { gap: .6rem; }
+  .nav-menu .theme-dot { width: 28px; height: 28px; }
 }
 
 @media (max-width: 560px) {
