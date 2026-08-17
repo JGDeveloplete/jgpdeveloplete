@@ -1,6 +1,7 @@
 ---
 import { content, type Lang } from "../i18n/content";
 import Gallery from "./Gallery.astro";
+import { demos } from "../lib/demos";
 import { marcasTemporada } from "../lib/worldAthletics";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -174,9 +175,6 @@ const trayectoria = t.experience.items.map(limpiarItem);
       <p class="eyebrow">{t.projects.eyebrow}</p>
       <h2 class="section-title">{t.projects.title}</h2>
       <p class="section-sub">{t.projects.sub}</p>
-      <p class="projects-demos-cta">
-        <a href="/demos/">{lang === "es" ? "Ver demos de webs con reservas" : "See booking website demos"} ↗</a>
-      </p>
     </div>
 
     <article class="featured">
@@ -235,6 +233,28 @@ const trayectoria = t.experience.items.map(limpiarItem);
     ) : (
       <p class="more-soon">{t.projects.moreSoon}</p>
     )}
+  </div>
+</section>
+
+<!-- ===================== SERVICIO: WEBS CON RESERVAS ===================== -->
+<section class="section section-alt" id="service">
+  <div class="container">
+    <div class="service-box">
+      <div class="service-copy">
+        <p class="eyebrow">{t.service.eyebrow}</p>
+        <h2 class="section-title">{t.service.title}</h2>
+        <p class="service-text">{t.service.text}</p>
+        <a class="btn btn-primary" href="/demos/">{t.service.cta} ↗</a>
+      </div>
+      <div class="service-verticals">
+        <p class="service-verticals-label">{t.service.verticalsLabel}</p>
+        <ul class="service-vlist">
+          {demos.map((d) => (
+            <li><a href={`/demos/${d.slug}/`}>{d.profesion}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 

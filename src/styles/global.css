@@ -172,9 +172,15 @@ img { max-width: 100%; display: block; }
 .eyebrow { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .6rem; }
 .section-title { font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 0 0 .8rem; }
 .section-sub { color: var(--muted); margin: 0; }
-.projects-demos-cta { margin: 1rem 0 0; }
-.projects-demos-cta a { display: inline-flex; align-items: center; gap: .35rem; font-weight: 600; font-size: .95rem; color: var(--accent); }
-.projects-demos-cta a:hover { text-decoration: none; opacity: .85; }
+/* Bloque de servicio (webs con reservas) + sus salidas por sector. */
+.section-alt { background: var(--bg-soft); }
+.service-box { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; }
+.service-text { color: var(--muted); margin: 1rem 0 1.6rem; max-width: 52ch; }
+.service-verticals-label { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .9rem; font-weight: 600; }
+.service-vlist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.service-vlist a { display: inline-block; padding: .55rem 1.1rem; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; font-weight: 500; color: var(--text); background: var(--surface); transition: border-color .15s ease, color .15s ease, transform .15s ease; }
+.service-vlist a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+@media (max-width: 760px) { .service-box { grid-template-columns: 1fr; gap: 1.8rem; } }
 
 /* --------- About --------- */
 .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }

@@ -88,6 +88,15 @@ export interface Content {
     /** Nota que se muestra cuando aún no hay más proyectos. */
     moreSoon: string;
   };
+  /** Bloque «servicio»: webs con reservas como algo que ofrezco. Las salidas
+   *  (sectores) se derivan de src/lib/demos.ts, no se escriben aquí. */
+  service: {
+    eyebrow: string;
+    title: string;
+    text: string;
+    verticalsLabel: string;
+    cta: string;
+  };
   stack: { title: string; eyebrow: string; groups: { name: string; items: string[] }[] };
   sport: {
     title: string;
@@ -227,6 +236,13 @@ export const content: Record<Lang, Content> = {
       items: [],
       moreSoon:
         "Mi catálogo de proyectos está en construcción; los próximos se irán incorporando aquí.",
+    },
+    service: {
+      eyebrow: "Un servicio",
+      title: "Webs con reservas para profesionales",
+      text: "Desarrollo webs con sistema de citas propio para negocios que atienden con cita: el cliente elige día y hora y reserva solo, sin llamadas ni esperas. Un mismo motor, adaptado a cada sector.",
+      verticalsLabel: "Algunos sectores",
+      cta: "Ver las demos",
     },
     stack: {
       eyebrow: "Herramientas",
@@ -509,6 +525,13 @@ export const content: Record<Lang, Content> = {
       },
       items: [],
       moreSoon: "My project catalogue is a work in progress; the next ones will be added here.",
+    },
+    service: {
+      eyebrow: "A service",
+      title: "Booking websites for professionals",
+      text: "I build websites with their own appointment system for businesses that work by appointment: the client picks a day and time and books on their own, no calls, no waiting. One engine, tailored to each field.",
+      verticalsLabel: "Some fields",
+      cta: "See the demos",
     },
     stack: {
       eyebrow: "Tooling",
