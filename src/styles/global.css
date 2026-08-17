@@ -172,6 +172,9 @@ img { max-width: 100%; display: block; }
 .eyebrow { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .6rem; }
 .section-title { font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 0 0 .8rem; }
 .section-sub { color: var(--muted); margin: 0; }
+.projects-demos-cta { margin: 1rem 0 0; }
+.projects-demos-cta a { display: inline-flex; align-items: center; gap: .35rem; font-weight: 600; font-size: .95rem; color: var(--accent); }
+.projects-demos-cta a:hover { text-decoration: none; opacity: .85; }
 
 /* --------- About --------- */
 .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
