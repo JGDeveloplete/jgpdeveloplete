@@ -206,7 +206,7 @@ const trayectoria = t.experience.items.map(limpiarItem);
         <ul class="tags">{t.projects.featured.tags.map((tag) => <li>{tag}</li>)}</ul>
         {(t.projects.featured.link || t.projects.featured.repo) && (
           <div class="project-links">
-            {t.projects.featured.link && <a href={t.projects.featured.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver" : "Live"}</a>}
+            {t.projects.featured.link && <a href={t.projects.featured.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {t.projects.featured.title}</a>}
             {t.projects.featured.repo && <a href={t.projects.featured.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
           </div>
         )}
