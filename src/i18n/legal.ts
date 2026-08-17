@@ -19,7 +19,7 @@ export interface LegalDoc {
 export const legal: Record<Lang, LegalDoc> = {
   es: {
     title: "Aviso legal y privacidad",
-    updated: "Última actualización: julio de 2026",
+    updated: "Última actualización: agosto de 2026",
     back: "← Volver al inicio",
     sections: [
       {
@@ -46,6 +46,7 @@ export const legal: Record<Lang, LegalDoc> = {
         h: "Datos personales",
         p: [
           "Esta web no recoge datos personales a través de formularios. Si me escribes por correo electrónico, usaré tu mensaje y tu dirección únicamente para responderte, y no los cederé a terceros. Puedes solicitar en cualquier momento que elimine esa comunicación escribiendo al mismo correo.",
+          "Conforme al RGPD, tienes derecho a acceder a tus datos, rectificarlos, suprimirlos, oponerte a su tratamiento o limitarlo; para ejercerlos, escribe a jgpathletics@gmail.com. Si consideras que el tratamiento no se ajusta a la normativa, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).",
         ],
       },
       {
@@ -59,7 +60,7 @@ export const legal: Record<Lang, LegalDoc> = {
 
   en: {
     title: "Legal notice & privacy",
-    updated: "Last updated: July 2026",
+    updated: "Last updated: August 2026",
     back: "← Back to home",
     sections: [
       {
@@ -86,6 +87,7 @@ export const legal: Record<Lang, LegalDoc> = {
         h: "Personal data",
         p: [
           "This website collects no personal data through forms. If you email me, I will use your message and address only to reply, and will not share them with third parties. You can ask me to delete that communication at any time by writing to the same address.",
+          "Under the GDPR you have the right to access, rectify, erase, object to or restrict the processing of your data; to exercise them, write to jgpathletics@gmail.com. If you believe the processing does not comply with the law, you may lodge a complaint with the Spanish Data Protection Agency (aepd.es).",
         ],
       },
       {
