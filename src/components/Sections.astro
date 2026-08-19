@@ -185,6 +185,12 @@ const trayectoria = t.experience.items.map(limpiarItem);
         </div>
         <p class="featured-tagline">{t.projects.featured.tagline}</p>
 
+        {t.projects.featured.capturas && t.projects.featured.capturas.length > 0 && (
+          <div class="featured-shots">
+            <Gallery photos={t.projects.featured.capturas} lang={lang} ratio="16 / 10" autoplay={4500} />
+          </div>
+        )}
+
         <div class="featured-blocks">
           {bloques.map((b) => (
             <div class="featured-block">

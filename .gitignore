@@ -16,3 +16,6 @@ npm-debug.log*
 
 # Originales de fotos (pesados, no se suben)
 fotos-originales/
+
+# Capturas originales de Kairete (se optimizan a public/kairete)
+fotos-kairete/

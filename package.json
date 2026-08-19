@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fotos": "node scripts/optimizar-fotos.mjs"
+    "fotos": "node scripts/optimizar-fotos.mjs",
+    "fotos:kairete": "node scripts/optimizar-fotos.mjs fotos-kairete public/kairete"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

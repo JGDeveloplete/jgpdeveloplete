@@ -1,12 +1,15 @@
 /**
- * Optimiza las fotos de la galería de atletismo.
+ * Optimiza imágenes para la web (galería de atletismo o capturas de proyectos).
  *
  * Uso:
- *   1. Deja los originales (tal cual salen de la cámara) en  fotos-originales/
- *   2. npm run fotos
- *   3. Aparecerán optimizadas en  public/atletismo/  listas para la web.
+ *   Atletismo:  deja los originales en  fotos-originales/  y  npm run fotos
+ *               → salen en  public/atletismo/
+ *   Kaireté:    deja las capturas en  fotos-kairete/  y  npm run fotos:kairete
+ *               → salen en  public/kairete/
  *
- * Genera dos versiones de cada foto: .webp (moderna, mucho más ligera) y
+ * O directamente:  node scripts/optimizar-fotos.mjs <carpeta-origen> <carpeta-destino>
+ *
+ * Genera dos versiones de cada imagen: .webp (moderna, mucho más ligera) y
  * .jpg (respaldo). Los originales NO se suben al repositorio.
  */
 import { readdir, mkdir, stat } from "node:fs/promises";
@@ -14,8 +17,8 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const ORIGEN = "fotos-originales";
-const DESTINO = path.join("public", "atletismo");
+const ORIGEN = process.argv[2] || "fotos-originales";
+const DESTINO = process.argv[3] || path.join("public", "atletismo");
 const ANCHO_MAX = 1600; // suficiente para pantallas grandes sin engordar la web
 const CALIDAD = 80;
 
@@ -67,5 +70,5 @@ for (const fichero of ficheros) {
 }
 
 const mb = (n) => (n / 1024 / 1024).toFixed(2);
-console.log(`\n${ficheros.length} foto(s). Total: ${mb(totalOriginal)} MB → ${mb(totalFinal)} MB en webp.`);
-console.log(`Ahora añade las rutas en src/i18n/content.ts → sport.gallery.photos`);
+console.log(`\n${ficheros.length} imagen(es) en ${DESTINO}. Total: ${mb(totalOriginal)} MB → ${mb(totalFinal)} MB en webp.`);
+console.log(`Añade las rutas (sin extensión) en src/i18n/content.ts.`);

@@ -491,3 +491,6 @@ img { max-width: 100%; display: block; }
   .btn:hover, .project-card:hover { transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* Carrusel de capturas del proyecto destacado (Kairete). */
+.featured-shots { margin: 0 0 1.6rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }

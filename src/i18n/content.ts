@@ -26,6 +26,10 @@ export interface FeaturedProject {
   tags: string[];
   link?: string;
   repo?: string;
+  /** Capturas del proyecto para un carrusel en su tarjeta. Vacío = sin carrusel.
+   *  Las imágenes van en public/kairete/ (webp+jpg vía `npm run fotos:kairete`)
+   *  y aquí se listan SIN extensión, p. ej. "/kairete/agenda". */
+  capturas?: Photo[];
 }
 
 /** Cómo trabajas: demuestra forma de pensar cuando aún hay pocos proyectos. */
@@ -232,6 +236,7 @@ export const content: Record<Lang, Content> = {
         tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
         link: "https://kairete.es",
         repo: "",
+        capturas: [],
       },
       items: [],
       moreSoon:
@@ -522,6 +527,7 @@ export const content: Record<Lang, Content> = {
         tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Docker"],
         link: "https://kairete.es",
         repo: "",
+        capturas: [],
       },
       items: [],
       moreSoon: "My project catalogue is a work in progress; the next ones will be added here.",
