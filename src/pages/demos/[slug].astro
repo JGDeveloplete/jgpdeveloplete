@@ -2,12 +2,17 @@
 /**
  * Plantilla de una demo de web de reservas, una por oficio (ver src/lib/demos.ts).
  *
+ * Cada demo tiene su propio VESTIDO (demo.estilo): fuente, formato de disposición
+ * y forma de botón, para que NO parezcan la misma plantilla pintada de otro
+ * color. Los formatos:
+ *   - centrado: reserva a una columna (cálido).
+ *   - lateral:  servicios a la izquierda, agenda a la derecha (moderno).
+ *   - banda:    cabecera de color a todo lo ancho (formal).
+ *   - elegante: hero centrado y con aire (elegante).
+ *
  * Maqueta ESTÁTICA: el calendario y las horas son de mentira y se generan en el
  * navegador. Todo es ficticio (profesional apellidado «Ejemplo») y no se reserva
- * nada. Lleva noindex: es un escaparate, no una web para posicionar.
- *
- * Página autónoma (no usa el layout del portfolio) para que se vea como una web
- * de cliente de verdad. Los colores salen de la paleta de cada demo.
+ * nada. Lleva noindex.
  */
 import { demos } from "../../lib/demos";
 
@@ -17,6 +22,7 @@ export function getStaticPaths() {
 
 const { demo } = Astro.props;
 const p = demo.paleta;
+const e = demo.estilo;
 ---
 
 <!doctype html>
@@ -30,23 +36,25 @@ const p = demo.paleta;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href={e.fuenteImport} rel="stylesheet" />
     <style set:html={`:root{
       --fondo:${p.fondo}; --tinta:${p.tinta}; --principal:${p.principal};
       --acento:${p.acento}; --suave:${p.suave}; --linea:${p.linea};
+      --fuente-titulo:${e.fuenteTitulo};
     }`}></style>
-    <style>
+    <!-- is:global a propósito: el calendario y las horas se generan con JS en
+         el navegador, y sin esto Astro «encapsula» los estilos y esos elementos
+         se quedan sin estilar. Es una página HTML autónoma, así que no se filtra
+         nada a ningún otro sitio. -->
+    <style is:global>
       * { box-sizing: border-box; }
       body {
         margin: 0; font-family: "Inter", system-ui, sans-serif; color: var(--tinta);
         background: var(--fondo); line-height: 1.6; -webkit-font-smoothing: antialiased;
       }
-      h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0; }
+      h1, h2, h3 { font-family: var(--fuente-titulo); font-weight: 600; line-height: 1.15; margin: 0; }
       img { max-width: 100%; display: block; }
-      .env { width: min(100% - 2rem, 960px); margin-inline: auto; }
+      .env { width: min(100% - 2rem, 980px); margin-inline: auto; }
 
       .demo-cinta {
         position: sticky; top: 0; z-index: 20; background: var(--tinta); color: #fff;
@@ -58,7 +66,7 @@ const p = demo.paleta;
 
       .cab { padding: 2.4rem 0 1rem; }
       .cab-fila { display: flex; align-items: center; gap: .8rem; }
-      .cab-ini { width: 46px; height: 46px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--principal); color: #fff; font-family: "Fraunces", serif; font-size: 1.4rem; }
+      .cab-ini { width: 46px; height: 46px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--principal); color: #fff; font-family: var(--fuente-titulo); font-size: 1.4rem; }
       .cab-nombre { font-size: 1.15rem; font-weight: 600; }
       .cab-rol { font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--acento); }
 
@@ -66,12 +74,15 @@ const p = demo.paleta;
       .hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); max-width: 15ch; }
       .hero p { font-size: clamp(1.05rem, 2.5vw, 1.2rem); max-width: 48ch; color: color-mix(in srgb, var(--tinta) 72%, transparent); margin: 1rem 0 0; }
 
+      main { padding-top: .5rem; }
       .reserva { background: #fff; border: 1px solid var(--linea); border-radius: 16px; box-shadow: 0 14px 40px rgba(0,0,0,.08); padding: clamp(1.2rem, 4vw, 2.2rem); margin-bottom: 3rem; }
       .reserva h2 { font-size: 1.5rem; margin-bottom: .3rem; }
       .reserva .ayuda { color: color-mix(in srgb, var(--tinta) 60%, transparent); font-size: .95rem; margin: 0 0 1.6rem; }
       .paso-titulo { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--acento); margin: 0 0 .8rem; font-weight: 600; }
+      .reserva-cols { display: block; }
+      .col-agenda { margin-top: 2rem; }
 
-      .servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin-bottom: 2rem; }
+      .servicios { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; }
       .servicio { text-align: left; background: var(--fondo); border: 1.5px solid var(--linea); border-radius: 12px; padding: 1rem 1.1rem; cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, transform .15s; }
       .servicio:hover { border-color: var(--principal); transform: translateY(-2px); }
       .servicio[aria-pressed="true"] { border-color: var(--principal); box-shadow: inset 0 0 0 1.5px var(--principal); }
@@ -79,7 +90,7 @@ const p = demo.paleta;
       .servicio-meta { font-size: .88rem; color: color-mix(in srgb, var(--tinta) 60%, transparent); }
 
       .cal-cab { display: flex; align-items: center; justify-content: space-between; margin-bottom: .9rem; }
-      .cal-mes { font-family: "Fraunces", serif; font-size: 1.2rem; text-transform: capitalize; }
+      .cal-mes { font-family: var(--fuente-titulo); font-size: 1.2rem; text-transform: capitalize; }
       .cal-nav { display: flex; gap: .4rem; }
       .cal-btn { width: 38px; height: 38px; border-radius: 10px; border: 1.5px solid var(--linea); background: #fff; cursor: pointer; font-size: 1.1rem; color: var(--tinta); display: grid; place-items: center; }
       .cal-btn:disabled { opacity: .35; cursor: default; }
@@ -94,7 +105,7 @@ const p = demo.paleta;
 
       .horas { margin-top: 1.6rem; }
       .horas-lista { display: flex; flex-wrap: wrap; gap: .5rem; }
-      .hora { padding: .6rem 1rem; border: 1.5px solid var(--linea); background: #fff; border-radius: 10px; font: inherit; cursor: pointer; transition: border-color .15s, background .15s; }
+      .hora { padding: .6rem 1rem; border: 1.5px solid var(--linea); background: #fff; border-radius: 10px; font: inherit; cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
       .hora:hover { border-color: var(--acento); background: var(--fondo); }
       .placeholder { color: color-mix(in srgb, var(--tinta) 45%, transparent); font-size: .95rem; }
 
@@ -109,62 +120,102 @@ const p = demo.paleta;
       .pie { border-top: 1px solid var(--linea); padding: 2rem 0 3rem; font-size: .9rem; color: color-mix(in srgb, var(--tinta) 60%, transparent); }
       .pie a { color: var(--principal); font-weight: 600; }
 
+      /* ---------- FORMATO: lateral (servicios | agenda) ---------- */
+      @media (min-width: 761px) {
+        .fmt-lateral .reserva-cols { display: grid; grid-template-columns: 1fr 1.25fr; gap: 2.2rem; align-items: start; }
+        .fmt-lateral .col-agenda { margin-top: 0; }
+        .fmt-lateral .servicios { grid-template-columns: 1fr; }
+      }
+
+      /* ---------- FORMATO: banda (cabecera de color) ---------- */
+      .fmt-banda .cabecera { background: var(--principal); color: #fff; }
+      .fmt-banda .cab-ini { background: #fff; color: var(--principal); }
+      .fmt-banda .cab-rol { color: color-mix(in srgb, #fff 78%, transparent); }
+      .fmt-banda .hero { padding-top: .5rem; }
+      .fmt-banda .hero p { color: color-mix(in srgb, #fff 85%, transparent); }
+      .fmt-banda main { margin-top: -1.5rem; }
+
+      /* ---------- FORMATO: elegante (centrado y con aire) ---------- */
+      .fmt-elegante .cabecera { text-align: center; }
+      .fmt-elegante .cab-fila { justify-content: center; }
+      .fmt-elegante .hero { padding: 2rem 0 3rem; }
+      .fmt-elegante .hero h1 { max-width: 22ch; margin-inline: auto; }
+      .fmt-elegante .hero p { margin-inline: auto; }
+      .fmt-elegante .hero h1::after { content: ""; display: block; width: 54px; height: 2px; background: var(--acento); margin: 1.2rem auto 0; }
+
+      /* ---------- BOTONES por estilo ---------- */
+      .btn-recto .hora, .btn-recto .modal button, .btn-recto .cal-btn { border-radius: 5px; }
+      .btn-pastilla .hora, .btn-pastilla .modal button { border-radius: 999px; }
+      .btn-contorno .hora { border-radius: 5px; background: transparent; border-color: var(--principal); color: var(--principal); font-weight: 500; }
+      .btn-contorno .hora:hover { background: var(--principal); color: #fff; }
+      .btn-contorno .modal button, .btn-contorno .cal-btn { border-radius: 5px; }
+
       @media (max-width: 560px) { .servicios { grid-template-columns: 1fr; } .cal-rejilla { gap: .2rem; } }
     </style>
   </head>
-  <body>
+  <body class={`fmt-${e.formato} btn-${e.boton}`}>
     <div class="demo-cinta">
       <span><strong>Demostración</strong> · Web de citas de ejemplo · Profesional ficticia, no se reserva nada real</span>
       <a href="/demos/">← Ver todas las demos</a>
     </div>
 
-    <header class="cab env">
-      <div class="cab-fila">
-        <span class="cab-ini" aria-hidden="true">{demo.inicial}</span>
-        <span>
-          <span class="cab-nombre">{demo.nombre}</span><br />
-          <span class="cab-rol">{demo.rol}</span>
-        </span>
-      </div>
-    </header>
-
-    <section class="hero env">
-      <h1>{demo.titulo}</h1>
-      <p>{demo.lead}</p>
-    </section>
-
-    <section class="reserva env" aria-label="Reserva de cita (demostración)">
-      <h2>Reservar</h2>
-      <p class="ayuda">Ejemplo interactivo. Elige servicio, día y hora para ver el flujo completo.</p>
-
-      <p class="paso-titulo">1 · Elige el servicio</p>
-      <div class="servicios" id="servicios">
-        {demo.servicios.map((s, i) => (
-          <button class="servicio" data-nombre={s.nombre} data-dur={s.dur} data-precio={s.precio} aria-pressed={i === 0 ? "true" : "false"}>
-            <span class="servicio-nombre">{s.nombre}</span>
-            <span class="servicio-meta">{s.dur} · {s.precio}</span>
-          </button>
-        ))}
-      </div>
-
-      <p class="paso-titulo">2 · Elige el día</p>
-      <div class="cal-cab">
-        <span class="cal-mes" id="cal-mes">—</span>
-        <div class="cal-nav">
-          <button class="cal-btn" id="cal-prev" aria-label="Mes anterior">‹</button>
-          <button class="cal-btn" id="cal-next" aria-label="Mes siguiente">›</button>
+    <div class="cabecera">
+      <header class="cab env">
+        <div class="cab-fila">
+          <span class="cab-ini" aria-hidden="true">{demo.inicial}</span>
+          <span>
+            <span class="cab-nombre">{demo.nombre}</span><br />
+            <span class="cab-rol">{demo.rol}</span>
+          </span>
         </div>
-      </div>
-      <div class="cal-rejilla" id="cal-dow"></div>
-      <div class="cal-rejilla" id="cal-dias"></div>
+      </header>
 
-      <div class="horas">
-        <p class="paso-titulo">3 · Elige la hora</p>
-        <div class="horas-lista" id="horas-lista">
-          <span class="placeholder">Elige primero un día del calendario.</span>
+      <section class="hero env">
+        <h1>{demo.titulo}</h1>
+        <p>{demo.lead}</p>
+      </section>
+    </div>
+
+    <main class="env">
+      <section class="reserva" aria-label="Reserva de cita (demostración)">
+        <h2>Reservar</h2>
+        <p class="ayuda">Ejemplo interactivo. Elige servicio, día y hora para ver el flujo completo.</p>
+
+        <div class="reserva-cols">
+          <div class="col-servicios">
+            <p class="paso-titulo">1 · Elige el servicio</p>
+            <div class="servicios" id="servicios">
+              {demo.servicios.map((s, i) => (
+                <button class="servicio" data-nombre={s.nombre} data-dur={s.dur} data-precio={s.precio} aria-pressed={i === 0 ? "true" : "false"}>
+                  <span class="servicio-nombre">{s.nombre}</span>
+                  <span class="servicio-meta">{s.dur} · {s.precio}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="col-agenda">
+            <p class="paso-titulo">2 · Elige el día</p>
+            <div class="cal-cab">
+              <span class="cal-mes" id="cal-mes">—</span>
+              <div class="cal-nav">
+                <button class="cal-btn" id="cal-prev" aria-label="Mes anterior">‹</button>
+                <button class="cal-btn" id="cal-next" aria-label="Mes siguiente">›</button>
+              </div>
+            </div>
+            <div class="cal-rejilla" id="cal-dow"></div>
+            <div class="cal-rejilla" id="cal-dias"></div>
+
+            <div class="horas">
+              <p class="paso-titulo">3 · Elige la hora</p>
+              <div class="horas-lista" id="horas-lista">
+                <span class="placeholder">Elige primero un día del calendario.</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer class="pie env">
       Esto es una <strong>maqueta de demostración</strong>: «{demo.nombre}» no existe y no se guarda ninguna reserva.
@@ -253,8 +304,8 @@ const p = demo.paleta;
       $("cal-prev").addEventListener("click", () => { verMes = new Date(verMes.getFullYear(), verMes.getMonth() - 1, 1); pintarMes(); });
       $("cal-next").addEventListener("click", () => { verMes = new Date(verMes.getFullYear(), verMes.getMonth() + 1, 1); pintarMes(); });
       $("modal-cerrar").addEventListener("click", () => $("modal").classList.remove("abierto"));
-      $("modal").addEventListener("click", (e) => { if (e.target === $("modal")) $("modal").classList.remove("abierto"); });
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("modal").classList.remove("abierto"); });
+      $("modal").addEventListener("click", (ev) => { if (ev.target === $("modal")) $("modal").classList.remove("abierto"); });
+      document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") $("modal").classList.remove("abierto"); });
 
       pintarMes();
     </script>

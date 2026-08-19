@@ -173,14 +173,34 @@ img { max-width: 100%; display: block; }
 .section-title { font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 0 0 .8rem; }
 .section-sub { color: var(--muted); margin: 0; }
 /* Bloque de servicio (webs con reservas) + sus salidas por sector. */
-.section-alt { background: var(--bg-soft); }
-.service-box { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center; }
-.service-text { color: var(--muted); margin: 1rem 0 1.6rem; max-width: 52ch; }
+/* --------- Producto propio: webs con reservas (desplegable en Proyectos) --------- */
 .service-verticals-label { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .9rem; font-weight: 600; }
-.service-vlist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
-.service-vlist a { display: inline-block; padding: .55rem 1.1rem; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; font-weight: 500; color: var(--text); background: var(--surface); transition: border-color .15s ease, color .15s ease, transform .15s ease; }
-.service-vlist a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); text-decoration: none; }
-@media (max-width: 760px) { .service-box { grid-template-columns: 1fr; gap: 1.8rem; } }
+
+.demos-drop { margin-top: 2rem; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, var(--surface), var(--bg-soft)); overflow: hidden; }
+.demos-drop[open] { border-color: var(--accent); }
+.demos-drop-head { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.8rem; }
+.demos-drop-head::-webkit-details-marker { display: none; }
+.demos-drop-copy { max-width: 60ch; }
+.demos-drop-title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin: .1rem 0 .5rem; color: var(--text); }
+.demos-drop-text { color: var(--muted); margin: 0; font-size: .96rem; }
+.demos-drop-toggle { flex: none; display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.2rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: .95rem; white-space: nowrap; }
+.demos-drop-toggle svg { transition: transform .2s ease; }
+.demos-drop[open] .demos-drop-toggle svg { transform: rotate(180deg); }
+.demos-drop-body { padding: 0 1.8rem 1.9rem; }
+
+.demos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.demo-card { display: flex; flex-direction: column; text-decoration: none; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; padding-bottom: 1.1rem; transition: transform .15s ease, border-color .2s ease; }
+.demo-card:hover { transform: translateY(-4px); border-color: var(--a); }
+.demo-card-franja { height: 6px; background: linear-gradient(90deg, var(--p), var(--a)); margin-bottom: 1.1rem; }
+.demo-card-oficio { font-weight: 600; font-size: 1.1rem; color: var(--text); padding: 0 1.1rem; }
+.demo-card-gancho { color: var(--muted); font-size: .9rem; padding: .3rem 1.1rem 1rem; }
+.demo-card-ir { margin-top: auto; padding: 0 1.1rem; font-weight: 600; font-size: .9rem; color: var(--a); }
+.demos-drop-cta { margin-top: 1.4rem; }
+
+@media (max-width: 640px) {
+  .demos-drop-head { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.4rem; }
+  .demos-drop-body { padding: 0 1.4rem 1.5rem; }
+}
 
 /* --------- About --------- */
 .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }

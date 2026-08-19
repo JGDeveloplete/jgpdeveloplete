@@ -24,6 +24,18 @@ export interface Paleta {
   linea: string;
 }
 
+/** El «vestido» de cada demo: lo que hace que no parezcan la misma plantilla.
+ *  - fuenteImport: la etiqueta <link> de Google Fonts de esa demo.
+ *  - fuenteTitulo: la familia CSS para los titulares.
+ *  - formato: la disposición de la reserva (cambia el layout, no solo el color).
+ *  - boton: la forma de los botones. */
+export interface EstiloDemo {
+  fuenteImport: string;
+  fuenteTitulo: string;
+  formato: "centrado" | "lateral" | "banda" | "elegante";
+  boton: "pastilla" | "recto" | "contorno";
+}
+
 export interface Demo {
   slug: string;
   /** Oficio, para el catálogo. */
@@ -39,6 +51,7 @@ export interface Demo {
   lead: string;
   servicios: ServicioDemo[];
   paleta: Paleta;
+  estilo: EstiloDemo;
 }
 
 export const demos: Demo[] = [
@@ -57,6 +70,12 @@ export const demos: Demo[] = [
       { nombre: "Sesión online", dur: "45 min", precio: "50 €" },
     ],
     paleta: { fondo: "#fdfaf6", tinta: "#332f2a", principal: "#7d8f6c", acento: "#c9835b", suave: "#f2eae0", linea: "#e7ddd0" },
+    estilo: {
+      fuenteImport: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
+      fuenteTitulo: "'Fraunces', Georgia, serif",
+      formato: "centrado",
+      boton: "pastilla",
+    },
   },
   {
     slug: "fisioterapia",
@@ -73,6 +92,12 @@ export const demos: Demo[] = [
       { nombre: "Punción seca", dur: "30 min", precio: "35 €" },
     ],
     paleta: { fondo: "#f5fbfb", tinta: "#1f2a30", principal: "#2a9d8f", acento: "#e76f51", suave: "#dff0ed", linea: "#cfe6e2" },
+    estilo: {
+      fuenteImport: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap",
+      fuenteTitulo: "'Space Grotesk', system-ui, sans-serif",
+      formato: "lateral",
+      boton: "recto",
+    },
   },
   {
     slug: "abogacia",
@@ -89,6 +114,12 @@ export const demos: Demo[] = [
       { nombre: "Revisión de documentación", dur: "30 min", precio: "40 €" },
     ],
     paleta: { fondo: "#ffffff", tinta: "#1c2530", principal: "#16273d", acento: "#b08d57", suave: "#f4f1ea", linea: "#e2e6ea" },
+    estilo: {
+      fuenteImport: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap",
+      fuenteTitulo: "'Cormorant Garamond', Georgia, serif",
+      formato: "banda",
+      boton: "contorno",
+    },
   },
   {
     slug: "estetica",
@@ -105,5 +136,11 @@ export const demos: Demo[] = [
       { nombre: "Consulta de valoración", dur: "20 min", precio: "Gratis" },
     ],
     paleta: { fondo: "#fdf7f8", tinta: "#3a2c31", principal: "#a76a83", acento: "#cf8aa2", suave: "#f5e6ec", linea: "#ecd9e0" },
+    estilo: {
+      fuenteImport: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap",
+      fuenteTitulo: "'Playfair Display', Georgia, serif",
+      formato: "elegante",
+      boton: "pastilla",
+    },
   },
 ];
