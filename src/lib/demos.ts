@@ -13,6 +13,8 @@ export interface ServicioDemo {
   nombre: string;
   dur: string;
   precio: string;
+  /** Descripción corta, usada en el formato «catálogo». */
+  desc?: string;
 }
 
 export interface Paleta {
@@ -52,6 +54,13 @@ export interface Demo {
   servicios: ServicioDemo[];
   paleta: Paleta;
   estilo: EstiloDemo;
+  /** Qué FUNCIONALIDAD demuestra la web, no solo el aspecto:
+   *  - reservas: calendario + horas (pedir cita).
+   *  - contacto: formulario de captación («cuéntanos tu caso»).
+   *  - catalogo: carta de servicios/tratamientos con reserva por tarjeta. */
+  tipo: "reservas" | "contacto" | "catalogo";
+  /** Solo para `tipo: "contacto"`: opciones del desplegable de asunto/área. */
+  areas?: string[];
 }
 
 export const demos: Demo[] = [
@@ -76,6 +85,7 @@ export const demos: Demo[] = [
       formato: "centrado",
       boton: "pastilla",
     },
+    tipo: "reservas",
   },
   {
     slug: "fisioterapia",
@@ -98,16 +108,17 @@ export const demos: Demo[] = [
       formato: "lateral",
       boton: "recto",
     },
+    tipo: "reservas",
   },
   {
     slug: "abogacia",
     profesion: "Abogacía",
-    gancho: "Despacho de abogados con cita previa online",
+    gancho: "Despacho de abogados con captación de casos online",
     nombre: "Daniel Ejemplo",
     inicial: "D",
     rol: "Abogado · Ejemplo",
-    titulo: "Reserva tu primera consulta",
-    lead: "Cuéntame tu caso en una primera consulta. Elige el día y la hora que mejor te vengan y reserva desde aquí, con total discreción.",
+    titulo: "Cuéntanos tu caso",
+    lead: "Escríbenos tu situación y te contactamos en menos de 24 horas para valorarla. Sin compromiso y con total discreción.",
     servicios: [
       { nombre: "Primera consulta", dur: "45 min", precio: "60 €" },
       { nombre: "Consulta online", dur: "45 min", precio: "60 €" },
@@ -120,6 +131,8 @@ export const demos: Demo[] = [
       formato: "banda",
       boton: "contorno",
     },
+    tipo: "contacto",
+    areas: ["Derecho laboral", "Derecho penal", "Derecho de familia", "Arrendamientos", "Otro asunto"],
   },
   {
     slug: "estetica",
@@ -128,12 +141,13 @@ export const demos: Demo[] = [
     nombre: "Sofía Ejemplo",
     inicial: "S",
     rol: "Centro de estética · Ejemplo",
-    titulo: "Reserva tu tratamiento",
-    lead: "Elige el tratamiento, el día y la hora, y reserva al momento. Tus clientas piden cita desde el móvil sin tener que llamar al centro.",
+    titulo: "Nuestra carta de tratamientos",
+    lead: "Descubre los tratamientos, elige el tuyo y resérvalo al momento. Tus clientas piden cita desde el móvil, sin tener que llamar al centro.",
     servicios: [
-      { nombre: "Limpieza facial", dur: "60 min", precio: "45 €" },
-      { nombre: "Tratamiento personalizado", dur: "75 min", precio: "60 €" },
-      { nombre: "Consulta de valoración", dur: "20 min", precio: "Gratis" },
+      { nombre: "Limpieza facial", dur: "60 min", precio: "45 €", desc: "Higiene profunda, exfoliación e hidratación para una piel luminosa." },
+      { nombre: "Tratamiento personalizado", dur: "75 min", precio: "60 €", desc: "Diseñado según tu tipo de piel y objetivos tras la valoración." },
+      { nombre: "Ritual antiedad", dur: "60 min", precio: "55 €", desc: "Reafirmante y nutritivo, con masaje facial y sérum específico." },
+      { nombre: "Consulta de valoración", dur: "20 min", precio: "Gratis", desc: "Analizamos tu piel y te recomendamos el tratamiento ideal." },
     ],
     paleta: { fondo: "#fdf7f8", tinta: "#3a2c31", principal: "#a76a83", acento: "#cf8aa2", suave: "#f5e6ec", linea: "#ecd9e0" },
     estilo: {
@@ -142,5 +156,6 @@ export const demos: Demo[] = [
       formato: "elegante",
       boton: "pastilla",
     },
+    tipo: "catalogo",
   },
 ];
