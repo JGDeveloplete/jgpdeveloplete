@@ -6,6 +6,7 @@
  * enseñar de un vistazo lo que monto. Cada tarjeta lleva a su demo interactiva.
  */
 import { demos } from "../../lib/demos";
+import { CSP } from "../../lib/seguridad";
 ---
 
 <!doctype html>
@@ -13,6 +14,8 @@ import { demos } from "../../lib/demos";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={CSP} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Demos de webs con reservas · JGP Developlete</title>
     <meta name="description" content="Ejemplos de webs con reserva de citas online que desarrollo para profesionales: psicología, fisioterapia, abogacía, estética y más." />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

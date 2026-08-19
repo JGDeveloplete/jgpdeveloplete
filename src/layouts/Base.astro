@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { content, type Lang } from "../i18n/content";
+import { CSP } from "../lib/seguridad";
 
 interface Props {
   lang: Lang;
@@ -54,6 +55,11 @@ const persona = {
   knowsAbout: ["SQL", "PL/SQL", "Oracle", "Java", "C#", "JavaScript", lang === "es" ? "Atletismo" : "Athletics"],
   sameAs: t.contact.socials.map((s) => s.url),
 };
+// Escapamos «<» a <: aunque estos datos son de fábrica (no de usuario),
+// así es IMPOSIBLE que un «</script>» dentro de un texto rompa el bloque y se
+// cuele código. Cierra la relevancia del aviso de `set:html` de Astro.
+const personaJson = JSON.stringify(persona).replace(/</g, "\\u003c");
+
 ---
 
 <!doctype html>
@@ -61,6 +67,8 @@ const persona = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content={CSP} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -80,7 +88,7 @@ const persona = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(persona)} />
+    <script type="application/ld+json" set:html={personaJson} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -93,8 +101,11 @@ const persona = {
     <script is:inline>
       (function () {
         try {
+          // Solo se aplican temas de la lista conocida: un valor manipulado en
+          // localStorage no puede colar un atributo arbitrario.
+          var permitidos = ["velocidad", "atardecer", "claro", "burdeos"];
           var t = localStorage.getItem("jg-theme");
-          if (t && t !== "pista") document.documentElement.setAttribute("data-theme", t);
+          if (t && permitidos.indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t);
         } catch (e) {}
       })();
     </script>

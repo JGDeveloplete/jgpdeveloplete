@@ -15,6 +15,7 @@
  * nada. Lleva noindex.
  */
 import { demos } from "../../lib/demos";
+import { CSP } from "../../lib/seguridad";
 
 export function getStaticPaths() {
   return demos.map((demo) => ({ params: { slug: demo.slug }, props: { demo } }));
@@ -30,6 +31,8 @@ const e = demo.estilo;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={CSP} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>{`Demo · ${demo.profesion} — Web de citas · JGP Developlete`}</title>
     <meta name="description" content={`Ejemplo de web con reserva de citas para ${demo.profesion.toLowerCase()}. Demostración ficticia, sin reservas reales.`} />
     <meta name="robots" content="noindex, nofollow" />
