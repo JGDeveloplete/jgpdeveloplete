@@ -132,7 +132,7 @@ export const demos: Demo[] = [
       boton: "contorno",
     },
     tipo: "contacto",
-    areas: ["Derecho laboral", "Derecho penal", "Derecho de familia", "Arrendamientos", "Otro asunto"],
+    areas: ["Derecho laboral", "Derecho penal", "Derecho de familia", "Otro asunto"],
   },
   {
     slug: "estetica",
