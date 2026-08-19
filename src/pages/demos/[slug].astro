@@ -23,6 +23,16 @@ export function getStaticPaths() {
 const { demo } = Astro.props;
 const p = demo.paleta;
 const e = demo.estilo;
+
+// Iconos para las tarjetas de área del asistente de contacto (abogacía).
+// Son SVG estáticos (line icons); se eligen por orden.
+const ICONOS_AREA = [
+  '<path d="M3 7h18v12H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/>',
+  '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+  '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+  '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/>',
+];
 ---
 
 <!doctype html>
@@ -111,6 +121,16 @@ const e = demo.estilo;
       .campo textarea { min-height: 120px; resize: vertical; }
       .campo-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
       .form-check { display: flex; align-items: flex-start; gap: .6rem; font-size: .9rem; color: color-mix(in srgb, var(--tinta) 70%, transparent); }
+      /* Asistente de contacto: paso 1, elegir área con tarjetas. */
+      .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .9rem; margin-top: 1.4rem; }
+      .area-op { display: flex; align-items: center; gap: .9rem; text-align: left; background: var(--fondo); border: 1.5px solid var(--linea); border-radius: 14px; padding: 1.1rem 1.2rem; cursor: pointer; font: inherit; color: var(--tinta); transition: border-color .15s, transform .15s, box-shadow .2s; }
+      .area-op:hover { border-color: var(--principal); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,.09); }
+      .area-ico { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--principal); background: var(--suave); }
+      .area-nombre { font-weight: 600; flex: 1; }
+      .area-flecha { color: var(--acento); font-weight: 700; transition: transform .15s; }
+      .area-op:hover .area-flecha { transform: translateX(4px); }
+      .wiz-volver { background: none; border: 0; color: var(--principal); font: inherit; font-weight: 600; cursor: pointer; padding: 0; margin-bottom: 1rem; }
+      .wiz-chip { color: var(--principal); }
 
       /* ---------- Catálogo (carta) ---------- */
       .carta { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
@@ -238,35 +258,51 @@ const e = demo.estilo;
 
       {demo.tipo === "contacto" && (
         <section class="panel" aria-label="Contacto (demostración)">
-          <h2>Escríbenos</h2>
-          <p class="ayuda">Ejemplo interactivo. Rellena el formulario para ver cómo se enviaría (no se envía nada de verdad).</p>
-          <form class="form-grid" id="form-contacto" novalidate>
-            <div class="campo-fila">
-              <div class="campo">
-                <label for="c-nombre">Nombre y apellidos</label>
-                <input id="c-nombre" name="nombre" type="text" required />
+          {/* Paso 1: elegir el área con tarjetas visuales. */}
+          <div class="wiz-areas" id="wiz-areas">
+            <h2>¿En qué podemos ayudarte?</h2>
+            <p class="ayuda">Elige el área de tu asunto y te preparamos el formulario adecuado.</p>
+            <div class="areas-grid">
+              {(demo.areas ?? []).map((a, i) => (
+                <button class="area-op" data-area={a}>
+                  <span class="area-ico" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={ICONOS_AREA[i % ICONOS_AREA.length]} />
+                  </span>
+                  <span class="area-nombre">{a}</span>
+                  <span class="area-flecha" aria-hidden="true">→</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Paso 2: formulario a medida (aparece al elegir área). */}
+          <div class="wiz-form" id="wiz-form" hidden>
+            <button class="wiz-volver" id="wiz-volver" type="button">← Cambiar de área</button>
+            <h2>Cuéntanos tu caso</h2>
+            <p class="ayuda">Asunto: <strong id="wiz-area-txt" class="wiz-chip"></strong>. Te contactamos en menos de 24 h.</p>
+            <form class="form-grid" id="form-contacto" novalidate>
+              <input type="hidden" name="area" id="c-area" />
+              <div class="campo-fila">
+                <div class="campo">
+                  <label for="c-nombre">Nombre y apellidos</label>
+                  <input id="c-nombre" name="nombre" type="text" required />
+                </div>
+                <div class="campo">
+                  <label for="c-contacto">Email o teléfono</label>
+                  <input id="c-contacto" name="contacto" type="text" required />
+                </div>
               </div>
               <div class="campo">
-                <label for="c-contacto">Email o teléfono</label>
-                <input id="c-contacto" name="contacto" type="text" required />
+                <label for="c-mensaje">Describe tu situación</label>
+                <textarea id="c-mensaje" name="mensaje" required></textarea>
               </div>
-            </div>
-            <div class="campo">
-              <label for="c-area">Área del caso</label>
-              <select id="c-area" name="area">
-                {(demo.areas ?? []).map((a) => <option value={a}>{a}</option>)}
-              </select>
-            </div>
-            <div class="campo">
-              <label for="c-mensaje">Cuéntanos tu caso</label>
-              <textarea id="c-mensaje" name="mensaje" required></textarea>
-            </div>
-            <label class="form-check">
-              <input type="checkbox" id="c-privacidad" required />
-              <span>He leído y acepto la política de privacidad. (Casilla de ejemplo.)</span>
-            </label>
-            <button type="submit" class="btn-accion">Enviar consulta</button>
-          </form>
+              <label class="form-check">
+                <input type="checkbox" id="c-privacidad" required />
+                <span>He leído y acepto la política de privacidad. (Casilla de ejemplo.)</span>
+              </label>
+              <button type="submit" class="btn-accion">Enviar consulta</button>
+            </form>
+          </div>
         </section>
       )}
 
@@ -384,9 +420,23 @@ const e = demo.estilo;
         pintarMes();
       }
 
-      // ---------- CONTACTO ----------
+      // ---------- CONTACTO (asistente en 2 pasos) ----------
       const form = $("form-contacto") as HTMLFormElement | null;
       if (form) {
+        const wizAreas = $("wiz-areas");
+        const wizForm = $("wiz-form");
+        const areaTxt = $("wiz-area-txt");
+        const areaInput = $("c-area") as HTMLInputElement;
+        const paso1 = () => { wizForm!.hidden = true; wizAreas!.hidden = false; };
+        const paso2 = (area: string) => {
+          areaInput.value = area;
+          if (areaTxt) areaTxt.textContent = area;
+          wizAreas!.hidden = true;
+          wizForm!.hidden = false;
+          ($("c-nombre") as HTMLInputElement | null)?.focus();
+        };
+        document.querySelectorAll<HTMLElement>(".area-op").forEach((b) => b.addEventListener("click", () => paso2(b.dataset.area || "")));
+        $("wiz-volver")?.addEventListener("click", paso1);
         form.addEventListener("submit", (ev) => {
           ev.preventDefault();
           const nombre = (form.elements.namedItem("nombre") as HTMLInputElement).value.trim();
@@ -394,9 +444,10 @@ const e = demo.estilo;
           const mensaje = (form.elements.namedItem("mensaje") as HTMLTextAreaElement).value.trim();
           const acepta = ($("c-privacidad") as HTMLInputElement).checked;
           if (!nombre || !contacto || !mensaje || !acepta) { form.reportValidity(); return; }
-          const area = (form.elements.namedItem("area") as HTMLSelectElement).value;
+          const area = areaInput.value;
           form.reset();
           abrirModal("¡Mensaje enviado!", "En una web real, tu consulta llegaría al despacho y te responderían en menos de 24 h. Es una demostración: no se ha enviado nada.", `${nombre} · ${area}`);
+          paso1();
         });
       }
 
