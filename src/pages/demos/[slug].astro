@@ -142,7 +142,20 @@ const ICONOS_AREA = [
       .trato-desc { color: color-mix(in srgb, var(--tinta) 68%, transparent); font-size: .95rem; margin: 0 0 1.2rem; }
       .trato .cta { margin-top: auto; }
 
-      /* Botón principal (Enviar / Reservar de catálogo) */
+      /* ---------- Onboarding (cuestionario por pasos) ---------- */
+      .ob-progreso { height: 6px; background: var(--suave); border-radius: 999px; overflow: hidden; margin-bottom: .5rem; }
+      .ob-barra { display: block; height: 100%; width: 0; background: var(--principal); transition: width .35s ease; }
+      .ob-contador { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: color-mix(in srgb, var(--tinta) 50%, transparent); margin: 0 0 1.6rem; text-align: right; }
+      .ob-atras { background: none; border: 0; color: var(--principal); font: inherit; font-weight: 600; cursor: pointer; padding: 0; margin-bottom: .6rem; }
+      .ob-paso h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); margin-bottom: 1.4rem; text-align: center; }
+      .ob-ops { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+      .ob-op { padding: 1.15rem 1.2rem; border: 1.5px solid var(--linea); border-radius: 14px; background: var(--fondo); font: inherit; font-weight: 600; color: var(--tinta); cursor: pointer; transition: border-color .15s, transform .15s, background .15s, box-shadow .2s; }
+      .ob-op:hover { border-color: var(--principal); transform: translateY(-3px); background: #fff; box-shadow: 0 12px 26px rgba(0,0,0,.08); }
+      .ob-final { text-align: center; }
+      .ob-resumen { background: var(--suave); border-radius: 12px; padding: .9rem 1rem; margin: 1rem 0 1.5rem; font-size: .95rem; font-weight: 600; }
+      @media (max-width: 520px) { .ob-ops { grid-template-columns: 1fr; } }
+
+      /* Botón principal (Enviar / Reservar de catálogo / onboarding) */
       .btn-accion { padding: .8rem 1.5rem; border: 0; border-radius: 12px; background: var(--principal); color: #fff; font: inherit; font-weight: 600; cursor: pointer; transition: transform .15s ease, filter .2s ease; }
       .btn-accion:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
@@ -184,6 +197,16 @@ const ICONOS_AREA = [
       .fmt-elegante .hero h1 { max-width: 24ch; margin-inline: auto; }
       .fmt-elegante .hero p { margin-inline: auto; }
       .fmt-elegante .hero h1::after { content: ""; display: block; width: 54px; height: 2px; background: var(--acento); margin: 1.2rem auto 0; }
+
+      /* natural: fresco, centrado, redondeado y amable. */
+      .fmt-natural .env { max-width: 760px; }
+      .fmt-natural .cabecera { text-align: center; }
+      .fmt-natural .cab-fila { justify-content: center; }
+      .fmt-natural .hero { text-align: center; padding: 1.4rem 0 2rem; }
+      .fmt-natural .hero h1 { margin-inline: auto; }
+      .fmt-natural .hero p { margin-inline: auto; }
+      .fmt-natural .panel { border-radius: 22px; }
+      .fmt-natural .cab-ini { border-radius: 16px; }
 
       /* ---------- BOTONES por estilo ---------- */
       .btn-recto .hora, .btn-recto .cal-btn { border-radius: 5px; }
@@ -325,6 +348,28 @@ const ICONOS_AREA = [
           </div>
         </section>
       )}
+
+      {demo.tipo === "onboarding" && (
+        <section class="panel ob" aria-label="Cuestionario (demostración)">
+          <button class="ob-atras" id="ob-atras" type="button" hidden>← Atrás</button>
+          <div class="ob-progreso"><span class="ob-barra" id="ob-barra"></span></div>
+          <p class="ob-contador" id="ob-contador"></p>
+          {(demo.pasos ?? []).map((paso, i) => (
+            <div class="ob-paso" data-paso={i} hidden={i !== 0}>
+              <h2>{paso.pregunta}</h2>
+              <div class="ob-ops">
+                {paso.opciones.map((o) => <button class="ob-op" data-valor={o}>{o}</button>)}
+              </div>
+            </div>
+          ))}
+          <div class="ob-paso ob-final" data-paso={(demo.pasos ?? []).length} hidden>
+            <h2>¡Perfecto! Ya podemos empezar</h2>
+            <p class="ayuda">Con tus respuestas preparamos tu plan a medida. Reserva tu primera consulta y nos ponemos en marcha.</p>
+            <div class="ob-resumen" id="ob-resumen"></div>
+            <button class="btn-accion" id="ob-reservar">Reservar primera consulta · {demo.servicios[0]?.precio}</button>
+          </div>
+        </section>
+      )}
     </main>
 
     <footer class="pie env">
@@ -457,6 +502,38 @@ const ICONOS_AREA = [
           abrirModal("¡Reserva iniciada!", "En una web real, aquí elegirías día y hora y confirmarías. Es una demostración: no se ha guardado nada.", `${b.dataset.nombre} · ${b.dataset.precio}`);
         });
       });
+
+      // ---------- ONBOARDING (cuestionario por pasos) ----------
+      const obPasos = Array.from(document.querySelectorAll<HTMLElement>(".ob-paso"));
+      if (obPasos.length) {
+        const total = obPasos.length; // preguntas + paso final
+        const respuestas: string[] = [];
+        const barra = $("ob-barra") as HTMLElement;
+        const contador = $("ob-contador") as HTMLElement;
+        const atras = $("ob-atras") as HTMLButtonElement;
+        let idx = 0;
+        const mostrar = (n: number) => {
+          idx = Math.max(0, Math.min(total - 1, n));
+          obPasos.forEach((p, i) => (p.hidden = i !== idx));
+          barra.style.width = `${(idx / (total - 1)) * 100}%`;
+          contador.textContent = `Paso ${idx + 1} de ${total}`;
+          atras.hidden = idx === 0;
+          if (idx === total - 1) ($("ob-resumen") as HTMLElement).textContent = respuestas.filter(Boolean).join(" · ");
+        };
+        obPasos.forEach((p, i) => {
+          p.querySelectorAll<HTMLElement>(".ob-op").forEach((b) => b.addEventListener("click", () => {
+            respuestas[i] = b.dataset.valor || "";
+            mostrar(i + 1);
+          }));
+        });
+        atras.addEventListener("click", () => mostrar(idx - 1));
+        $("ob-reservar")?.addEventListener("click", () => abrirModal(
+          "¡Todo listo!",
+          "En una web real, aquí elegirías día y hora y confirmarías tu primera consulta. Es una demostración: no se ha guardado nada.",
+          respuestas.filter(Boolean).join(" · "),
+        ));
+        mostrar(0);
+      }
     </script>
   </body>
 </html>

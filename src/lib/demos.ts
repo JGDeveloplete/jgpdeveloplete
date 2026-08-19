@@ -34,7 +34,7 @@ export interface Paleta {
 export interface EstiloDemo {
   fuenteImport: string;
   fuenteTitulo: string;
-  formato: "centrado" | "lateral" | "banda" | "elegante";
+  formato: "centrado" | "lateral" | "banda" | "elegante" | "natural";
   boton: "pastilla" | "recto" | "contorno";
 }
 
@@ -57,10 +57,13 @@ export interface Demo {
   /** Qué FUNCIONALIDAD demuestra la web, no solo el aspecto:
    *  - reservas: calendario + horas (pedir cita).
    *  - contacto: formulario de captación («cuéntanos tu caso»).
-   *  - catalogo: carta de servicios/tratamientos con reserva por tarjeta. */
-  tipo: "reservas" | "contacto" | "catalogo";
+   *  - catalogo: carta de servicios/tratamientos con reserva por tarjeta.
+   *  - onboarding: mini-cuestionario por pasos que termina reservando. */
+  tipo: "reservas" | "contacto" | "catalogo" | "onboarding";
   /** Solo para `tipo: "contacto"`: opciones del desplegable de asunto/área. */
   areas?: string[];
+  /** Solo para `tipo: "onboarding"`: las preguntas del cuestionario. */
+  pasos?: { pregunta: string; opciones: string[] }[];
 }
 
 export const demos: Demo[] = [
@@ -156,5 +159,31 @@ export const demos: Demo[] = [
       boton: "pastilla",
     },
     tipo: "catalogo",
+  },
+  {
+    slug: "nutricion",
+    profesion: "Nutrición",
+    gancho: "Nutricionista con cuestionario y reserva online",
+    nombre: "Andrea Ejemplo",
+    inicial: "A",
+    rol: "Nutricionista · Ejemplo",
+    titulo: "Empecemos por conocerte",
+    lead: "Responde tres preguntas rápidas y te preparamos tu primera consulta a medida. En un minuto, sin llamadas.",
+    servicios: [
+      { nombre: "Primera consulta", dur: "50 min", precio: "55 €" },
+    ],
+    paleta: { fondo: "#f5faf1", tinta: "#25301f", principal: "#4b9b6e", acento: "#e0a458", suave: "#e5f1dd", linea: "#d7e7cd" },
+    estilo: {
+      fuenteImport: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap",
+      fuenteTitulo: "'Poppins', system-ui, sans-serif",
+      formato: "natural",
+      boton: "pastilla",
+    },
+    tipo: "onboarding",
+    pasos: [
+      { pregunta: "¿Cuál es tu objetivo?", opciones: ["Perder peso", "Ganar masa muscular", "Mejorar mis hábitos", "Rendimiento deportivo"] },
+      { pregunta: "¿Cuántos días entrenas a la semana?", opciones: ["0–1 días", "2–3 días", "4–5 días", "Más de 5"] },
+      { pregunta: "¿Alguna preferencia alimentaria?", opciones: ["Ninguna", "Vegetariana", "Vegana", "Sin gluten"] },
+    ],
   },
 ];
