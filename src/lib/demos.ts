@@ -34,7 +34,7 @@ export interface Paleta {
 export interface EstiloDemo {
   fuenteImport: string;
   fuenteTitulo: string;
-  formato: "centrado" | "lateral" | "banda" | "elegante" | "natural";
+  formato: "centrado" | "lateral" | "banda" | "elegante" | "natural" | "tarjeta";
   boton: "pastilla" | "recto" | "contorno";
 }
 
@@ -58,11 +58,13 @@ export interface Demo {
    *  - reservas: calendario + horas (pedir cita).
    *  - contacto: formulario de captación («cuéntanos tu caso»).
    *  - catalogo: carta de servicios/tratamientos con reserva por tarjeta.
-   *  - onboarding: mini-cuestionario por pasos que termina reservando. */
-  tipo: "reservas" | "contacto" | "catalogo" | "onboarding";
+   *  - onboarding: mini-cuestionario por pasos que termina reservando.
+   *  - mascota: dos selectores (quién viene + motivo) y pedir cita. */
+  tipo: "reservas" | "contacto" | "catalogo" | "onboarding" | "mascota";
   /** Solo para `tipo: "contacto"`: opciones del desplegable de asunto/área. */
   areas?: string[];
-  /** Solo para `tipo: "onboarding"`: las preguntas del cuestionario. */
+  /** Preguntas: en `onboarding` van por pasos; en `mascota` son grupos de
+   *  selección mostrados a la vez. */
   pasos?: { pregunta: string; opciones: string[] }[];
 }
 
@@ -184,6 +186,31 @@ export const demos: Demo[] = [
       { pregunta: "¿Cuál es tu objetivo?", opciones: ["Perder peso", "Ganar masa muscular", "Mejorar mis hábitos", "Rendimiento deportivo"] },
       { pregunta: "¿Cuántos días entrenas a la semana?", opciones: ["0–1 días", "2–3 días", "4–5 días", "Más de 5"] },
       { pregunta: "¿Alguna preferencia alimentaria?", opciones: ["Ninguna", "Vegetariana", "Vegana", "Sin gluten"] },
+    ],
+  },
+  {
+    slug: "veterinaria",
+    profesion: "Veterinaria",
+    gancho: "Clínica veterinaria con cita por mascota online",
+    nombre: "Marcos Ejemplo",
+    inicial: "M",
+    rol: "Clínica veterinaria · Ejemplo",
+    titulo: "Cuidamos de los tuyos",
+    lead: "Pide cita para tu mascota en un momento: dinos quién viene y el motivo, y elegimos el mejor hueco. Sin llamadas ni esperas.",
+    servicios: [
+      { nombre: "Consulta veterinaria", dur: "30 min", precio: "35 €" },
+    ],
+    paleta: { fondo: "#f2f8fb", tinta: "#1e2b33", principal: "#2f7db8", acento: "#f2a03d", suave: "#e1eef6", linea: "#d2e4ef" },
+    estilo: {
+      fuenteImport: "https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600&display=swap",
+      fuenteTitulo: "'Nunito', system-ui, sans-serif",
+      formato: "tarjeta",
+      boton: "pastilla",
+    },
+    tipo: "mascota",
+    pasos: [
+      { pregunta: "¿Quién viene?", opciones: ["Perro", "Gato", "Conejo", "Otro"] },
+      { pregunta: "Motivo de la visita", opciones: ["Revisión", "Vacunación", "Urgencia", "Peluquería"] },
     ],
   },
 ];

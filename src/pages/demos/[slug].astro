@@ -155,6 +155,14 @@ const ICONOS_AREA = [
       .ob-resumen { background: var(--suave); border-radius: 12px; padding: .9rem 1rem; margin: 1rem 0 1.5rem; font-size: .95rem; font-weight: 600; }
       @media (max-width: 520px) { .ob-ops { grid-template-columns: 1fr; } }
 
+      /* ---------- Mascota (dos selectores + pedir cita) ---------- */
+      .vet-grupo { margin-bottom: 1.6rem; }
+      .vet-chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+      .vet-chip { padding: .7rem 1.3rem; border: 1.5px solid var(--linea); border-radius: 999px; background: var(--fondo); font: inherit; font-weight: 600; color: var(--tinta); cursor: pointer; transition: border-color .15s, background .15s, color .15s, transform .15s; }
+      .vet-chip:hover { transform: translateY(-2px); border-color: var(--principal); }
+      .vet-chip[aria-pressed="true"] { background: var(--principal); border-color: var(--principal); color: #fff; }
+      #vet-pedir { margin-top: .5rem; }
+
       /* Botón principal (Enviar / Reservar de catálogo / onboarding) */
       .btn-accion { padding: .8rem 1.5rem; border: 0; border-radius: 12px; background: var(--principal); color: #fff; font: inherit; font-weight: 600; cursor: pointer; transition: transform .15s ease, filter .2s ease; }
       .btn-accion:hover { transform: translateY(-2px); filter: brightness(1.05); }
@@ -207,6 +215,16 @@ const ICONOS_AREA = [
       .fmt-natural .hero p { margin-inline: auto; }
       .fmt-natural .panel { border-radius: 22px; }
       .fmt-natural .cab-ini { border-radius: 16px; }
+
+      /* tarjeta: el hero va dentro de una tarjeta de color redondeada (amable). */
+      .fmt-tarjeta .cabecera { width: min(100% - 2rem, 980px); margin: 1.4rem auto 0; background: linear-gradient(150deg, color-mix(in srgb, var(--principal) 74%, #7bc0e8), var(--principal)); color: #fff; border-radius: 26px; padding: 1.6rem 2rem 2.2rem; }
+      .fmt-tarjeta .cabecera .env { width: auto; margin: 0; }
+      .fmt-tarjeta .cab { padding: .4rem 0 .5rem; }
+      .fmt-tarjeta .cab-ini { background: #fff; color: var(--principal); }
+      .fmt-tarjeta .cab-rol { color: color-mix(in srgb, #fff 80%, transparent); }
+      .fmt-tarjeta .hero { padding: .4rem 0 0; }
+      .fmt-tarjeta .hero p { color: color-mix(in srgb, #fff 90%, transparent); }
+      .fmt-tarjeta main { margin-top: 1.2rem; }
 
       /* ---------- BOTONES por estilo ---------- */
       .btn-recto .hora, .btn-recto .cal-btn { border-radius: 5px; }
@@ -368,6 +386,22 @@ const ICONOS_AREA = [
             <div class="ob-resumen" id="ob-resumen"></div>
             <button class="btn-accion" id="ob-reservar">Reservar primera consulta · {demo.servicios[0]?.precio}</button>
           </div>
+        </section>
+      )}
+
+      {demo.tipo === "mascota" && (
+        <section class="panel vet" aria-label="Pedir cita (demostración)">
+          <h2>Pide tu cita</h2>
+          <p class="ayuda">Ejemplo interactivo. Elige quién viene y el motivo, y pide la cita.</p>
+          {(demo.pasos ?? []).map((g, gi) => (
+            <div class="vet-grupo" data-grupo={gi}>
+              <p class="paso-titulo">{g.pregunta}</p>
+              <div class="vet-chips">
+                {g.opciones.map((o) => <button class="vet-chip" data-valor={o} aria-pressed="false">{o}</button>)}
+              </div>
+            </div>
+          ))}
+          <button class="btn-accion" id="vet-pedir">Pedir cita</button>
         </section>
       )}
     </main>
@@ -533,6 +567,28 @@ const ICONOS_AREA = [
           respuestas.filter(Boolean).join(" · "),
         ));
         mostrar(0);
+      }
+
+      // ---------- MASCOTA (dos selectores + pedir cita) ----------
+      const vetGrupos = Array.from(document.querySelectorAll<HTMLElement>(".vet-grupo"));
+      if (vetGrupos.length && $("vet-pedir")) {
+        const sel: Record<string, string> = {};
+        vetGrupos.forEach((g) => {
+          const gi = g.dataset.grupo || "";
+          g.querySelectorAll<HTMLElement>(".vet-chip").forEach((c) => c.addEventListener("click", () => {
+            g.querySelectorAll(".vet-chip").forEach((o) => o.setAttribute("aria-pressed", "false"));
+            c.setAttribute("aria-pressed", "true");
+            sel[gi] = c.dataset.valor || "";
+          }));
+        });
+        $("vet-pedir")?.addEventListener("click", () => {
+          const vals = Object.values(sel);
+          if (vals.length < vetGrupos.length) {
+            abrirModal("Falta un dato", "Elige quién viene y el motivo de la visita para pedir la cita.");
+            return;
+          }
+          abrirModal("¡Cita solicitada!", "En una web real, aquí elegirías día y hora y confirmarías. Es una demostración: no se ha guardado nada.", vals.join(" · "));
+        });
       }
     </script>
   </body>

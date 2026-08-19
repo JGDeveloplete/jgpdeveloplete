@@ -240,36 +240,16 @@ const trayectoria = t.experience.items.map(limpiarItem);
       <p class="more-soon">{t.projects.moreSoon}</p>
     )}
 
-    <!-- Producto propio: webs con reservas. Va aquí, junto a Kaireté, como un
-         bloque desplegable que abre el catálogo de demos por sector. -->
-    <details class="demos-drop" id="service">
-      <summary class="demos-drop-head">
-        <div class="demos-drop-copy">
-          <p class="eyebrow">{t.service.eyebrow}</p>
-          <h3 class="demos-drop-title">{t.service.title}</h3>
-          <p class="demos-drop-text">{t.service.text}</p>
-        </div>
-        <span class="demos-drop-toggle" aria-hidden="true">
-          <span class="demos-drop-abrir">{lang === "es" ? "Ver demos" : "See demos"}</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </span>
-      </summary>
-
-      <div class="demos-drop-body">
-        <p class="service-verticals-label">{t.service.verticalsLabel}</p>
-        <div class="demos-grid">
-          {demos.map((d) => (
-            <a class="demo-card" href={`/demos/${d.slug}/`} style={`--p:${d.paleta.principal};--a:${d.paleta.acento}`}>
-              <span class="demo-card-franja"></span>
-              <span class="demo-card-oficio">{d.profesion}</span>
-              <span class="demo-card-gancho">{d.gancho}</span>
-              <span class="demo-card-ir">{lang === "es" ? "Ver demo" : "See demo"} ↗</span>
-            </a>
-          ))}
-        </div>
-        <a class="btn btn-primary demos-drop-cta" href="/demos/">{t.service.cta} ↗</a>
+    <!-- Producto propio: webs a medida. Junto a Kaireté, con un botón que lleva
+         al catálogo /demos (donde se ven todas de una). -->
+    <div class="demos-cta" id="service">
+      <div class="demos-cta-copy">
+        <p class="eyebrow">{t.service.eyebrow}</p>
+        <h3 class="demos-cta-title">{t.service.title}</h3>
+        <p class="demos-cta-text">{t.service.text}</p>
       </div>
-    </details>
+      <a class="btn btn-primary" href="/demos/">{t.service.cta} ↗</a>
+    </div>
   </div>
 </section>
 
