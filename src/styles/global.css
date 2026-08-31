@@ -172,16 +172,43 @@ img { max-width: 100%; display: block; }
 .eyebrow { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .6rem; }
 .section-title { font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 0 0 .8rem; }
 .section-sub { color: var(--muted); margin: 0; }
-/* Bloque de servicio (webs con reservas) + sus salidas por sector. */
-/* --------- Producto propio: webs a medida (bloque con botón a /demos) --------- */
-.demos-cta { margin-top: 2rem; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, var(--surface), var(--bg-soft)); padding: 1.8rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
-.demos-cta-copy { max-width: 60ch; }
+/* --------- Desplegable reutilizable (fold) --------- */
+.fold { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.3rem; font-family: var(--font-mono); font-size: .92rem; font-weight: 600; letter-spacing: .02em; color: var(--text); user-select: none; transition: color .15s ease, background .15s ease; }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary::marker { content: ""; }
+.fold > summary:hover { color: var(--accent); }
+.fold-chevron { width: 1.15rem; height: 1.15rem; flex: none; color: var(--accent); transition: transform .25s ease; }
+.fold[open] > summary .fold-chevron { transform: rotate(180deg); }
+.fold-body { padding: 1.3rem; border-top: 1px solid var(--line); }
+
+/* Carrera deportiva plegada */
+.sport-fold { margin-top: -.6rem; }
+.sport-fold .fold-body > .bests-title:first-child,
+.sport-fold .fold-body > .season:first-child { margin-top: 0; }
+
+/* --------- Producto propio: webs a medida (se despliega en la propia página) --------- */
+.demos-cta { margin-top: 2rem; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, var(--surface), var(--bg-soft)); padding: 1.8rem; }
+.demos-cta-copy { max-width: 60ch; margin-bottom: 1.3rem; }
 .demos-cta-title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin: .1rem 0 .5rem; color: var(--text); }
 .demos-cta-text { color: var(--muted); margin: 0; font-size: .96rem; }
-.demos-cta .btn { flex: none; }
+.demos-fold { background: var(--bg-soft); }
+.demos-fold > summary { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); }
+.demos-fold > summary:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+
+.demos-inline-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.demo-mini { display: flex; flex-direction: column; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: transform .15s ease, border-color .2s ease; }
+.demo-mini:hover { transform: translateY(-3px); border-color: var(--a); }
+.demo-mini-franja { height: 6px; background: linear-gradient(90deg, var(--p), var(--a)); }
+.demo-mini-cuerpo { padding: 1rem 1.1rem 1.2rem; }
+.demo-mini h4 { margin: 0 0 .35rem; font-size: 1.1rem; color: var(--text); }
+.demo-mini p { margin: 0 0 .9rem; font-size: .87rem; color: var(--muted); line-height: 1.45; }
+.demo-mini-ir { font-weight: 600; color: var(--a); font-size: .87rem; }
+.demos-inline-todas { display: inline-block; margin-top: 1.3rem; font-family: var(--font-mono); font-size: .85rem; font-weight: 600; color: var(--accent); }
+.demos-inline-todas:hover { text-decoration: underline; }
 
 @media (max-width: 640px) {
-  .demos-cta { flex-direction: column; align-items: stretch; padding: 1.4rem; }
+  .demos-cta { padding: 1.4rem; }
 }
 
 /* --------- About --------- */

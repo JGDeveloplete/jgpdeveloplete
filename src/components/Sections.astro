@@ -92,6 +92,13 @@ const trayectoria = t.experience.items.map(limpiarItem);
       <p class="section-sub">{t.sport.sub}</p>
     </div>
 
+    <details class="fold sport-fold">
+      <summary class="fold-summary">
+        <span>{lang === "es" ? "Ver marcas, galería y trayectoria" : "See marks, gallery and career"}</span>
+        <svg class="fold-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="fold-body">
+
     {temporada && (
       <div class="season">
         <h3 class="bests-title season-head">
@@ -145,6 +152,9 @@ const trayectoria = t.experience.items.map(limpiarItem);
         </div>
       ))}
     </div>
+
+      </div>
+    </details>
   </div>
 </section>
 
@@ -240,15 +250,35 @@ const trayectoria = t.experience.items.map(limpiarItem);
       <p class="more-soon">{t.projects.moreSoon}</p>
     )}
 
-    <!-- Producto propio: webs a medida. Junto a Kaireté, con un botón que lleva
-         al catálogo /demos (donde se ven todas de una). -->
+    <!-- Producto propio: webs a medida. Junto a Kaireté. Se despliega aquí mismo
+         y muestra las demos encajonadas; cada tarjeta abre su demo real. -->
     <div class="demos-cta" id="service">
       <div class="demos-cta-copy">
         <p class="eyebrow">{t.service.eyebrow}</p>
         <h3 class="demos-cta-title">{t.service.title}</h3>
         <p class="demos-cta-text">{t.service.text}</p>
       </div>
-      <a class="btn btn-primary" href="/demos/">{t.service.cta} ↗</a>
+      <details class="fold demos-fold">
+        <summary class="fold-summary">
+          <span>{t.service.cta}</span>
+          <svg class="fold-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="fold-body">
+          <div class="demos-inline-grid">
+            {demos.map((d) => (
+              <a class="demo-mini" href={`/demos/${d.slug}/`} style={`--p:${d.paleta.principal};--a:${d.paleta.acento}`}>
+                <span class="demo-mini-franja"></span>
+                <div class="demo-mini-cuerpo">
+                  <h4>{d.profesion}</h4>
+                  <p>{d.gancho}</p>
+                  <span class="demo-mini-ir">{lang === "es" ? "Ver demo ↗" : "View demo ↗"}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+          <a class="demos-inline-todas" href="/demos/">{lang === "es" ? "Abrir el catálogo a pantalla completa ↗" : "Open the full catalogue ↗"}</a>
+        </div>
+      </details>
     </div>
   </div>
 </section>
