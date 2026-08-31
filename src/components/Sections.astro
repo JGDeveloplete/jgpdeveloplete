@@ -11,6 +11,9 @@ const t = content[lang];
 // Si la API no responde, `temporada` es null y no se muestra el bloque.
 const temporada = await marcasTemporada(lang);
 
+// Retrato fijo del hero: la primera foto vertical (de pie en la pista).
+const retrato = t.sport.gallery.find((p) => p.format === "tall");
+
 /**
  * Red de seguridad: nada que siga marcado como pendiente (texto entre
  * corchetes, tipo [COMPLETAR: ...]) debe llegar nunca a la pantalla.
@@ -49,12 +52,12 @@ const trayectoria = t.experience.items.map(limpiarItem);
     </div>
 
     <div class="hero-portrait">
-      <Gallery
-        photos={t.sport.gallery.filter((p) => p.format === "tall")}
-        lang={lang}
-        ratio="3 / 4"
-        autoplay={5000}
-      />
+      {retrato && (
+        <picture class="hero-photo" style={`--foto: url('${retrato.src}.webp')`}>
+          <source srcset={`${retrato.src}.webp`} type="image/webp" />
+          <img src={`${retrato.src}.jpg`} alt={retrato.alt} loading="eager" decoding="async" />
+        </picture>
+      )}
     </div>
   </div>
 </section>
@@ -79,20 +82,16 @@ const trayectoria = t.experience.items.map(limpiarItem);
         ))}
       </dl>
     </div>
-  </div>
-</section>
 
-<!-- ===================== ATLETISMO ===================== -->
-<!-- Va justo tras "Sobre mí": es lo primero que JG quiere mostrar. -->
-<section class="section" id="sport">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t.sport.eyebrow}</p>
-      <h2 class="section-title">{t.sport.title}</h2>
-      <p class="section-sub">{t.sport.sub}</p>
-    </div>
+    <!-- Carrera deportiva, fundida dentro de "Sobre mí". -->
+    <div class="about-sport">
+      <div class="section-head about-sport-head">
+        <p class="eyebrow">{t.sport.eyebrow}</p>
+        <h3 class="section-title about-sport-title">{t.sport.title}</h3>
+        <p class="section-sub">{t.sport.sub}</p>
+      </div>
 
-    <details class="fold sport-fold">
+      <details class="fold sport-fold">
       <summary class="fold-summary">
         <span>{lang === "es" ? "Ver marcas, galería y trayectoria" : "See marks, gallery and career"}</span>
         <svg class="fold-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -155,6 +154,7 @@ const trayectoria = t.experience.items.map(limpiarItem);
 
       </div>
     </details>
+    </div>
   </div>
 </section>
 

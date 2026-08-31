@@ -146,6 +146,19 @@ img { max-width: 100%; display: block; }
 .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.5rem; align-items: center; }
 .hero-portrait { position: relative; }
 .hero-portrait .gallery { margin: 0; }
+/* Retrato fijo del hero: marco redondeado con la misma técnica de la galería
+   (fondo desenfocado con la propia foto) para que la vertical se vea entera. */
+.hero-photo {
+  position: relative; display: block; overflow: hidden;
+  border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface);
+  aspect-ratio: 3 / 4;
+}
+.hero-photo::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: var(--foto); background-size: cover; background-position: center;
+  filter: blur(16px) brightness(.5); transform: scale(1.1);
+}
+.hero-photo img { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; }
 /* Halo con el color del tema, para integrar el carrusel en el diseño */
 .hero-portrait::after {
   content: ""; position: absolute; inset: -14px; z-index: -1; border-radius: 26px;
@@ -182,7 +195,10 @@ img { max-width: 100%; display: block; }
 .fold[open] > summary .fold-chevron { transform: rotate(180deg); }
 .fold-body { padding: 1.3rem; border-top: 1px solid var(--line); }
 
-/* Carrera deportiva plegada */
+/* Carrera deportiva, fundida dentro de "Sobre mí" */
+.about-sport { margin-top: 3.2rem; padding-top: 2.6rem; border-top: 1px solid var(--line); }
+.about-sport-head { margin-bottom: 1.6rem; }
+.about-sport-title { font-size: clamp(1.5rem, 3vw, 2rem); }
 .sport-fold { margin-top: -.6rem; }
 .sport-fold .fold-body > .bests-title:first-child,
 .sport-fold .fold-body > .season:first-child { margin-top: 0; }
