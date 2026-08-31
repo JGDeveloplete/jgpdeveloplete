@@ -192,11 +192,15 @@ img { max-width: 100%; display: block; }
 .demos-cta-copy { max-width: 60ch; margin-bottom: 1.3rem; }
 .demos-cta-title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin: .1rem 0 .5rem; color: var(--text); }
 .demos-cta-text { color: var(--muted); margin: 0; font-size: .96rem; }
-.demos-fold { background: var(--bg-soft); }
-.demos-fold > summary { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); }
-.demos-fold > summary:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+/* Aquí el fold es solo un botoncito compacto que despliega la rejilla debajo. */
+.demos-fold { border: none; background: transparent; overflow: visible; border-radius: 0; }
+.demos-fold > summary { display: inline-flex; width: auto; gap: .5rem; padding: .58rem 1.1rem; border: 1px solid var(--accent); border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-size: .88rem; }
+.demos-fold > summary:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+.demos-fold .fold-body { border-top: none; padding: 1.4rem 0 0; }
 
-.demos-inline-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.demos-inline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 860px) { .demos-inline-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .demos-inline-grid { grid-template-columns: 1fr; } }
 .demo-mini { display: flex; flex-direction: column; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: transform .15s ease, border-color .2s ease; }
 .demo-mini:hover { transform: translateY(-3px); border-color: var(--a); }
 .demo-mini-franja { height: 6px; background: linear-gradient(90deg, var(--p), var(--a)); }
@@ -314,7 +318,7 @@ img { max-width: 100%; display: block; }
 .season .best { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
 .season-src { margin: 1rem 0 0; font-size: .8rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
-.bests { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+.bests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
 .best {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 1.3rem 1.2rem; display: grid; gap: .2rem; text-align: center;
