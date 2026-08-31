@@ -182,14 +182,6 @@ img { max-width: 100%; display: block; }
 .fold[open] > summary .fold-chevron { transform: rotate(180deg); }
 .fold-body { padding: 1.3rem; border-top: 1px solid var(--line); }
 
-/* Carrera deportiva, fundida dentro de "Sobre mí" */
-.about-sport { margin-top: 3.2rem; padding-top: 2.6rem; border-top: 1px solid var(--line); }
-.about-sport-head { margin-bottom: 1.6rem; }
-.about-sport-title { font-size: clamp(1.5rem, 3vw, 2rem); }
-.sport-fold { margin-top: -.6rem; }
-.sport-fold .fold-body > .bests-title:first-child,
-.sport-fold .fold-body > .season:first-child { margin-top: 0; }
-
 /* --------- Producto propio: webs a medida (se despliega en la propia página) --------- */
 .demos-cta { margin-top: 2rem; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, var(--surface), var(--bg-soft)); padding: 1.8rem; }
 .demos-cta-copy { max-width: 60ch; margin-bottom: 1.3rem; }

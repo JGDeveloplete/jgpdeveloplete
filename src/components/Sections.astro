@@ -79,79 +79,6 @@ const trayectoria = t.experience.items.map(limpiarItem);
         ))}
       </dl>
     </div>
-
-    <!-- Carrera deportiva, fundida dentro de "Sobre mí". -->
-    <div class="about-sport">
-      <div class="section-head about-sport-head">
-        <p class="eyebrow">{t.sport.eyebrow}</p>
-        <h3 class="section-title about-sport-title">{t.sport.title}</h3>
-        <p class="section-sub">{t.sport.sub}</p>
-      </div>
-
-      <details class="fold sport-fold">
-      <summary class="fold-summary">
-        <span>{lang === "es" ? "Ver marcas, galería y trayectoria" : "See marks, gallery and career"}</span>
-        <svg class="fold-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </summary>
-      <div class="fold-body">
-
-    {temporada && (
-      <div class="season">
-        <h3 class="bests-title season-head">
-          {lang === "es" ? `Temporada ${temporada.season}` : `${temporada.season} season`}
-          <span class="live" title={lang === "es" ? "Datos oficiales de World Athletics" : "Official World Athletics data"}>
-            <span class="live-dot"></span>{lang === "es" ? "en directo" : "live"}
-          </span>
-        </h3>
-        <div class="bests">
-          {temporada.marcas.map((b) => (
-            <div class="best">
-              <span class="best-event">{b.event}</span>
-              <span class="best-mark">{b.mark}</span>
-              <span class="best-note">{b.note}</span>
-            </div>
-          ))}
-        </div>
-        <p class="season-src">
-          {lang === "es" ? "Mejores marcas legales de la temporada, sincronizadas desde " : "Season's best legal marks, synced from "}
-          <a href="https://worldathletics.org/athletes/spain/jose-giner-14879964" target="_blank" rel="noopener">World Athletics</a>.
-        </p>
-      </div>
-    )}
-
-    <h3 class="bests-title">{t.sport.bestsTitle}</h3>
-    <div class="bests">
-      {t.sport.bests.map((b) => (
-        <div class="best">
-          <span class="best-event">{b.event}</span>
-          <span class="best-mark">{b.mark}</span>
-          <span class="best-note">{b.note}</span>
-        </div>
-      ))}
-    </div>
-
-    <Gallery
-      photos={t.sport.gallery.filter((p) => p.format === "wide")}
-      title={t.sport.galleryTitle}
-      lang={lang}
-      ratio="3 / 2"
-    />
-
-    <div class="timeline">
-      {t.sport.achievements.map((a) => (
-        <div class="tl-item">
-          <span class="tl-year">{a.year}</span>
-          <div class="tl-body">
-            <h3>{a.title}</h3>
-            {a.detail && <p>{a.detail}</p>}
-          </div>
-        </div>
-      ))}
-    </div>
-
-      </div>
-    </details>
-    </div>
   </div>
 </section>
 
@@ -328,6 +255,72 @@ const trayectoria = t.experience.items.map(limpiarItem);
             <h3>{e.role}</h3>
             {e.place && <p class="tl-place">{e.place}</p>}
             {e.detail && <p>{e.detail}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRAYECTORIA DEPORTIVA ===================== -->
+<!-- Al cierre, como broche, y visible directamente (sin desplegable). -->
+<section class="section" id="sport">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t.sport.eyebrow}</p>
+      <h2 class="section-title">{t.sport.title}</h2>
+      <p class="section-sub">{t.sport.sub}</p>
+    </div>
+
+    {temporada && (
+      <div class="season">
+        <h3 class="bests-title season-head">
+          {lang === "es" ? `Temporada ${temporada.season}` : `${temporada.season} season`}
+          <span class="live" title={lang === "es" ? "Datos oficiales de World Athletics" : "Official World Athletics data"}>
+            <span class="live-dot"></span>{lang === "es" ? "en directo" : "live"}
+          </span>
+        </h3>
+        <div class="bests">
+          {temporada.marcas.map((b) => (
+            <div class="best">
+              <span class="best-event">{b.event}</span>
+              <span class="best-mark">{b.mark}</span>
+              <span class="best-note">{b.note}</span>
+            </div>
+          ))}
+        </div>
+        <p class="season-src">
+          {lang === "es" ? "Mejores marcas legales de la temporada, sincronizadas desde " : "Season's best legal marks, synced from "}
+          <a href="https://worldathletics.org/athletes/spain/jose-giner-14879964" target="_blank" rel="noopener">World Athletics</a>.
+        </p>
+      </div>
+    )}
+
+    <h3 class="bests-title">{t.sport.bestsTitle}</h3>
+    <div class="bests">
+      {t.sport.bests.map((b) => (
+        <div class="best">
+          <span class="best-event">{b.event}</span>
+          <span class="best-mark">{b.mark}</span>
+          <span class="best-note">{b.note}</span>
+        </div>
+      ))}
+    </div>
+
+    <Gallery
+      photos={t.sport.gallery.filter((p) => p.format === "wide")}
+      title={t.sport.galleryTitle}
+      lang={lang}
+      ratio="3 / 2"
+    />
+
+    <div class="timeline">
+      {t.sport.achievements.map((a) => (
+        <div class="tl-item">
+          <span class="tl-year">{a.year}</span>
+          <div class="tl-body">
+            <h3>{a.title}</h3>
+            {a.detail && <p>{a.detail}</p>}
           </div>
         </div>
       ))}
