@@ -82,26 +82,6 @@ const trayectoria = t.experience.items.map(limpiarItem);
   </div>
 </section>
 
-<!-- ===================== CÓMO TRABAJO ===================== -->
-<section class="section" id="approach">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t.approach.eyebrow}</p>
-      <h2 class="section-title">{t.approach.title}</h2>
-      <p class="section-sub">{t.approach.sub}</p>
-    </div>
-    <div class="approach-grid">
-      {t.approach.items.map((a, i) => (
-        <div class="approach-item">
-          <span class="approach-num">{String(i + 1).padStart(2, "0")}</span>
-          <h3>{a.title}</h3>
-          <p>{a.text}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
 <!-- ===================== PROYECTOS ===================== -->
 <section class="section" id="projects">
   <div class="container">
@@ -315,7 +295,7 @@ const trayectoria = t.experience.items.map(limpiarItem);
     />
 
     <div class="timeline">
-      {t.sport.achievements.map((a) => (
+      {t.sport.achievements.slice(0, 4).map((a) => (
         <div class="tl-item">
           <span class="tl-year">{a.year}</span>
           <div class="tl-body">
@@ -325,6 +305,27 @@ const trayectoria = t.experience.items.map(limpiarItem);
         </div>
       ))}
     </div>
+
+    {t.sport.achievements.length > 4 && (
+      <details class="mas-hitos">
+        <summary class="mas-hitos-btn">
+          <span data-mas={lang === "es" ? `Ver ${t.sport.achievements.length - 4} hitos más` : `Show ${t.sport.achievements.length - 4} more`}
+                data-menos={lang === "es" ? "Ver menos" : "Show less"}></span>
+          <svg class="fold-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </summary>
+        <div class="timeline timeline-gap">
+          {t.sport.achievements.slice(4).map((a) => (
+            <div class="tl-item">
+              <span class="tl-year">{a.year}</span>
+              <div class="tl-body">
+                <h3>{a.title}</h3>
+                {a.detail && <p>{a.detail}</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </details>
+    )}
   </div>
 </section>
 

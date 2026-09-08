@@ -218,13 +218,6 @@ img { max-width: 100%; display: block; }
 .fact dt { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
 .fact dd { margin: .3rem 0 0; font-weight: 500; }
 
-/* --------- Cómo trabajo --------- */
-.approach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; }
-.approach-item { border-top: 2px solid var(--line); padding-top: 1.3rem; }
-.approach-num { font-family: var(--font-mono); font-size: .85rem; color: var(--accent); letter-spacing: .1em; }
-.approach-item h3 { margin: .5rem 0 .6rem; font-size: 1.2rem; }
-.approach-item p { margin: 0; color: var(--muted); font-size: .95rem; }
-
 /* --------- Proyecto destacado --------- */
 .featured {
   display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem;
@@ -287,11 +280,11 @@ img { max-width: 100%; display: block; }
 }
 
 /* --------- Stack --------- */
-.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
-.stack-group h3 { font-size: 1.05rem; margin: 0 0 .8rem; color: var(--text); }
-.stack-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
-.stack-group li { font-family: var(--font-mono); font-size: .9rem; color: var(--muted); }
-.stack-group li::before { content: "▹ "; color: var(--accent); }
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem 1.6rem; }
+.stack-group h3 { font-size: .78rem; margin: 0 0 .7rem; color: var(--accent); font-family: var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.stack-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.stack-group li { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .28rem .72rem; }
+.stack-group li::before { content: none; }
 
 /* --------- Marcas personales --------- */
 .bests-title { font-size: 1.05rem; margin: 0 0 1rem; color: var(--muted); font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
@@ -373,13 +366,26 @@ img { max-width: 100%; display: block; }
 .gallery-dots button.active { background: var(--accent); transform: scale(1.35); }
 
 /* --------- Deporte / Experiencia (timeline) --------- */
-.timeline { position: relative; display: grid; gap: 1.2rem; }
-.timeline-gap { margin-top: 2.5rem; }
-.tl-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.2rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.5rem; }
-.tl-year { font-family: var(--font-mono); color: var(--accent); font-weight: 600; font-size: .9rem; }
-.tl-body h3 { margin: 0 0 .3rem; font-size: 1.15rem; }
-.tl-body p { margin: 0; color: var(--muted); font-size: .93rem; }
+.timeline { position: relative; display: grid; gap: .7rem; }
+.timeline-gap { margin-top: 1.8rem; }
+.tl-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.2rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .9rem 1.2rem; }
+.tl-year { font-family: var(--font-mono); color: var(--accent); font-weight: 600; font-size: .88rem; }
+.tl-body h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
+.tl-body p { margin: 0; color: var(--muted); font-size: .9rem; }
 .tl-place { color: var(--accent-2); font-family: var(--font-mono); font-size: .82rem; }
+/* "Ver más hitos" en la trayectoria deportiva */
+.mas-hitos { margin-top: .8rem; }
+/* .timeline fuerza display:grid y ganaría al ocultado nativo del <details>,
+   así que ocultamos explícitamente el contenido cuando está cerrado. */
+.mas-hitos:not([open]) > .timeline { display: none; }
+.mas-hitos > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .45rem; font-family: var(--font-mono); font-size: .85rem; font-weight: 600; color: var(--accent); user-select: none; }
+.mas-hitos > summary::-webkit-details-marker { display: none; }
+.mas-hitos > summary::marker { content: ""; }
+.mas-hitos > summary:hover { text-decoration: underline; }
+.mas-hitos > summary span::before { content: attr(data-mas); }
+.mas-hitos[open] > summary span::before { content: attr(data-menos); }
+.mas-hitos .fold-chevron { width: 1rem; height: 1rem; transition: transform .2s ease; }
+.mas-hitos[open] > summary .fold-chevron { transform: rotate(180deg); }
 
 /* --------- Contacto --------- */
 .contact { text-align: center; }
@@ -453,7 +459,6 @@ img { max-width: 100%; display: block; }
   .projects-grid { grid-template-columns: 1fr 1fr; }
   .stack-grid { grid-template-columns: 1fr 1fr; }
   .bests { grid-template-columns: 1fr 1fr; }
-  .approach-grid { grid-template-columns: 1fr; gap: 1.2rem; }
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   /* En móvil, primero el texto (nombre e info) y DESPUÉS la galería. Antes
      llevaba order:-1 y la galería tapaba lo primero que se veía. */
