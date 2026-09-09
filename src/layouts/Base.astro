@@ -106,6 +106,8 @@ const personaJson = JSON.stringify(persona).replace(/</g, "\\u003c");
           var permitidos = ["savia", "bosque", "grafito", "regata", "amapola"];
           var t = localStorage.getItem("jg-theme");
           if (t && permitidos.indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t);
+          // Modo claro/oscuro: oscuro por defecto; solo "claro" pone atributo.
+          if (localStorage.getItem("jg-mode") === "claro") document.documentElement.setAttribute("data-mode", "claro");
         } catch (e) {}
       })();
     </script>
@@ -143,6 +145,24 @@ const personaJson = JSON.stringify(persona).replace(/</g, "\\u003c");
         });
       });
       paintThemeButtons();
+
+      // ---- Interruptor de modo claro/oscuro (sol/luna) ----
+      const modeBtn = document.getElementById("mode-toggle");
+      const modeEmoji = modeBtn?.querySelector<HTMLElement>(".mode-emoji");
+      const isLight = () => document.documentElement.getAttribute("data-mode") === "claro";
+      const paintMode = () => {
+        const light = isLight();
+        if (modeEmoji) modeEmoji.textContent = light ? "🌙" : "☀️";
+        modeBtn?.setAttribute("aria-pressed", String(light));
+      };
+      modeBtn?.addEventListener("click", () => {
+        const goLight = !isLight();
+        if (goLight) document.documentElement.setAttribute("data-mode", "claro");
+        else document.documentElement.removeAttribute("data-mode");
+        try { localStorage.setItem("jg-mode", goLight ? "claro" : "oscuro"); } catch (e) {}
+        paintMode();
+      });
+      paintMode();
 
       // ---- Barra de progreso, cabecera compacta y botón "subir" ----
       const header = document.querySelector(".site-header");

@@ -3,66 +3,66 @@
    Tema oscuro, moderno, con un acento energético (verde pista).
    ============================================================ */
 
-/* ---- TEMA POR DEFECTO: "Pista" — gama de Kaireté (naranja + azul) ---- */
-:root {
-  --bg: #211a17;
-  --bg-soft: #29201c;
-  --surface: #322823;
-  --surface-2: #3d302a;
-  --line: #5b4942;
-  --text: #f6efea;
-  --muted: #b6a49b;
-  --accent: #ff7a45;      /* naranja pista */
-  --accent-2: #5cb3e0;    /* azul, contraste frío */
-  --accent-ink: #2b1206;
+/* ============================================================
+   GAMAS DE COLOR (de Kaireté). Cada gama define su versión CLARA (--l-*) y
+   OSCURA (--d-*). El interruptor de modo (sol/luna) elige cuál se pinta; los
+   puntitos eligen la gama. Pista es la de por defecto (:root).
+   ============================================================ */
+:root,
+[data-theme="pista"] {
+  --l-bg:#ede5dd; --l-bg-soft:#e5dccf; --l-surface:#fffaf4; --l-surface-2:#f7f1e8; --l-line:#d8c0a4; --l-text:#2b1c12; --l-muted:#786053; --l-accent:#e05a25; --l-accent-2:#1f6f9e; --l-accent-ink:#2b1206;
+  --d-bg:#211a17; --d-bg-soft:#29201c; --d-surface:#322823; --d-surface-2:#3d302a; --d-line:#5b4942; --d-text:#f6efea; --d-muted:#b6a49b; --d-accent:#ff7a45; --d-accent-2:#5cb3e0; --d-accent-ink:#2b1206;
+}
+/* Savia: naranja + verde */
+[data-theme="savia"] {
+  --l-bg:#ede8dd; --l-bg-soft:#e5dfce; --l-surface:#fffdf7; --l-surface-2:#f6f3e8; --l-line:#cfc79a; --l-text:#1f2416; --l-muted:#656950; --l-accent:#e2711d; --l-accent-2:#2f9440; --l-accent-ink:#2a1405;
+  --d-bg:#202117; --d-bg-soft:#26281c; --d-surface:#2b2f20; --d-surface-2:#343827; --d-line:#4a5139; --d-text:#eef0e4; --d-muted:#a3a891; --d-accent:#ff8c3a; --d-accent-2:#6ede86; --d-accent-ink:#1d0f04;
+}
+/* Bosque: verde + oro */
+[data-theme="bosque"] {
+  --l-bg:#e3eee5; --l-bg-soft:#d7e6da; --l-surface:#ffffff; --l-surface-2:#eef6f0; --l-line:#a9cbb1; --l-text:#12211a; --l-muted:#546e60; --l-accent:#0e8455; --l-accent-2:#c08a06; --l-accent-ink:#f0fff6;
+  --d-bg:#13251d; --d-bg-soft:#182c22; --d-surface:#1f3327; --d-surface-2:#26402f; --d-line:#3a5543; --d-text:#e9f2ec; --d-muted:#92ad9c; --d-accent:#34d399; --d-accent-2:#f0b429; --d-accent-ink:#052014;
+}
+/* Grafito: gris carbón + ámbar */
+[data-theme="grafito"] {
+  --l-bg:#ebebed; --l-bg-soft:#e0e0e4; --l-surface:#ffffff; --l-surface-2:#f3f3f5; --l-line:#cacace; --l-text:#18181b; --l-muted:#67676f; --l-accent:#3f3f46; --l-accent-2:#d97706; --l-accent-ink:#fafafa;
+  --d-bg:#19191f; --d-bg-soft:#202026; --d-surface:#28282d; --d-surface-2:#313137; --d-line:#49494f; --d-text:#f4f4f5; --d-muted:#a1a1aa; --d-accent:#d4d4d8; --d-accent-2:#f59e0b; --d-accent-ink:#09090b;
+}
+/* Regata: azul marino + dorado */
+[data-theme="regata"] {
+  --l-bg:#e7ecf1; --l-bg-soft:#dde4ec; --l-surface:#ffffff; --l-surface-2:#eef2f7; --l-line:#b8ccdf; --l-text:#0f1e2e; --l-muted:#556b7e; --l-accent:#1e4f8a; --l-accent-2:#b07f1f; --l-accent-ink:#f7fbff;
+  --d-bg:#0c1a2c; --d-bg-soft:#10233a; --d-surface:#142940; --d-surface-2:#1b334e; --d-line:#2f5078; --d-text:#e9f0f8; --d-muted:#8ba3bd; --d-accent:#4d94e0; --d-accent-2:#f0c04b; --d-accent-ink:#06121f;
+}
+/* Amapola: rojo + azul */
+[data-theme="amapola"] {
+  --l-bg:#efe6e8; --l-bg-soft:#e6dade; --l-surface:#fcfbfb; --l-surface-2:#f5f2f3; --l-line:#dcc2c6; --l-text:#2d161a; --l-muted:#7d5e63; --l-accent:#c81e3c; --l-accent-2:#1d5fa8; --l-accent-ink:#faf5f6;
+  --d-bg:#221618; --d-bg-soft:#2a1b1e; --d-surface:#342326; --d-surface-2:#3f2b2f; --d-line:#56393e; --d-text:#f5f0f1; --d-muted:#b7a4a7; --d-accent:#f2495f; --d-accent-2:#5b9bdd; --d-accent-ink:#240a0f;
+}
 
+/* Tipografía y medidas (una sola vez) */
+:root {
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Space Grotesk", var(--font-sans);
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-
   --radius: 14px;
   --container: 1120px;
+}
+
+/* ---- MAPA ACTIVO: OSCURO por defecto ---- */
+:root {
+  color-scheme: dark;
+  --bg: var(--d-bg); --bg-soft: var(--d-bg-soft); --surface: var(--d-surface); --surface-2: var(--d-surface-2);
+  --line: var(--d-line); --text: var(--d-text); --muted: var(--d-muted);
+  --accent: var(--d-accent); --accent-2: var(--d-accent-2); --accent-ink: var(--d-accent-ink);
   --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
-
-/* ---- Gamas de Kaireté. Cada una es bicolor (cálido contra frío). Los oscuros
-       usan la variante oscura de Kaireté; Regata y Amapola, la clara. ---- */
-
-/* ---- "Savia": naranja + verde ---- */
-[data-theme="savia"] {
-  --bg: #202117; --bg-soft: #26281c; --surface: #2b2f20; --surface-2: #343827;
-  --line: #4a5139; --text: #eef0e4; --muted: #a3a891;
-  --accent: #ff8c3a; --accent-2: #6ede86; --accent-ink: #1d0f04;
-}
-
-/* ---- "Bosque": verde + oro ---- */
-[data-theme="bosque"] {
-  --bg: #13251d; --bg-soft: #182c22; --surface: #1f3327; --surface-2: #26402f;
-  --line: #3a5543; --text: #e9f2ec; --muted: #92ad9c;
-  --accent: #34d399; --accent-2: #f0b429; --accent-ink: #052014;
-}
-
-/* ---- "Grafito": gris carbón + ámbar (la sobria/grisácea) ---- */
-[data-theme="grafito"] {
-  --bg: #19191f; --bg-soft: #202026; --surface: #28282d; --surface-2: #313137;
-  --line: #49494f; --text: #f4f4f5; --muted: #a1a1aa;
-  --accent: #d4d4d8; --accent-2: #f59e0b; --accent-ink: #09090b;
-}
-
-/* ---- "Regata": azul marino + dorado (clara) ---- */
-[data-theme="regata"] {
-  --bg: #e7ecf1; --bg-soft: #dde4ec; --surface: #ffffff; --surface-2: #eef2f7;
-  --line: #b8ccdf; --text: #0f1e2e; --muted: #556b7e;
-  --accent: #1e4f8a; --accent-2: #b07f1f; --accent-ink: #f7fbff;
-  --shadow: 0 16px 40px rgba(15, 30, 46, 0.12);
-}
-
-/* ---- "Amapola": rojo + azul (clara) ---- */
-[data-theme="amapola"] {
-  --bg: #efe6e8; --bg-soft: #e6dade; --surface: #fcfbfb; --surface-2: #f5f2f3;
-  --line: #dcc2c6; --text: #2d161a; --muted: #7d5e63;
-  --accent: #c81e3c; --accent-2: #1d5fa8; --accent-ink: #faf5f6;
-  --shadow: 0 16px 40px rgba(45, 22, 26, 0.12);
+/* ---- Modo CLARO (interruptor sol/luna) ---- */
+:root[data-mode="claro"] {
+  color-scheme: light;
+  --bg: var(--l-bg); --bg-soft: var(--l-bg-soft); --surface: var(--l-surface); --surface-2: var(--l-surface-2);
+  --line: var(--l-line); --text: var(--l-text); --muted: var(--l-muted);
+  --accent: var(--l-accent); --accent-2: var(--l-accent-2); --accent-ink: var(--l-accent-ink);
+  --shadow: 0 16px 40px rgba(20, 20, 20, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -132,6 +132,15 @@ img { max-width: 100%; display: block; }
 
 /* Idioma + color en la misma fila (un solo <li> en la cabecera). */
 .switches { display: inline-flex; align-items: center; gap: 1rem; }
+
+/* --------- Interruptor de modo (sol/luna) --------- */
+.mode-toggle {
+  display: inline-grid; place-items: center; width: 34px; height: 34px; flex: none;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2);
+  cursor: pointer; padding: 0; line-height: 1; transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.mode-toggle:hover { transform: scale(1.08); border-color: var(--accent); }
+.mode-toggle .mode-emoji { font-size: 1rem; }
 
 /* --------- Selector de tema --------- */
 .theme-switch { display: inline-flex; gap: .4rem; align-items: center; }

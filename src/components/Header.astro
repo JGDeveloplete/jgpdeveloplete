@@ -30,6 +30,11 @@ const enHref = "/en/";
           <a href={esHref} class={lang === "es" ? "active" : ""}>ES</a>
           <a href={enHref} class={lang === "en" ? "active" : ""}>EN</a>
         </span>
+        <button class="mode-toggle" id="mode-toggle" type="button" aria-pressed="false"
+                title={lang === "es" ? "Modo claro u oscuro" : "Light or dark mode"}
+                aria-label={lang === "es" ? "Cambiar entre modo claro y oscuro" : "Toggle light and dark mode"}>
+          <span class="mode-emoji" aria-hidden="true">☀️</span>
+        </button>
         <span class="theme-switch" role="group" aria-label={lang === "es" ? "Color de la web" : "Site colour"}>
           <button class="theme-dot pista" data-theme-set="pista" aria-pressed="false" title="Pista"><span class="sr-only">Pista</span></button>
           <button class="theme-dot savia" data-theme-set="savia" aria-pressed="false" title="Savia"><span class="sr-only">Savia</span></button>
