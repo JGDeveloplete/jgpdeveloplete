@@ -25,7 +25,7 @@ export const legal: Record<Lang, LegalDoc> = {
       {
         h: "Titular",
         p: [
-          "Este sitio es el portafolio personal de Jose Giner Pérez, con fines de presentación profesional y deportiva. Para cualquier consulta puedes escribir a jgpathletics@gmail.com.",
+          "Este sitio es el portafolio personal de Jose Giner Pérez, con fines de presentación profesional y deportiva. Para cualquier consulta puedes escribir a contacto@jgpdeveloplete.com.",
         ],
       },
       {
@@ -46,7 +46,7 @@ export const legal: Record<Lang, LegalDoc> = {
         h: "Datos personales",
         p: [
           "Esta web no recoge datos personales a través de formularios. Si me escribes por correo electrónico, usaré tu mensaje y tu dirección únicamente para responderte, y no los cederé a terceros. Puedes solicitar en cualquier momento que elimine esa comunicación escribiendo al mismo correo.",
-          "Conforme al RGPD, tienes derecho a acceder a tus datos, rectificarlos, suprimirlos, oponerte a su tratamiento o limitarlo; para ejercerlos, escribe a jgpathletics@gmail.com. Si consideras que el tratamiento no se ajusta a la normativa, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).",
+          "Conforme al RGPD, tienes derecho a acceder a tus datos, rectificarlos, suprimirlos, oponerte a su tratamiento o limitarlo; para ejercerlos, escribe a contacto@jgpdeveloplete.com. Si consideras que el tratamiento no se ajusta a la normativa, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).",
         ],
       },
       {
@@ -66,7 +66,7 @@ export const legal: Record<Lang, LegalDoc> = {
       {
         h: "Owner",
         p: [
-          "This site is the personal portfolio of Jose Giner Pérez, for professional and athletic presentation. For any enquiry you can write to jgpathletics@gmail.com.",
+          "This site is the personal portfolio of Jose Giner Pérez, for professional and athletic presentation. For any enquiry you can write to contacto@jgpdeveloplete.com.",
         ],
       },
       {
@@ -87,7 +87,7 @@ export const legal: Record<Lang, LegalDoc> = {
         h: "Personal data",
         p: [
           "This website collects no personal data through forms. If you email me, I will use your message and address only to reply, and will not share them with third parties. You can ask me to delete that communication at any time by writing to the same address.",
-          "Under the GDPR you have the right to access, rectify, erase, object to or restrict the processing of your data; to exercise them, write to jgpathletics@gmail.com. If you believe the processing does not comply with the law, you may lodge a complaint with the Spanish Data Protection Agency (aepd.es).",
+          "Under the GDPR you have the right to access, rectify, erase, object to or restrict the processing of your data; to exercise them, write to contacto@jgpdeveloplete.com. If you believe the processing does not comply with the law, you may lodge a complaint with the Spanish Data Protection Agency (aepd.es).",
         ],
       },
       {

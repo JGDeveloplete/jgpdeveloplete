@@ -134,7 +134,7 @@ export interface Content {
 }
 
 const shared = {
-  email: "jgpathletics@gmail.com",
+  email: "contacto@jgpdeveloplete.com",
   socials: [
     { label: "GitHub", url: "https://github.com/JGDeveloplete" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/jose-giner-p%C3%A9rez-6107b41a1/" },
