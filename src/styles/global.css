@@ -106,9 +106,11 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--line);
 }
 .header-inner { display: flex; align-items: center; gap: 1.25rem; padding: .85rem 0; }
-.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--text); letter-spacing: .02em; }
-.brand:hover { text-decoration: none; color: var(--accent); }
-.brand .dot { color: var(--accent); }
+.brand { display: inline-flex; align-items: center; color: var(--text); }
+.brand:hover { text-decoration: none; }
+.brand .logo { height: 27px; width: auto; display: block; }
+.logo-jgp { fill: var(--text); font-family: var(--font-display); font-weight: 700; letter-spacing: .01em; transition: fill .15s ease; }
+.brand:hover .logo-jgp { fill: var(--accent); }
 .nav-menu { display: flex; align-items: center; gap: 1.3rem; list-style: none; margin: 0 0 0 auto; padding: 0; }
 .nav-menu a { color: var(--muted); font-size: .92rem; font-weight: 500; }
 .nav-menu a:hover { color: var(--text); text-decoration: none; }
@@ -445,7 +447,7 @@ img { max-width: 100%; display: block; }
 /* --------- Footer --------- */
 .site-footer { border-top: 1px solid var(--line); padding: 2.5rem 0; margin-top: 2rem; }
 .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .88rem; }
-.footer-inner .brand { font-size: 1rem; }
+.footer-inner .brand .logo { height: 22px; }
 .footer-legal { color: var(--muted); }
 .footer-legal:hover { color: var(--accent); }
 

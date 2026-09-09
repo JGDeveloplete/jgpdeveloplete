@@ -1,5 +1,6 @@
 ---
 import { content, type Lang } from "../i18n/content";
+import Logo from "./Logo.astro";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = content[lang].nav;
@@ -10,7 +11,7 @@ const enHref = "/en/";
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href={lang === "es" ? esHref : enHref}>JG<span class="dot">.</span></a>
+    <a class="brand" href={lang === "es" ? esHref : enHref} aria-label="JGP Developlete"><Logo /></a>
 
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
       <span class="sr-only">Menu</span>

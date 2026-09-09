@@ -1,5 +1,6 @@
 ---
 import { content, type Lang } from "../i18n/content";
+import Logo from "./Logo.astro";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = content[lang];
@@ -8,7 +9,7 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <span class="brand">JG<span class="dot">.</span></span>
+    <span class="brand" aria-label="JGP Developlete"><Logo /></span>
     <span>{t.footer.tagline}</span>
     <a class="footer-legal" href={lang === "es" ? "/legal" : "/en/legal"}>
       {lang === "es" ? "Aviso legal y privacidad" : "Legal notice & privacy"}

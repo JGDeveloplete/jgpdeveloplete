@@ -1,0 +1,24 @@
+---
+/**
+ * Logo JGP: mezcla de "etiqueta de código" (‹JGP/›) con "velocidad" (itálica +
+ * estelas). Las letras usan el color del tema (--text) para leerse siempre; los
+ * adornos van en dorado + teal FIJOS, como color de marca (no cambian de gama).
+ * Deporte (estelas, itálica, chevrón-flecha) + informática (barra y chevrón de
+ * cierre de etiqueta).
+ */
+interface Props { class?: string }
+const { class: cls } = Astro.props;
+const ORO = "#e3a51b";
+const TEAL = "#15b0a6";
+---
+<svg class:list={["logo", cls]} viewBox="0 0 104 34" role="img" aria-label="JGP Developlete">
+  <!-- estelas de velocidad (dorado) -->
+  <line x1="0" y1="9"  x2="10" y2="9"  stroke={ORO} stroke-width="2.4" stroke-linecap="round" opacity=".45"/>
+  <line x1="0" y1="17" x2="13" y2="17" stroke={ORO} stroke-width="2.4" stroke-linecap="round" opacity=".85"/>
+  <line x1="0" y1="25" x2="10" y2="25" stroke={ORO} stroke-width="2.4" stroke-linecap="round" opacity=".45"/>
+  <!-- JGP itálica, color del tema -->
+  <text x="20" y="26" class="logo-jgp" font-size="24" font-style="italic">JGP</text>
+  <!-- cierre de etiqueta: barra dorada + chevrón teal (código + flecha de avance) -->
+  <line x1="81" y1="7" x2="72" y2="27" stroke={ORO} stroke-width="3" stroke-linecap="round"/>
+  <polyline points="88,8 98,17 88,26" fill="none" stroke={TEAL} stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
