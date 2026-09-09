@@ -13,11 +13,6 @@
   --l-bg:#ede5dd; --l-bg-soft:#e5dccf; --l-surface:#fffaf4; --l-surface-2:#f7f1e8; --l-line:#d8c0a4; --l-text:#2b1c12; --l-muted:#786053; --l-accent:#e05a25; --l-accent-2:#1f6f9e; --l-accent-ink:#2b1206;
   --d-bg:#211a17; --d-bg-soft:#29201c; --d-surface:#322823; --d-surface-2:#3d302a; --d-line:#5b4942; --d-text:#f6efea; --d-muted:#b6a49b; --d-accent:#ff7a45; --d-accent-2:#5cb3e0; --d-accent-ink:#2b1206;
 }
-/* Savia: naranja + verde */
-[data-theme="savia"] {
-  --l-bg:#ede8dd; --l-bg-soft:#e5dfce; --l-surface:#fffdf7; --l-surface-2:#f6f3e8; --l-line:#cfc79a; --l-text:#1f2416; --l-muted:#656950; --l-accent:#e2711d; --l-accent-2:#2f9440; --l-accent-ink:#2a1405;
-  --d-bg:#202117; --d-bg-soft:#26281c; --d-surface:#2b2f20; --d-surface-2:#343827; --d-line:#4a5139; --d-text:#eef0e4; --d-muted:#a3a891; --d-accent:#ff8c3a; --d-accent-2:#6ede86; --d-accent-ink:#1d0f04;
-}
 /* Bosque: verde + oro */
 [data-theme="bosque"] {
   --l-bg:#e3eee5; --l-bg-soft:#d7e6da; --l-surface:#ffffff; --l-surface-2:#eef6f0; --l-line:#a9cbb1; --l-text:#12211a; --l-muted:#546e60; --l-accent:#0e8455; --l-accent-2:#c08a06; --l-accent-ink:#f0fff6;
@@ -33,12 +28,6 @@
   --l-bg:#e7ecf1; --l-bg-soft:#dde4ec; --l-surface:#ffffff; --l-surface-2:#eef2f7; --l-line:#b8ccdf; --l-text:#0f1e2e; --l-muted:#556b7e; --l-accent:#1e4f8a; --l-accent-2:#b07f1f; --l-accent-ink:#f7fbff;
   --d-bg:#0c1a2c; --d-bg-soft:#10233a; --d-surface:#142940; --d-surface-2:#1b334e; --d-line:#2f5078; --d-text:#e9f0f8; --d-muted:#8ba3bd; --d-accent:#4d94e0; --d-accent-2:#f0c04b; --d-accent-ink:#06121f;
 }
-/* Amapola: rojo + azul */
-[data-theme="amapola"] {
-  --l-bg:#efe6e8; --l-bg-soft:#e6dade; --l-surface:#fcfbfb; --l-surface-2:#f5f2f3; --l-line:#dcc2c6; --l-text:#2d161a; --l-muted:#7d5e63; --l-accent:#c81e3c; --l-accent-2:#1d5fa8; --l-accent-ink:#faf5f6;
-  --d-bg:#221618; --d-bg-soft:#2a1b1e; --d-surface:#342326; --d-surface-2:#3f2b2f; --d-line:#56393e; --d-text:#f5f0f1; --d-muted:#b7a4a7; --d-accent:#f2495f; --d-accent-2:#5b9bdd; --d-accent-ink:#240a0f;
-}
-
 /* Tipografía y medidas (una sola vez) */
 :root {
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -152,11 +141,9 @@ img { max-width: 100%; display: block; }
 .theme-dot:hover { transform: scale(1.15); }
 .theme-dot[aria-pressed="true"] { border-color: var(--text); transform: scale(1.15); }
 .theme-dot.pista { background: linear-gradient(135deg, #ff7a45, #5cb3e0); }
-.theme-dot.savia { background: linear-gradient(135deg, #ff8c3a, #6ede86); }
 .theme-dot.bosque { background: linear-gradient(135deg, #34d399, #f0b429); }
 .theme-dot.grafito { background: linear-gradient(135deg, #d4d4d8, #f59e0b); }
 .theme-dot.regata { background: linear-gradient(135deg, #1e4f8a, #c9962f); }
-.theme-dot.amapola { background: linear-gradient(135deg, #c81e3c, #1d5fa8); }
 
 .nav-toggle { display: none; }
 
@@ -188,7 +175,10 @@ img { max-width: 100%; display: block; }
 /* --------- Secciones --------- */
 .section { padding: 4.5rem 0; }
 .section-head { margin-bottom: 2.8rem; max-width: 720px; }
-.eyebrow { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .6rem; }
+/* Firma visual del portfolio: barrita bicolor (los dos acentos de la gama)
+   delante de cada eyebrow. Es el detalle que lo diferencia de Kaireté. */
+.eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .8rem; }
+.eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); flex: none; }
 .section-title { font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 0 0 .8rem; }
 .section-sub { color: var(--muted); margin: 0; }
 /* --------- Desplegable reutilizable (fold) --------- */
@@ -206,9 +196,15 @@ img { max-width: 100%; display: block; }
 .proy-viewport { overflow: hidden; border-radius: var(--radius); }
 .proy-track { display: flex; align-items: stretch; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
 .proyecto-card {
+  position: relative; overflow: hidden;
   flex: 0 0 100%; box-sizing: border-box; display: flex; flex-direction: column;
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 2rem 2.2rem; box-shadow: var(--shadow);
+}
+/* Franja bicolor superior: la firma del portfolio, con los dos acentos. */
+.proyecto-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
 }
 .proyecto-top { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .proyecto-top h3 { margin: 0; font-size: clamp(1.6rem, 3.5vw, 2.1rem); }

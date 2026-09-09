@@ -103,7 +103,7 @@ const personaJson = JSON.stringify(persona).replace(/</g, "\\u003c");
         try {
           // Solo se aplican temas de la lista conocida: un valor manipulado en
           // localStorage no puede colar un atributo arbitrario.
-          var permitidos = ["savia", "bosque", "grafito", "regata", "amapola"];
+          var permitidos = ["bosque", "grafito", "regata"];
           var t = localStorage.getItem("jg-theme");
           if (t && permitidos.indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t);
           // Modo claro/oscuro: oscuro por defecto; solo "claro" pone atributo.
