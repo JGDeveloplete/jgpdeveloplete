@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0b0f14"/>
-  <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
-        font-family="'Space Grotesk', system-ui, sans-serif" font-size="30" font-weight="700" fill="#4ade80">JG</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="JGP">
+  <rect width="64" height="64" rx="15" fill="#211a17"/>
+  <!-- estelas de velocidad (dorado) -->
+  <line x1="10" y1="22" x2="22" y2="22" stroke="#e3a51b" stroke-width="4.2" stroke-linecap="round" opacity=".5"/>
+  <line x1="8"  y1="32" x2="24" y2="32" stroke="#e3a51b" stroke-width="4.2" stroke-linecap="round" opacity=".9"/>
+  <line x1="10" y1="42" x2="22" y2="42" stroke="#e3a51b" stroke-width="4.2" stroke-linecap="round" opacity=".5"/>
+  <!-- barra "/" dorada + chevrón "›" teal (código + avance) -->
+  <line x1="44" y1="15" x2="33" y2="49" stroke="#e3a51b" stroke-width="5.5" stroke-linecap="round"/>
+  <polyline points="45,17 57,32 45,47" fill="none" stroke="#15b0a6" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
