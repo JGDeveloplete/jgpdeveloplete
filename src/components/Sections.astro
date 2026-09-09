@@ -143,13 +143,24 @@ const proyectos = [
             </article>
           ))}
 
-          <!-- Servicio: webs con reservas, como una tarjeta más del carrusel. -->
+          <!-- Servicio: webs con reservas, con el mismo formato que Kaireté. -->
           <article class="proyecto-card proy-servicio" id="service">
             <div class="proyecto-top">
               <h3>{t.service.title}</h3>
               <span class="featured-status">{t.service.eyebrow}</span>
             </div>
-            <p class="proyecto-tagline">{t.service.text}</p>
+            <p class="proyecto-tagline">
+              {lang === "es"
+                ? "Webs con sistema de citas propio para negocios que atienden con cita."
+                : "Websites with a built-in booking system for appointment-based businesses."}
+            </p>
+            <div class="proyecto-block">
+              <h4>{lang === "es" ? "Un mismo motor" : "One engine"}</h4>
+              <p>{lang === "es"
+                ? "El cliente elige día y hora y reserva solo, sin llamadas ni esperas. Adaptado a cada sector."
+                : "The client picks a day and time and books on their own — no calls, no waiting. Adapted to each sector."}</p>
+            </div>
+            <ul class="tags">{demos.map((d) => <li>{d.profesion}</li>)}</ul>
             <div class="project-links">
               <a class="btn btn-primary" href="/demos/" target="_blank" rel="noopener">{t.service.cta} ↗</a>
             </div>
@@ -163,9 +174,16 @@ const proyectos = [
               </div>
               <p class="proyecto-tagline">
                 {lang === "es"
-                  ? "Todo mi código, experimentos y proyectos personales están publicados en mi perfil de GitHub. Ahí verás en qué ando trabajando de verdad."
-                  : "All my code, experiments and personal projects are published on my GitHub profile — that's where you'll see what I'm really building."}
+                  ? "Mi perfil público con todo lo que voy construyendo."
+                  : "My public profile with everything I'm building."}
               </p>
+              <div class="proyecto-block">
+                <h4>{lang === "es" ? "Qué encontrarás" : "What you'll find"}</h4>
+                <p>{lang === "es"
+                  ? "Código, experimentos y proyectos personales, en abierto."
+                  : "Code, experiments and personal projects, out in the open."}</p>
+              </div>
+              <ul class="tags">{["TypeScript", "Astro", "React", "Node.js"].map((tag) => <li>{tag}</li>)}</ul>
               <div class="project-links">
                 <a class="btn btn-primary" href={github} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver mi GitHub" : "View my GitHub"}</a>
               </div>

@@ -200,11 +200,6 @@ img { max-width: 100%; display: block; }
 .proyecto-card .tags { margin-top: 1.2rem; }
 /* Enlaces al pie, para que todas las tarjetas del carrusel queden uniformes. */
 .proyecto-card .project-links { margin-top: auto; padding-top: 1.4rem; }
-/* Tarjeta final: enlace a GitHub, centrada. */
-.proy-github { text-align: center; }
-.proy-github .proyecto-top { justify-content: center; }
-.proy-github .proyecto-tagline { max-width: 48ch; margin: .8rem auto 0; }
-.proy-github .project-links { justify-content: center; }
 
 .proy-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.3rem; }
 .proy-arrow {
