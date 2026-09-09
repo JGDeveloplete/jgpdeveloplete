@@ -219,7 +219,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       eyebrow: "Portfolio",
       title: "Proyectos",
-      sub: "Prefiero mostrar pocos proyectos bien explicados antes que una lista extensa y superficial.",
+      sub: "Estos son los proyectos en los que trabajo. Iré incorporando más a medida que vayan tomando forma.",
       featured: {
         status: "En desarrollo",
         title: "Kaireté",
@@ -512,7 +512,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       eyebrow: "Portfolio",
       title: "Projects",
-      sub: "I would rather show a few projects explained properly than a long, superficial list.",
+      sub: "These are the projects I'm working on. I'll add more as they take shape.",
       featured: {
         status: "In progress",
         title: "Kaireté",

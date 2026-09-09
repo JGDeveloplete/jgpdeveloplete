@@ -30,6 +30,30 @@ const limpiarItem = (e: { period: string; role: string; place: string; detail: s
 });
 const trabajo = t.experience.work.map(limpiarItem);
 const trayectoria = t.experience.items.map(limpiarItem);
+
+// Enlace a GitHub (para "ver más proyectos"), tomado de las redes.
+const github = t.contact.socials.find((s) => s.label === "GitHub")?.url;
+// Lista de proyectos para el carrusel: el destacado (Kaireté) va primero.
+const proyectos = [
+  {
+    title: t.projects.featured.title,
+    status: t.projects.featured.status,
+    tagline: t.projects.featured.tagline,
+    blocks: bloques,
+    tags: t.projects.featured.tags,
+    link: t.projects.featured.link,
+    repo: t.projects.featured.repo,
+  },
+  ...t.projects.items.map((p) => ({
+    title: p.title,
+    status: "",
+    tagline: p.description,
+    blocks: [],
+    tags: p.tags,
+    link: p.link,
+    repo: p.repo,
+  })),
+];
 ---
 
 <!-- ===================== HERO ===================== -->
@@ -91,116 +115,47 @@ const trayectoria = t.experience.items.map(limpiarItem);
       <p class="section-sub">{t.projects.sub}</p>
     </div>
 
-    <article class="featured">
-      <div class="featured-main">
-        <div class="featured-top">
-          <h3>{t.projects.featured.title}</h3>
-          <span class="featured-status">{t.projects.featured.status}</span>
-        </div>
-        <p class="featured-tagline">{t.projects.featured.tagline}</p>
-
-        {t.projects.featured.capturas && t.projects.featured.capturas.length > 0 && (
-          <div class="featured-shots">
-            <Gallery photos={t.projects.featured.capturas} lang={lang} ratio="16 / 10" autoplay={4500} />
+    <!-- Catálogo de proyectos en carrusel horizontal (scroll-snap): Kaireté es
+         la primera tarjeta y los próximos se irán deslizando aquí. -->
+    <div class="proyectos-carrusel">
+      {proyectos.map((p) => (
+        <article class="proyecto-card">
+          <div class="proyecto-top">
+            <h3>{p.title}</h3>
+            {p.status && <span class="featured-status">{p.status}</span>}
           </div>
-        )}
-
-        <div class="featured-blocks">
-          {bloques.map((b) => (
-            <div class="featured-block">
+          <p class="proyecto-tagline">{p.tagline}</p>
+          {p.blocks.map((b) => (
+            <div class="proyecto-block">
               <h4>{b.label}</h4>
               <p>{b.text}</p>
             </div>
           ))}
-        </div>
-      </div>
+          <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
+          {(p.link || p.repo) && (
+            <div class="project-links">
+              {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {p.title}</a>}
+              {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
 
-      <aside class="featured-side">
-        {decisiones.length > 0 && (
-          <>
-            <h4>{lang === "es" ? "Decisiones técnicas" : "Technical decisions"}</h4>
-            <ul class="featured-highlights">
-              {decisiones.map((h) => <li>{h}</li>)}
-            </ul>
-          </>
-        )}
-        <ul class="tags">{t.projects.featured.tags.map((tag) => <li>{tag}</li>)}</ul>
-        {(t.projects.featured.link || t.projects.featured.repo) && (
-          <div class="project-links">
-            {t.projects.featured.link && <a href={t.projects.featured.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {t.projects.featured.title}</a>}
-            {t.projects.featured.repo && <a href={t.projects.featured.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
-          </div>
-        )}
-      </aside>
-    </article>
-
-    {t.projects.items.length > 0 ? (
-      <div class="projects-grid more-projects">
-        {t.projects.items.map((p) => (
-          <article class="project-card">
-            <h3>{p.title}</h3>
-            <p>{p.description}</p>
-            <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
-            {(p.link || p.repo) && (
-              <div class="project-links">
-                {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver" : "Live"}</a>}
-                {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
-              </div>
-            )}
-          </article>
-        ))}
-      </div>
-    ) : (
-      <p class="more-soon">{t.projects.moreSoon}</p>
+    {github && (
+      <a class="proyectos-github" href={github} target="_blank" rel="noopener">
+        {lang === "es" ? "↗ ¿Quieres ver más? Todo mi código está en GitHub" : "↗ Want to see more? All my code is on GitHub"}
+      </a>
     )}
 
-    <!-- Producto propio: webs a medida. Junto a Kaireté. Se despliega aquí mismo
-         y muestra las demos encajonadas; cada tarjeta abre su demo real. -->
+    <!-- Producto propio: webs a medida. El botón abre el catálogo /demos en otra pestaña. -->
     <div class="demos-cta" id="service">
       <div class="demos-cta-copy">
         <p class="eyebrow">{t.service.eyebrow}</p>
         <h3 class="demos-cta-title">{t.service.title}</h3>
         <p class="demos-cta-text">{t.service.text}</p>
       </div>
-      <details class="fold demos-fold">
-        <summary class="fold-summary">
-          <span>{t.service.cta}</span>
-          <svg class="fold-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </summary>
-        <div class="fold-body">
-          <div class="demos-inline-grid">
-            {demos.map((d) => (
-              <a class="demo-mini" href={`/demos/${d.slug}/`} style={`--p:${d.paleta.principal};--a:${d.paleta.acento}`}>
-                <span class="demo-mini-franja"></span>
-                <div class="demo-mini-cuerpo">
-                  <h4>{d.profesion}</h4>
-                  <p>{d.gancho}</p>
-                  <span class="demo-mini-ir">{lang === "es" ? "Ver demo ↗" : "View demo ↗"}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-          <a class="demos-inline-todas" href="/demos/">{lang === "es" ? "Abrir el catálogo a pantalla completa ↗" : "Open the full catalogue ↗"}</a>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== STACK ===================== -->
-<section class="section" id="stack">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t.stack.eyebrow}</p>
-      <h2 class="section-title">{t.stack.title}</h2>
-    </div>
-    <div class="stack-grid">
-      {grupos.map((g) => (
-        <div class="stack-group">
-          <h3>{g.name}</h3>
-          <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
-        </div>
-      ))}
+      <a class="btn btn-primary demos-cta-btn" href="/demos/" target="_blank" rel="noopener">{t.service.cta} ↗</a>
     </div>
   </div>
 </section>
@@ -236,6 +191,24 @@ const trayectoria = t.experience.items.map(limpiarItem);
             {e.place && <p class="tl-place">{e.place}</p>}
             {e.detail && <p>{e.detail}</p>}
           </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STACK ===================== -->
+<section class="section" id="stack">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t.stack.eyebrow}</p>
+      <h2 class="section-title">{t.stack.title}</h2>
+    </div>
+    <div class="stack-grid">
+      {grupos.map((g) => (
+        <div class="stack-group">
+          <h3>{g.name}</h3>
+          <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
         </div>
       ))}
     </div>
