@@ -3,17 +3,17 @@
    Tema oscuro, moderno, con un acento energético (verde pista).
    ============================================================ */
 
-/* ---- TEMA POR DEFECTO: "Pista" (cálido y alegre, color de tartán) ---- */
+/* ---- TEMA POR DEFECTO: "Pista" — gama de Kaireté (naranja + azul) ---- */
 :root {
-  --bg: #14100e;
-  --bg-soft: #1b1614;
-  --surface: #221b18;
-  --surface-2: #2b2320;
-  --line: #4a3a30;
+  --bg: #211a17;
+  --bg-soft: #29201c;
+  --surface: #322823;
+  --surface-2: #3d302a;
+  --line: #5b4942;
   --text: #f6efea;
   --muted: #b6a49b;
-  --accent: #ff6a2e;      /* naranja vivo */
-  --accent-2: #22d46c;    /* verde vivo, como contraste del naranja */
+  --accent: #ff7a45;      /* naranja pista */
+  --accent-2: #5cb3e0;    /* azul, contraste frío */
   --accent-ink: #2b1206;
 
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -25,35 +25,44 @@
   --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
-/* ---- TEMA "Velocidad": verde oscuro con rosa de contraste ---- */
-[data-theme="velocidad"] {
-  --bg: #0b0f14; --bg-soft: #11161d; --surface: #151c25; --surface-2: #1b232e;
-  --line: #303d4c; --text: #e7edf3; --muted: #93a1b0;
-  --accent: #1ed760; --accent-2: #ff5aa8; --accent-ink: #04160a;
+/* ---- Gamas de Kaireté. Cada una es bicolor (cálido contra frío). Los oscuros
+       usan la variante oscura de Kaireté; Regata y Amapola, la clara. ---- */
+
+/* ---- "Savia": naranja + verde ---- */
+[data-theme="savia"] {
+  --bg: #202117; --bg-soft: #26281c; --surface: #2b2f20; --surface-2: #343827;
+  --line: #4a5139; --text: #eef0e4; --muted: #a3a891;
+  --accent: #ff8c3a; --accent-2: #6ede86; --accent-ink: #1d0f04;
 }
 
-/* ---- TEMA "Atardecer": base grisácea con naranja/ámbar ---- */
-[data-theme="atardecer"] {
-  --bg: #17181c; --bg-soft: #1e2025; --surface: #24262c; --surface-2: #2e3037;
-  --line: #3b3e46; --text: #eceef2; --muted: #a3a7af;
-  --accent: #ef9a3d; --accent-2: #f5c451; --accent-ink: #2a1a06;
+/* ---- "Bosque": verde + oro ---- */
+[data-theme="bosque"] {
+  --bg: #13251d; --bg-soft: #182c22; --surface: #1f3327; --surface-2: #26402f;
+  --line: #3a5543; --text: #e9f2ec; --muted: #92ad9c;
+  --accent: #34d399; --accent-2: #f0b429; --accent-ink: #052014;
 }
 
-/* ---- TEMA "Claro": modo día FRÍO (gris azulado + azul), para que sea muy
-       distinto del Burdeos aunque los dos sean claros ---- */
-[data-theme="claro"] {
-  --bg: #eaeef3; --bg-soft: #dfe5ec; --surface: #ffffff; --surface-2: #eef2f7;
-  --line: #cfd8e2; --text: #14202c; --muted: #566472;
-  --accent: #17509c; --accent-2: #8a6110; --accent-ink: #ffffff;
-  --shadow: 0 16px 40px rgba(20, 32, 44, 0.14);
+/* ---- "Grafito": gris carbón + ámbar (la sobria/grisácea) ---- */
+[data-theme="grafito"] {
+  --bg: #19191f; --bg-soft: #202026; --surface: #28282d; --surface-2: #313137;
+  --line: #49494f; --text: #f4f4f5; --muted: #a1a1aa;
+  --accent: #d4d4d8; --accent-2: #f59e0b; --accent-ink: #09090b;
 }
 
-/* ---- TEMA "Burdeos": burdeos + crema, más contrastado ---- */
-[data-theme="burdeos"] {
-  --bg: #f4e9d7; --bg-soft: #eadac2; --surface: #fdf5e8; --surface-2: #f0e2cd;
-  --line: #c9ac86; --text: #230f14; --muted: #5a3830;
-  --accent: #9c1c37; --accent-2: #b07d18; --accent-ink: #fdf5e8;
-  --shadow: 0 16px 40px rgba(58, 32, 38, 0.18);
+/* ---- "Regata": azul marino + dorado (clara) ---- */
+[data-theme="regata"] {
+  --bg: #e7ecf1; --bg-soft: #dde4ec; --surface: #ffffff; --surface-2: #eef2f7;
+  --line: #b8ccdf; --text: #0f1e2e; --muted: #556b7e;
+  --accent: #1e4f8a; --accent-2: #b07f1f; --accent-ink: #f7fbff;
+  --shadow: 0 16px 40px rgba(15, 30, 46, 0.12);
+}
+
+/* ---- "Amapola": rojo + azul (clara) ---- */
+[data-theme="amapola"] {
+  --bg: #efe6e8; --bg-soft: #e6dade; --surface: #fcfbfb; --surface-2: #f5f2f3;
+  --line: #dcc2c6; --text: #2d161a; --muted: #7d5e63;
+  --accent: #c81e3c; --accent-2: #1d5fa8; --accent-ink: #faf5f6;
+  --shadow: 0 16px 40px rgba(45, 22, 26, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -133,11 +142,12 @@ img { max-width: 100%; display: block; }
 }
 .theme-dot:hover { transform: scale(1.15); }
 .theme-dot[aria-pressed="true"] { border-color: var(--text); transform: scale(1.15); }
-.theme-dot.pista { background: linear-gradient(135deg, #ff6a2e, #22d46c); }
-.theme-dot.velocidad { background: linear-gradient(135deg, #1ed760, #ff5aa8); }
-.theme-dot.atardecer { background: linear-gradient(135deg, #8a9099, #ef9a3d); }
-.theme-dot.claro { background: linear-gradient(135deg, #17509c, #8a6110); }
-.theme-dot.burdeos { background: linear-gradient(135deg, #9c1c37, #b07d18); }
+.theme-dot.pista { background: linear-gradient(135deg, #ff7a45, #5cb3e0); }
+.theme-dot.savia { background: linear-gradient(135deg, #ff8c3a, #6ede86); }
+.theme-dot.bosque { background: linear-gradient(135deg, #34d399, #f0b429); }
+.theme-dot.grafito { background: linear-gradient(135deg, #d4d4d8, #f59e0b); }
+.theme-dot.regata { background: linear-gradient(135deg, #1e4f8a, #c9962f); }
+.theme-dot.amapola { background: linear-gradient(135deg, #c81e3c, #1d5fa8); }
 
 .nav-toggle { display: none; }
 
