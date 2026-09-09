@@ -115,38 +115,63 @@ const proyectos = [
       <p class="section-sub">{t.projects.sub}</p>
     </div>
 
-    <!-- Catálogo de proyectos en carrusel horizontal (scroll-snap): Kaireté es
-         la primera tarjeta y los próximos se irán deslizando aquí. -->
-    <div class="proyectos-carrusel">
-      {proyectos.map((p) => (
-        <article class="proyecto-card">
-          <div class="proyecto-top">
-            <h3>{p.title}</h3>
-            {p.status && <span class="featured-status">{p.status}</span>}
-          </div>
-          <p class="proyecto-tagline">{p.tagline}</p>
-          {p.blocks.map((b) => (
-            <div class="proyecto-block">
-              <h4>{b.label}</h4>
-              <p>{b.text}</p>
-            </div>
+    <!-- Carrusel de proyectos (una tarjeta a la vez): Kaireté, los próximos que
+         vengan, y una tarjeta final que enlaza a GitHub. Flechas + puntos. -->
+    <div class="proy-car" data-proy-car>
+      <div class="proy-viewport">
+        <div class="proy-track">
+          {proyectos.map((p) => (
+            <article class="proyecto-card">
+              <div class="proyecto-top">
+                <h3>{p.title}</h3>
+                {p.status && <span class="featured-status">{p.status}</span>}
+              </div>
+              <p class="proyecto-tagline">{p.tagline}</p>
+              {p.blocks.map((b) => (
+                <div class="proyecto-block">
+                  <h4>{b.label}</h4>
+                  <p>{b.text}</p>
+                </div>
+              ))}
+              <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
+              {(p.link || p.repo) && (
+                <div class="project-links">
+                  {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {p.title}</a>}
+                  {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
+                </div>
+              )}
+            </article>
           ))}
-          <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
-          {(p.link || p.repo) && (
-            <div class="project-links">
-              {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {p.title}</a>}
-              {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
-            </div>
-          )}
-        </article>
-      ))}
-    </div>
 
-    {github && (
-      <a class="proyectos-github" href={github} target="_blank" rel="noopener">
-        {lang === "es" ? "↗ ¿Quieres ver más? Todo mi código está en GitHub" : "↗ Want to see more? All my code is on GitHub"}
-      </a>
-    )}
+          {github && (
+            <article class="proyecto-card proy-github">
+              <div class="proyecto-top">
+                <h3>{lang === "es" ? "Más en GitHub" : "More on GitHub"}</h3>
+                <span class="featured-status">{lang === "es" ? "Código abierto" : "Open source"}</span>
+              </div>
+              <p class="proyecto-tagline">
+                {lang === "es"
+                  ? "Todo mi código, experimentos y proyectos personales están publicados en mi perfil de GitHub. Ahí verás en qué ando trabajando de verdad."
+                  : "All my code, experiments and personal projects are published on my GitHub profile — that's where you'll see what I'm really building."}
+              </p>
+              <div class="project-links">
+                <a href={github} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver mi GitHub" : "View my GitHub"}</a>
+              </div>
+            </article>
+          )}
+        </div>
+      </div>
+
+      <div class="proy-controls" hidden>
+        <button class="proy-arrow" data-proy-dir="prev" aria-label={lang === "es" ? "Proyecto anterior" : "Previous project"}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="proy-dots" role="tablist" aria-label={lang === "es" ? "Proyectos" : "Projects"}></div>
+        <button class="proy-arrow" data-proy-dir="next" aria-label={lang === "es" ? "Proyecto siguiente" : "Next project"}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
 
     <!-- Producto propio: webs a medida. El botón abre el catálogo /demos en otra pestaña. -->
     <div class="demos-cta" id="service">
@@ -310,8 +335,8 @@ const proyectos = [
       <h2 class="section-title">{t.contact.title}</h2>
       <p class="section-sub">{t.contact.lead}</p>
     </div>
-    <a class="contact-email" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
-    <div>
+    <div class="contact-card">
+      <a class="contact-email" href={`mailto:${t.contact.email}`}>{t.contact.email}</a>
       <a class="btn btn-primary" href={`mailto:${t.contact.email}`}>{t.contact.ctaEmail}</a>
     </div>
     <ul class="socials">
@@ -340,6 +365,46 @@ const proyectos = [
     };
     setTimeout(tick, 800);
   }
+
+  // Carrusel de proyectos: una tarjeta a la vez, con flechas, puntos y swipe.
+  document.querySelectorAll<HTMLElement>("[data-proy-car]").forEach((root) => {
+    const track = root.querySelector<HTMLElement>(".proy-track");
+    const slides = Array.from(root.querySelectorAll<HTMLElement>(".proyecto-card"));
+    const controls = root.querySelector<HTMLElement>(".proy-controls");
+    const dotsWrap = root.querySelector<HTMLElement>(".proy-dots");
+    if (!track || !controls || !dotsWrap || slides.length < 2) return; // 1 tarjeta: sin controles
+    controls.hidden = false;
+
+    let index = 0;
+    const go = (i: number) => {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(${-index * 100}%)`;
+      dots.forEach((d, n) => d.classList.toggle("active", n === index));
+    };
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "proy-dot";
+      dot.setAttribute("aria-label", `${i + 1}`);
+      dot.addEventListener("click", () => go(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children) as HTMLElement[];
+
+    root.querySelectorAll<HTMLButtonElement>("[data-proy-dir]").forEach((btn) => {
+      btn.addEventListener("click", () => go(index + (btn.dataset.proyDir === "next" ? 1 : -1)));
+    });
+
+    const vp = root.querySelector<HTMLElement>(".proy-viewport");
+    let startX = 0;
+    vp?.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    vp?.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+
+    go(0);
+  });
 </script>
 
 <style>
