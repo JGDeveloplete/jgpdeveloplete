@@ -136,12 +136,24 @@ const proyectos = [
               <ul class="tags">{p.tags.map((tag) => <li>{tag}</li>)}</ul>
               {(p.link || p.repo) && (
                 <div class="project-links">
-                  {p.link && <a href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {p.title}</a>}
-                  {p.repo && <a href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
+                  {p.link && <a class="btn btn-primary" href={p.link} target="_blank" rel="noopener">↗ {lang === "es" ? "Visitar" : "Visit"} {p.title}</a>}
+                  {p.repo && <a class="btn btn-ghost" href={p.repo} target="_blank" rel="noopener">↗ {lang === "es" ? "Código" : "Code"}</a>}
                 </div>
               )}
             </article>
           ))}
+
+          <!-- Servicio: webs con reservas, como una tarjeta más del carrusel. -->
+          <article class="proyecto-card proy-servicio" id="service">
+            <div class="proyecto-top">
+              <h3>{t.service.title}</h3>
+              <span class="featured-status">{t.service.eyebrow}</span>
+            </div>
+            <p class="proyecto-tagline">{t.service.text}</p>
+            <div class="project-links">
+              <a class="btn btn-primary" href="/demos/" target="_blank" rel="noopener">{t.service.cta} ↗</a>
+            </div>
+          </article>
 
           {github && (
             <article class="proyecto-card proy-github">
@@ -155,7 +167,7 @@ const proyectos = [
                   : "All my code, experiments and personal projects are published on my GitHub profile — that's where you'll see what I'm really building."}
               </p>
               <div class="project-links">
-                <a href={github} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver mi GitHub" : "View my GitHub"}</a>
+                <a class="btn btn-primary" href={github} target="_blank" rel="noopener">↗ {lang === "es" ? "Ver mi GitHub" : "View my GitHub"}</a>
               </div>
             </article>
           )}
@@ -171,16 +183,6 @@ const proyectos = [
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
         </button>
       </div>
-    </div>
-
-    <!-- Producto propio: webs a medida. El botón abre el catálogo /demos en otra pestaña. -->
-    <div class="demos-cta" id="service">
-      <div class="demos-cta-copy">
-        <p class="eyebrow">{t.service.eyebrow}</p>
-        <h3 class="demos-cta-title">{t.service.title}</h3>
-        <p class="demos-cta-text">{t.service.text}</p>
-      </div>
-      <a class="btn btn-primary demos-cta-btn" href="/demos/" target="_blank" rel="noopener">{t.service.cta} ↗</a>
     </div>
   </div>
 </section>
@@ -402,6 +404,20 @@ const proyectos = [
       const dx = e.changedTouches[0].clientX - startX;
       if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
     }, { passive: true });
+
+    // Autoavance: pasa solo, se detiene al pasar el ratón y respeta a quien
+    // haya pedido reducir el movimiento. Al usar flechas/puntos se reinicia.
+    const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!sinMovimiento) {
+      const cadencia = 5000;
+      let reloj = window.setInterval(() => go(index + 1), cadencia);
+      const parar = () => window.clearInterval(reloj);
+      const seguir = () => { parar(); reloj = window.setInterval(() => go(index + 1), cadencia); };
+      root.addEventListener("mouseenter", parar);
+      root.addEventListener("mouseleave", seguir);
+      root.addEventListener("touchstart", parar, { passive: true });
+      root.querySelectorAll("button").forEach((b) => b.addEventListener("click", seguir));
+    }
 
     go(0);
   });

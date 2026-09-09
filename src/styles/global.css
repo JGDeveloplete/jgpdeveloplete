@@ -217,16 +217,10 @@ img { max-width: 100%; display: block; }
 .proy-dot { width: 9px; height: 9px; padding: 0; border-radius: 50%; cursor: pointer; border: 1px solid var(--line); background: transparent; transition: background .2s, border-color .2s, transform .2s; }
 .proy-dot.active { background: var(--accent); border-color: var(--accent); transform: scale(1.15); }
 
-/* --------- Producto propio: webs a medida (botón que abre /demos en otra pestaña) --------- */
-.demos-cta { margin-top: 2.4rem; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, var(--surface), var(--bg-soft)); padding: 1.8rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
-.demos-cta-copy { max-width: 60ch; }
-.demos-cta-title { font-size: clamp(1.3rem, 2.5vw, 1.7rem); margin: .1rem 0 .5rem; color: var(--text); }
-.demos-cta-text { color: var(--muted); margin: 0; font-size: .96rem; }
-.demos-cta-btn { flex: none; }
-
-@media (max-width: 640px) {
-  .demos-cta { flex-direction: column; align-items: stretch; padding: 1.4rem; }
-}
+/* Tarjeta de servicio (webs con reservas) dentro del carrusel: un punto de
+   color sutil para que se distinga de un proyecto. */
+.proy-servicio { background: linear-gradient(180deg, var(--surface), var(--bg-soft)); }
+.proy-servicio .featured-status { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 
 /* --------- About --------- */
 .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
