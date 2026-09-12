@@ -1,19 +1,42 @@
-# Portafolio de JG — Ingeniero Informático & Atleta
+# JGP Developlete — Portafolio de Jose Giner Pérez
 
-Portafolio personal bilingüe (español/inglés) construido con
-[Astro](https://astro.build). Genera HTML estático (rápido y fácil de publicar)
-pero se escribe por componentes y crece bien: el punto medio entre una web
-estática y un framework.
+Portafolio personal **bilingüe (español / inglés)** de **Jose Giner Pérez**,
+ingeniero informático y velocista. Es una web **estática**, rápida y sin backend,
+con catálogo de demos, sistema de temas de color con modo claro/oscuro, logo y
+favicon propios, y datos deportivos **en vivo** desde World Athletics.
 
-## Requisitos
+🌐 **En producción: https://jgpdeveloplete.com** (ES en la raíz, EN en `/en/`).
 
-- [Node.js](https://nodejs.org) 18 o superior (aquí probado con Node 24).
+> Marca **con “p”**: **jgpDeveloplete**.
 
-## Empezar
+---
+
+## 1. Stack tecnológico
+
+| Capa | Tecnología |
+|---|---|
+| Framework | [**Astro 5**](https://astro.build) — genera **HTML estático** (sin runtime de framework en el cliente) |
+| Lenguaje | **TypeScript** (contenido, i18n y lógica) + JavaScript de navegador para la interactividad |
+| Estilos | **CSS puro** con variables (`src/styles/global.css`), sin Tailwind ni preprocesador |
+| Interactividad | JS “vanilla” en bloques `<script>` (temas, carruseles, menú, efecto typing) — **cero dependencias de cliente** |
+| Datos | Sitemap (`@astrojs/sitemap`) y marcas deportivas en vivo (fetch en tiempo de *build*) |
+| Tipografías | Google Fonts: **Inter**, **Space Grotesk**, **JetBrains Mono** |
+| Hosting | **GitHub Pages** (build por **GitHub Actions**) |
+| Dominio / DNS | **DonDominio** (registrador) + **Cloudflare** (DNS en modo *DNS-only*) |
+| Correo | **Cloudflare Email Routing** (reenvío) |
+
+Dependencias de producción: solo `astro` y `@astrojs/sitemap`. No hay adaptador
+de servidor: la web es 100 % estática.
+
+---
+
+## 2. Requisitos y comandos
+
+- **Node.js 22** (fijado en `.nvmrc`).
 
 ```bash
 npm install      # instalar dependencias (solo la primera vez)
-npm run dev      # servidor de desarrollo en http://localhost:4321
+npm run dev      # desarrollo en http://localhost:4321
 npm run build    # genera la web en dist/
 npm run preview  # previsualiza la build de producción
 ```
@@ -21,101 +44,210 @@ npm run preview  # previsualiza la build de producción
 - Español: `http://localhost:4321/`
 - Inglés: `http://localhost:4321/en/`
 
-## Dónde se edita cada cosa
+Scripts de utilidad para fotos (optimizan a `.webp` + `.jpg`):
+
+```bash
+npm run fotos           # fotos-originales/  → public/atletismo/
+npm run fotos:kairete   # fotos-kairete/     → public/kairete/
+```
+
+---
+
+## 3. Estructura del proyecto
 
 ```
 JGDeveloplete/
 ├── src/
-│   ├── i18n/content.ts      ← TODOS los textos (ES y EN). Edita aquí.
-│   ├── pages/index.astro    ← página en español (raíz)
-│   ├── pages/en/index.astro ← página en inglés (/en/)
-│   ├── layouts/Base.astro   ← <head>, fuentes, header y footer
-│   ├── components/          ← Header, Footer, Sections
-│   └── styles/global.css    ← diseño (colores, tipografías, responsive)
-├── public/favicon.svg       ← icono
-├── astro.config.mjs         ← idiomas y dominio del sitio
-└── RELLENAR.md              ← checklist de datos por completar
+│   ├── i18n/
+│   │   ├── content.ts        ← TODOS los textos y datos (ES y EN). El fichero clave.
+│   │   └── legal.ts          ← aviso legal y política de privacidad (ES/EN)
+│   ├── pages/
+│   │   ├── index.astro       ← home en español (/)
+│   │   ├── en/index.astro    ← home en inglés (/en/)
+│   │   ├── legal.astro       ← /legal  (y /en/legal)
+│   │   └── demos/
+│   │       ├── index.astro   ← catálogo de demos (/demos)
+│   │       └── [slug].astro   ← plantilla de cada demo (/demos/psicologia, …)
+│   ├── layouts/Base.astro    ← <head>, SEO/JSON-LD, fuentes, script de tema, header y footer
+│   ├── components/
+│   │   ├── Header.astro       ← navegación + selector de gama + interruptor claro/oscuro
+│   │   ├── Footer.astro
+│   │   ├── Sections.astro     ← todas las secciones de la home + su JS (carrusel, typing)
+│   │   ├── Logo.astro         ← logo JGP (SVG)
+│   │   └── Gallery.astro      ← carrusel de fotos reutilizable
+│   ├── lib/
+│   │   ├── demos.ts           ← datos de las demos (data-driven)
+│   │   ├── seguridad.ts       ← cabecera CSP + Referrer-Policy (por <meta>)
+│   │   └── worldAthletics.ts  ← marcas de la temporada en vivo (build-time)
+│   └── styles/global.css      ← temas de color, tipografía, layout, responsive
+├── public/
+│   ├── favicon.svg            ← icono a juego con el logo
+│   ├── CNAME                  ← dominio para GitHub Pages (jgpdeveloplete.com)
+│   ├── robots.txt
+│   └── atletismo/ · kairete/  ← imágenes optimizadas
+├── .github/workflows/deploy.yml  ← despliegue a GitHub Pages
+├── astro.config.mjs           ← site, i18n y sitemap
+├── .nvmrc                     ← Node 22
+└── RELLENAR.md                ← notas de contenido pendiente / cómo añadir cosas
 ```
 
-**La mayoría del trabajo es editar `src/i18n/content.ts`.** Ahí están todos los
-textos de ambos idiomas y los datos de proyectos, stack, deporte y experiencia.
-Busca los `[COMPLETAR]` y sustitúyelos. Lista completa en **RELLENAR.md**.
+**Casi todo el contenido se edita en `src/i18n/content.ts`** (bloques `es` y `en`).
 
-## Idiomas
+---
 
-- El **español** se sirve en la raíz (`/`).
-- El **inglés** en `/en/`.
-- El selector ES/EN está en la cabecera.
+## 4. Idiomas (i18n)
 
-Para añadir un idioma, se amplía `content.ts` y `astro.config.mjs` y se crea la
-página correspondiente.
+- El **español** se sirve en la raíz (`/`), el **inglés** en `/en/`.
+- Los textos de ambos idiomas viven en `src/i18n/content.ts` (y los legales en
+  `legal.ts`). El selector **ES/EN** está en la cabecera.
+- SEO multi-idioma: URL canónica + `hreflang` en cada página para que `/` y
+  `/en/` no compitan en Google.
 
-## Publicar en Cloudflare Pages (elegido)
+---
 
-Dominio: **jgdeveloplete.com** (ya configurado en `astro.config.mjs`).
+## 5. Sistema de temas de color (gamas + claro/oscuro)
 
-1. **Registrar el dominio.** Lo más cómodo es hacerlo en el propio
-   [Cloudflare](https://dash.cloudflare.com) (Domain Registration): lo venden a
-   precio de coste, sin renovaciones infladas, y queda ya conectado.
-2. **Crear el proyecto.** Cloudflare Dashboard → *Workers & Pages* → *Create*
-   → *Pages* → *Connect to Git* → elegir el repo `jgpdeveloplete`.
-   - Framework preset: **Astro**
-   - Build command: `npm run build`
-   - Output directory: `dist`
-3. **Conectar el dominio.** En el proyecto → *Custom domains* → añadir
-   `jgdeveloplete.com` y `www.jgdeveloplete.com`. El HTTPS es automático.
-4. **A partir de ahí**, cada `git push` a `main` publica sola la web.
+Doble interruptor, inspirado en el de la app **Kaireté** (mismas gamas):
 
-### Si el botón «Deploy» del panel no responde
+- **Selector de gama** (los puntitos de la cabecera): **Pista** (naranja + azul,
+  por defecto), **Bosque** (verde + oro), **Grafito** (gris + ámbar) y **Regata**
+  (azul marino + dorado).
+- **Interruptor de modo** (botón ☀️/🌙): claro u oscuro. Por defecto **oscuro**.
 
-Le ha pasado a JG: se pulsa *Deploy* y no ocurre nada. Cosas a probar, en orden:
+Cómo funciona en `src/styles/global.css`:
 
-1. **Recargar la página** y repetir el proceso (el asistente a veces se queda
-   colgado a medias).
-2. **Otro navegador o ventana de incógnito**, y desactivar bloqueadores: el
-   panel abre ventanas emergentes para autorizar GitHub.
-3. **Revisar los permisos de GitHub**: GitHub → *Settings* → *Applications* →
-   *Cloudflare Workers and Pages* → comprobar que tiene acceso al repositorio
-   `jgpdeveloplete`.
-4. **Si nada funciona**, usar el despliegue alternativo desde GitHub Actions:
-   `.github/workflows/desplegar.yml` (instrucciones dentro del fichero). No
-   depende del asistente del panel.
+- Cada gama define **su versión clara (`--l-*`) y oscura (`--d-*`)**.
+- Un “mapa activo” copia esas variables a las reales (`--bg`, `--accent`, …)
+  según el modo: por defecto usa las oscuras; con `:root[data-mode="claro"]`
+  usa las claras.
+- La **gama** se aplica con `data-theme="bosque|grafito|regata"` (Pista es el
+  `:root` por defecto); el **modo** con `data-mode="claro"`.
+- La elección del visitante se guarda en `localStorage` (`jg-theme` y `jg-mode`)
+  y se aplica **antes de pintar** (script en `Base.astro`) para que no parpadee.
+  Hay una **lista blanca** de gamas: un valor manipulado no puede colar un
+  atributo arbitrario.
 
-También se puede desplegar a mano desde el propio ordenador:
+**Firma visual propia:** cada gama es bicolor, y ese carácter se remarca con una
+barrita **partida 50/50** (los dos acentos) delante de cada eyebrow, en la franja
+superior de las tarjetas de proyecto y en el subrayado del nombre del hero.
 
-```bash
-npm run build
-npx wrangler login     # abre el navegador una sola vez
-npx wrangler deploy
-```
+---
 
-### Que las marcas se refresquen solas
-El bloque «Temporada» se genera al compilar. Para que se actualice sin tocar
-nada, hay un workflow en `.github/workflows/refrescar-marcas.yml` que republica
-la web cada lunes. Solo hay que crear un *Deploy hook* en Cloudflare y guardar
-su URL como secreto `CLOUDFLARE_DEPLOY_HOOK` en GitHub (instrucciones dentro
-del propio fichero).
+## 6. Secciones de la home
 
-### SEO (ya montado)
-- `sitemap-index.xml` y `robots.txt` generados automáticamente.
-- URL canónica y `hreflang` en cada página (para que `/` y `/en/` no compitan).
-- Imagen y descripción al compartir el enlace (WhatsApp, LinkedIn, X…).
-- **Pendiente tras publicar**: dar de alta la web en
-  [Google Search Console](https://search.google.com/search-console) y enviar el
-  sitemap. Es lo que hace que Google la encuentre en días en vez de semanas.
+1. **Hero** — nombre, roles con efecto *typing* y un carrusel de fotos.
+2. **Sobre mí** — texto + datos rápidos.
+3. **Experiencia y formación** — línea de tiempo de trabajo y estudios.
+4. **Proyectos** — **carrusel** (autoavance, flechas, puntos y *swipe*) con la
+   tarjeta de **Kaireté**, la del **servicio** (webs con reservas → `/demos`) y
+   la de **GitHub**; debajo, el bloque **“Tecnologías con las que trabajo”**.
+5. **Trayectoria deportiva** — marcas de la **temporada en vivo**, marcas
+   personales, galería y palmarés (con “ver más”).
+6. **Contacto** — email, botón y redes.
 
-## Otras opciones de hosting
+---
 
-Antes de publicar, pon tu URL real en `astro.config.mjs` (campo `site`).
+## 7. Catálogo de demos (`/demos`)
 
-- **GitHub Pages**: con la acción oficial `withastro/action`, o `npm run build`
-  y subir `dist/`.
-- **Netlify / Cloudflare Pages / Vercel**: conectar el repositorio; detectan
-  Astro automáticamente (build `npm run build`, carpeta `dist`).
+Escaparate del producto “webs a medida con reservas”. Son **maquetas estáticas**:
+todo se genera y valida **en el navegador**, no se envía nada; los profesionales
+son **ficticios** (apellido “Ejemplo”) y llevan `noindex`.
 
-## Pendiente / ideas
+Es **data-driven** desde `src/lib/demos.ts`: **añadir un oficio = añadir un
+objeto** al array. Cada demo varía en dos ejes —`estilo.formato` (la disposición)
+y `tipo` (la funcionalidad: reservas / contacto / catálogo / onboarding /
+mascota)— para que sea un catálogo de opciones real. La plantilla es
+`src/pages/demos/[slug].astro`.
 
-- Fotos reales (retrato y, si quieres, capturas de proyectos en `public/`).
-- Rellenar palmarés deportivo y experiencia.
-- Enlaces reales de GitHub, LinkedIn e Instagram.
-- (Opcional) sección de blog, o CV descargable en PDF.
+---
+
+## 8. Marcas de la temporada (en vivo)
+
+El bloque **“Temporada”** muestra las mejores marcas legales del año desde
+**World Athletics**. Se piden **en tiempo de compilación** (`src/lib/worldAthletics.ts`):
+
+- Se refrescan **cada vez que se publica** la web. El workflow de despliegue
+  incluye un **cron semanal (lunes)** que reconstruye para mantenerlas al día.
+- Si la API falla, el bloque simplemente no aparece y quedan las marcas fijas de
+  `content.ts`. **La web nunca se rompe** por esto.
+- La API **no es oficial**; si cambia, se ajusta en `worldAthletics.ts`.
+
+---
+
+## 9. Logo y favicon
+
+- **`src/components/Logo.astro`** — logo `‹JGP/›`: estelas de velocidad
+  (deporte) + iniciales en itálica + barra y chevrón de cierre de etiqueta
+  (informática). Las letras usan el color del tema (siempre legibles); los
+  adornos van en **dorado + teal fijos** como color de marca. Se usa en cabecera
+  y pie.
+- **`public/favicon.svg`** — el mismo glifo, **vectorial** (sin fuentes) para
+  verse nítido a 16 px.
+
+---
+
+## 10. Seguridad
+
+- **CSP** (Content-Security-Policy) y **Referrer-Policy** por `<meta>` en todas
+  las páginas, centralizadas en `src/lib/seguridad.ts`.
+- **JSON-LD escapado** (`<` → `<`) para que ningún texto pueda romper el
+  bloque de datos estructurados.
+- **Lista blanca** en el selector de tema.
+- Nota: GitHub Pages no permite cabeceras HTTP reales (HSTS, X-Frame-Options…);
+  por eso la política va por `<meta>`. Riesgo bajo para una web estática sin
+  formularios que envíen datos.
+
+---
+
+## 11. SEO
+
+- `sitemap-index.xml` y `robots.txt` automáticos.
+- Canónica + `hreflang` por idioma.
+- Open Graph / Twitter Card (imagen y descripción al compartir el enlace).
+- Datos estructurados **JSON-LD** (`Person`) con `sameAs` a todas las redes.
+
+---
+
+## 12. Despliegue (GitHub Pages)
+
+**Por qué GitHub Pages y no Cloudflare:** los operadores españoles (Vodafone
+confirmado) **bloquean rangos de IP de Cloudflare** por las órdenes
+antipiratería de LaLiga, y eso tumbaba la web desde España. GitHub Pages usa
+otras IPs no bloqueadas.
+
+El despliegue es automático con **GitHub Actions** (`.github/workflows/deploy.yml`,
+`withastro/action`, Node 22):
+
+- Cada **push a `main`** reconstruye y publica.
+- **Cron semanal (lunes 06:00 UTC)** para refrescar las marcas en vivo.
+- También se puede lanzar a mano (*Run workflow*).
+
+Requisitos en GitHub: repositorio **público**, y *Settings → Pages → Source =
+GitHub Actions*.
+
+### Dominio, DNS y correo
+
+- **Dominio** registrado en **DonDominio** (verificado por ICANN).
+- **DNS en Cloudflare pero en modo gris (*DNS-only*)** — **crítico**: registros
+  **A** del apex a las IPs de GitHub Pages (`185.199.108–111.153`) + `CNAME www`.
+  Si se pusiera en naranja (proxy), volvería el bloqueo del operador.
+- El dominio para Pages está en `public/CNAME`.
+- **Correo de contacto:** `contacto@jgpdeveloplete.com` mediante **Cloudflare
+  Email Routing** (reenvía a la bandeja real). Los registros MX/SPF de correo son
+  independientes de los A de la web.
+
+---
+
+## 13. Cómo hacer cambios habituales
+
+- **Cambiar textos** → `src/i18n/content.ts` (recuerda: los dos idiomas).
+- **Añadir un proyecto** → objeto en `projects.items` (aparece como tarjeta nueva
+  en el carrusel).
+- **Añadir/editar una demo** → objeto en `src/lib/demos.ts`.
+- **Añadir tecnologías** → `stack.groups` en `content.ts`.
+- **Cambiar la gama por defecto** → variables de `:root` en `global.css`.
+- **Añadir fotos** → ver `RELLENAR.md` (usa `npm run fotos`).
+
+---
+
+Hecho con [Astro](https://astro.build). © Jose Giner Pérez.

@@ -11,6 +11,10 @@ name: Desplegar a GitHub Pages
 on:
   push:
     branches: [main]
+  # Lunes 06:00 UTC: reconstruye y republica para refrescar el bloque "Temporada"
+  # con las marcas más recientes de World Athletics (se piden al compilar).
+  schedule:
+    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 permissions:
