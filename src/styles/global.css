@@ -150,7 +150,7 @@ img { max-width: 100%; display: block; }
 .nav-toggle { display: none; }
 
 /* --------- Hero --------- */
-.hero { padding: 5rem 0 4.5rem; }
+.hero { padding: 3.4rem 0 3rem; }
 .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.5rem; align-items: center; }
 .hero-portrait { position: relative; }
 .hero-portrait .gallery { margin: 0; }
@@ -177,8 +177,8 @@ img { max-width: 100%; display: block; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
 /* --------- Secciones --------- */
-.section { padding: 3.4rem 0; }
-.section-head { margin-bottom: 2rem; max-width: 720px; }
+.section { padding: 2.6rem 0; }
+.section-head { margin-bottom: 1.4rem; max-width: 720px; }
 /* Firma visual del portfolio: barrita bicolor (los dos acentos de la gama)
    delante de cada eyebrow. Es el detalle que lo diferencia de Kaireté. */
 .eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .8rem; }
@@ -237,7 +237,7 @@ img { max-width: 100%; display: block; }
 .proy-servicio .featured-status { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 
 /* --------- About --------- */
-.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: start; }
 .about-text p { color: var(--muted); }
 .about-facts { display: grid; gap: 1rem; }
 .fact { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; }
@@ -307,9 +307,9 @@ img { max-width: 100%; display: block; }
 
 /* --------- Stack --------- */
 /* Bloque de conocimientos dentro de Proyectos (antes era la sección Stack). */
-.conocimientos { margin-top: 2rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
-.conocimientos > .bests-title { margin-bottom: 1.2rem; }
-.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem 1.6rem; }
+.conocimientos { margin-top: 1.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.conocimientos > .bests-title { margin-bottom: 1rem; }
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.1rem 1.4rem; }
 .stack-group h3 { font-size: .78rem; margin: 0 0 .7rem; color: var(--accent); font-family: var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
 .stack-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
 .stack-group li { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .28rem .72rem; }
@@ -319,7 +319,7 @@ img { max-width: 100%; display: block; }
 .bests-title { font-size: 1.05rem; margin: 0 0 1rem; color: var(--muted); font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
 
 /* Bloque de marcas de la temporada (datos en vivo) */
-.season { margin-bottom: 1.8rem; }
+.season { margin-bottom: 1.3rem; }
 .season-head { display: flex; align-items: center; gap: .8rem; }
 .live {
   display: inline-flex; align-items: center; gap: .4rem; text-transform: none; letter-spacing: 0;
@@ -335,7 +335,7 @@ img { max-width: 100%; display: block; }
 .season .best { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
 .season-src { margin: 1rem 0 0; font-size: .8rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
-.bests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.8rem; }
+.bests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.3rem; }
 /* Las marcas de la temporada (hasta 4-5 pruebas) van en 4 columnas: fila
    cuadrada, sin el "saltito" de una tarjeta suelta debajo. */
 .season .bests { grid-template-columns: repeat(4, 1fr); }
@@ -378,7 +378,7 @@ img { max-width: 100%; display: block; }
   position: relative; width: 100%; height: 100%;
   object-fit: contain; display: block;
 }
-.gallery + .gallery { margin-top: 2rem; }
+.gallery + .gallery { margin-top: 1.4rem; }
 .slide figcaption {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1.4rem 1rem;
   font-family: var(--font-mono); font-size: .85rem; color: #fff;
@@ -399,7 +399,7 @@ img { max-width: 100%; display: block; }
 
 /* --------- Deporte / Experiencia (timeline) --------- */
 .timeline { position: relative; display: grid; gap: .7rem; }
-.timeline-gap { margin-top: 1.8rem; }
+.timeline-gap { margin-top: 1.2rem; }
 .tl-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.2rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .9rem 1.2rem; }
 .tl-year { font-family: var(--font-mono); color: var(--accent); font-weight: 600; font-size: .88rem; }
 .tl-body h3 { margin: 0 0 .2rem; font-size: 1.05rem; }
