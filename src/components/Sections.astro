@@ -106,6 +106,43 @@ const proyectos = [
   </div>
 </section>
 
+<!-- ===================== EXPERIENCIA Y FORMACIÓN ===================== -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{t.experience.eyebrow}</p>
+      <h2 class="section-title">{t.experience.title}</h2>
+    </div>
+    <h3 class="bests-title">{t.experience.workTitle}</h3>
+    <div class="timeline">
+      {trabajo.map((e) => (
+        <div class="tl-item">
+          <span class="tl-year">{e.period}</span>
+          <div class="tl-body">
+            <h3>{e.role}</h3>
+            {e.place && <p class="tl-place">{e.place}</p>}
+            {e.detail && <p>{e.detail}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="bests-title timeline-gap">{t.experience.educationTitle}</h3>
+    <div class="timeline">
+      {trayectoria.map((e) => (
+        <div class="tl-item">
+          <span class="tl-year">{e.period}</span>
+          <div class="tl-body">
+            <h3>{e.role}</h3>
+            {e.place && <p class="tl-place">{e.place}</p>}
+            {e.detail && <p>{e.detail}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 <!-- ===================== PROYECTOS ===================== -->
 <section class="section" id="projects">
   <div class="container">
@@ -202,60 +239,18 @@ const proyectos = [
         </button>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ===================== EXPERIENCIA ===================== -->
-<section class="section" id="experience">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t.experience.eyebrow}</p>
-      <h2 class="section-title">{t.experience.title}</h2>
-    </div>
-    <h3 class="bests-title">{t.experience.workTitle}</h3>
-    <div class="timeline">
-      {trabajo.map((e) => (
-        <div class="tl-item">
-          <span class="tl-year">{e.period}</span>
-          <div class="tl-body">
-            <h3>{e.role}</h3>
-            {e.place && <p class="tl-place">{e.place}</p>}
-            {e.detail && <p>{e.detail}</p>}
+    <!-- Conocimientos / tecnologías con las que trabajo (antes era la sección Stack). -->
+    <div class="conocimientos">
+      <h3 class="bests-title">{lang === "es" ? "Tecnologías con las que trabajo" : "Technologies I work with"}</h3>
+      <div class="stack-grid">
+        {grupos.map((g) => (
+          <div class="stack-group">
+            <h3>{g.name}</h3>
+            <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
           </div>
-        </div>
-      ))}
-    </div>
-
-    <h3 class="bests-title timeline-gap">{t.experience.educationTitle}</h3>
-    <div class="timeline">
-      {trayectoria.map((e) => (
-        <div class="tl-item">
-          <span class="tl-year">{e.period}</span>
-          <div class="tl-body">
-            <h3>{e.role}</h3>
-            {e.place && <p class="tl-place">{e.place}</p>}
-            {e.detail && <p>{e.detail}</p>}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ===================== STACK ===================== -->
-<section class="section" id="stack">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">{t.stack.eyebrow}</p>
-      <h2 class="section-title">{t.stack.title}</h2>
-    </div>
-    <div class="stack-grid">
-      {grupos.map((g) => (
-        <div class="stack-group">
-          <h3>{g.name}</h3>
-          <ul>{g.items.map((it) => <li>{it}</li>)}</ul>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 </section>
