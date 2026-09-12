@@ -177,8 +177,8 @@ img { max-width: 100%; display: block; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
 /* --------- Secciones --------- */
-.section { padding: 4.5rem 0; }
-.section-head { margin-bottom: 2.8rem; max-width: 720px; }
+.section { padding: 3.4rem 0; }
+.section-head { margin-bottom: 2rem; max-width: 720px; }
 /* Firma visual del portfolio: barrita bicolor (los dos acentos de la gama)
    delante de cada eyebrow. Es el detalle que lo diferencia de Kaireté. */
 .eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-mono); font-size: .8rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; margin: 0 0 .8rem; }
@@ -307,8 +307,8 @@ img { max-width: 100%; display: block; }
 
 /* --------- Stack --------- */
 /* Bloque de conocimientos dentro de Proyectos (antes era la sección Stack). */
-.conocimientos { margin-top: 3rem; padding-top: 2.4rem; border-top: 1px solid var(--line); }
-.conocimientos > .bests-title { margin-bottom: 1.4rem; }
+.conocimientos { margin-top: 2rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+.conocimientos > .bests-title { margin-bottom: 1.2rem; }
 .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem 1.6rem; }
 .stack-group h3 { font-size: .78rem; margin: 0 0 .7rem; color: var(--accent); font-family: var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
 .stack-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
@@ -319,7 +319,7 @@ img { max-width: 100%; display: block; }
 .bests-title { font-size: 1.05rem; margin: 0 0 1rem; color: var(--muted); font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
 
 /* Bloque de marcas de la temporada (datos en vivo) */
-.season { margin-bottom: 2.5rem; }
+.season { margin-bottom: 1.8rem; }
 .season-head { display: flex; align-items: center; gap: .8rem; }
 .live {
   display: inline-flex; align-items: center; gap: .4rem; text-transform: none; letter-spacing: 0;
@@ -335,7 +335,7 @@ img { max-width: 100%; display: block; }
 .season .best { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
 .season-src { margin: 1rem 0 0; font-size: .8rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
-.bests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.bests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.8rem; }
 /* Las marcas de la temporada (hasta 4-5 pruebas) van en 4 columnas: fila
    cuadrada, sin el "saltito" de una tarjeta suelta debajo. */
 .season .bests { grid-template-columns: repeat(4, 1fr); }

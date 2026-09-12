@@ -257,7 +257,7 @@ export const content: Record<Lang, Content> = {
         { name: "Frontend", items: ["React", "Vue", "Next.js", "Astro", "Tailwind CSS", "HTML/CSS"] },
         { name: "Backend y datos", items: ["Oracle", "PostgreSQL", "Node.js", "Prisma", "REST APIs"] },
         { name: "Herramientas", items: ["Docker", "Git", "GitHub Actions", "Linux", "Cloudflare", "TOAD", "Jira", "Unity"] },
-        { name: "Aprendiendo", items: ["Python", "C++"] },
+        { name: "Aprendiendo", items: ["Python", "C++", "Go", "IA/LLMs"] },
       ],
     },
     sport: {
@@ -547,7 +547,7 @@ export const content: Record<Lang, Content> = {
         { name: "Frontend", items: ["React", "Vue", "Next.js", "Astro", "Tailwind CSS", "HTML/CSS"] },
         { name: "Backend & data", items: ["Oracle", "PostgreSQL", "Node.js", "Prisma", "REST APIs"] },
         { name: "Tools", items: ["Docker", "Git", "GitHub Actions", "Linux", "Cloudflare", "TOAD", "Jira", "Unity"] },
-        { name: "Learning", items: ["Python", "C++"] },
+        { name: "Learning", items: ["Python", "C++", "Go", "AI/LLMs"] },
       ],
     },
     sport: {
